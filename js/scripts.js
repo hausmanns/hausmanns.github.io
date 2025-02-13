@@ -11,7 +11,7 @@ const projects = [
     {
         title: 'VR Mouse Behavior Platform',
         description: 'As part of my PhD, I spearheaded the development of a virtual reality system for studying adaptive visuomotor behavior in mice using <a href="https://unity.com/" target="_blank">Unity3D</a> game engine. Features markerless behavioral tracking using <a href="https://github.com/DeepLabCut/DeepLabCut" target="_blank">DeepLabCut</a> and integration with optogenetics and neural recording systems such as neuropixels 2.0 or a mesoscope.',
-        image: 'https://github-production-user-asset-6210df.s3.amazonaws.com/37653619/264261684-2ea1c92a-8bd8-41f1-890a-6cc7b956fafb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250213T204806Z&X-Amz-Expires=300&X-Amz-Signature=0987fb7a8cf829a7a6676cb3134c715fa19a1a8b81ee1caa47b867a02b779c49&X-Amz-SignedHeaders=host',
+        image: 'assets/rig6.png',
         links: {
             demo: null,
             github: null,
