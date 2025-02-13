@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seb Hausmann | Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">SH</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Bio Section -->
+        <section id="home" class="section bio-section">
+            <div class="container">
+                <div class="profile-container">
+                    <div class="profile-image">
+                        <!-- Add your profile image here -->
+                        <img src="assets/profile.JPG" alt="Seb Hausmann">
+                    </div>
+                    <div class="bio-content">
+                        <h1>Seb Hausmann, PhD</h1>
+                        <h2>Data-driven Neuroscientist and Neuroengineer</h2>
+                        <p class="bio-text">
+                            Welcome to my portfolio! I’m passionate about studying motor control and adaptation using advanced neuroengineering techniques. Currently, I just finished my PhD in Mackenzie Mathis’ Laboratory of Adaptive Intelligence at EPFL, where I developed cutting-edge VR setups for mice and study the neural mechanisms underlying visuomotor adaptation.
+                            <br>
+                            <br>
+                            🔬 My work involves:
+                            <br>
+                            - 🧑‍💻 Programming: <B>Python</B>, C#, SQL, MATLAB, C++
+                            <br>
+                            - 🧠 Neuroscience research: <B>Optogenetics</B>, neural circuits, behavioral analysis
+                            <br>
+                            - 🎮 Virtual Reality development for <B>biomedical</B> applications
+                            <br>
+                            - 📊 Advanced <B>data analysis</B> and <B>machine learning</B>
+                        </p>
+                        <div class="social-links">
+                            <a href="https://github.com/hausmanns" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/sebastien-hausmann-neuroengineer/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://x.com/SebHausmann" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project cards will be dynamically added via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section blog-section">
+            <div class="container">
+                <h2>Blog</h2>
+                <div class="blog-grid">
+                    <!-- Blog cards will be dynamically added via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <div class="contact-container">
+                    <form id="contact-form" action="https://formspree.io/f/xbldaqeo" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Seb Hausmann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
