@@ -287,6 +287,35 @@ body {
     text-shadow: 0 5px 10px rgba(195, 0, 255, 0.8);
 }
 
+.blog-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.blog-links a {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.blog-links .read-more {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.blog-links .read-paper {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.blog-links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
+}
+
 /* Contact Section */
 .contact-form {
     max-width: 600px;

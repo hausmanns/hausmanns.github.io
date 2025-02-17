@@ -85,7 +85,8 @@ const blogPosts = [
         title: 'Measuring and modeling the motor system with machine learning',
         date: '2021-10-01',
         excerpt: 'A comprehensive review we wrote, exploring novel machine learning methods for understanding the motor systemn. Drawing parallels with artificial neural networks.',
-        link: 'https://www.sciencedirect.com/science/article/pii/S0959438821000519'
+        link: 'https://www.sciencedirect.com/science/article/pii/S0959438821000519',
+        readMoreLink: null
     },
 ];
 
@@ -165,7 +166,10 @@ function renderBlogPosts() {
                 <h3>${post.title}</h3>
                 <div class="post-date">${post.date}</div>
                 <p>${post.excerpt}</p>
-                <a href="${post.link}" class="read-more">Read More</a>
+                <div class="blog-links">
+                    ${post.readMoreLink ? `<a href="${post.readMoreLink}" class="read-more">Read More</a>` : ''}
+                    ${post.link ? `<a href="${post.link}" class="read-paper" target="_blank">Paper</a>` : ''}
+                </div>
             </div>
         </div>
     `).join('');
