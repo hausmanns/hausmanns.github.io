@@ -21,7 +21,7 @@ const projects = [
     {
         title: 'Digital Biomarkers Data Analysis Pipeline',
         description: 'As part of my PhD, I developed a python-based (<a href="https://www.datajoint.com/" target="_blank">DataJoint</a>: Python wrapper for SQL) pipeline for processing and analyzing large-scale behavioral and neural data. Automatation of experimental data processing and facilitating the supervision of individual experimental sessions on a daily basis, using advanced signal processing and machine learning techniques.',
-        image: 'https://via.placeholder.com/400x300?text=Neural+Analysis',
+        image: 'assets/automationDJ.webp',
         links: {
             demo: null,
             github: null,
@@ -31,7 +31,7 @@ const projects = [
     {
         title: 'Optogenetics Control System',
         description: 'Arduino-based system for precise control of optogenetic stimulation during behavioral experiments. Features programmable stimulation patterns.',
-        image: 'https://via.placeholder.com/400x300?text=Optogenetics',
+        image: 'assets/optomodule.gif',
         links: {
             demo: null,
             github: null,
@@ -259,10 +259,10 @@ function initAnimations() {
                 trigger: card,
                 start: 'top 85%',
                 end: 'top 15%',
-                scrub: 1,
+                scrub: 0.1,
                 toggleActions: 'play none none reverse'
             },
-            y: 50,
+            y: 100,
             opacity: 0,
             duration: 0.8,
             delay: i * 0.15,
