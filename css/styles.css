@@ -165,6 +165,17 @@ body {
     transform: translateY(-3px);
 }
 
+.bluesky-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover .bluesky-icon {
+    transform: translateY(-3px);
+    filter: brightness(120%);
+}
+
 /* Projects Section */
 .project-description a {
     color: #007bff;
