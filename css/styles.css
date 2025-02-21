@@ -111,11 +111,19 @@ body {
 .profile-container {
     display: flex;
     gap: 4rem;
+    align-items: flex-start;
+}
+
+.profile-image-container {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 .profile-image {
-    flex: 0 0 300px;
+    width: 100%;
 }
 
 .profile-image img {
@@ -409,4 +417,49 @@ body {
     .section {
         padding: 3rem 1rem;
     }
+
+    .profile-image-container {
+        margin: 0 auto;
+    }
+}
+
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.education-section {
+    margin-top: 2rem;
+}
+
+.education-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.education-header i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.education-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.education-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.education-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
 }
