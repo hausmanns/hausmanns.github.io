@@ -11,7 +11,7 @@ const projects = [
     {
         title: 'VR Mouse Behavior Platform',
         description: 'As part of my PhD, I spearheaded the development of a virtual reality system for studying adaptive visuomotor behavior in mice using <a href="https://unity.com/" target="_blank">Unity3D</a> game engine. Features markerless behavioral tracking using <a href="https://github.com/DeepLabCut/DeepLabCut" target="_blank">DeepLabCut</a> and integration with optogenetics and neural recording systems such as neuropixels 2.0 or a mesoscope.',
-        image: 'assets/rig6.png',
+        image: 'assets/images/rig6.png',
         links: {
             demo: null,
             github: null,
@@ -21,7 +21,7 @@ const projects = [
     {
         title: 'Digital Biomarkers Data Analysis Pipeline',
         description: 'As part of my PhD, I developed a python-based (<a href="https://www.datajoint.com/" target="_blank">DataJoint</a>: Python wrapper for SQL) pipeline for processing and analyzing large-scale behavioral and neural data. Automatation of experimental data processing and facilitating the supervision of individual experimental sessions on a daily basis, using advanced signal processing and machine learning techniques.',
-        image: 'assets/automationDJ.webp',
+        image: 'assets/images/automationDJ.webp',
         links: {
             demo: null,
             github: null,
@@ -31,7 +31,7 @@ const projects = [
     {
         title: 'Optogenetics Control System',
         description: 'Arduino-based system for precise control of optogenetic stimulation during behavioral experiments. Features programmable stimulation patterns.',
-        image: 'assets/optomodule.gif',
+        image: 'assets/images/optomodule.gif',
         links: {
             demo: null,
             github: null,
@@ -41,7 +41,7 @@ const projects = [
     {
         title: 'Allen Brain Atlas Connectivity Map',
         description: "As a side project, I developed a simple GUI based on <a href='https://wiki.python.org/moin/PyQt' target='_blank'> PyQt</a> to explore connectivity map based on various projection signals. Features responsive design, animations, and integration with <a href='https://allensdk.readthedocs.io/en/latest/' target='_blank'> Allen Brain Atlas' API allensdk</a>.",
-        image: "assets/DalleBrainConnect.webp",
+        image: "assets/images/DalleBrainConnect.webp",
         links: {
             demo: 'https://github.com/AdaptiveMotorControlLab/AllenBrainConnectivityGraph?tab=readme-ov-file#main-window',
             github: 'https://github.com/AdaptiveMotorControlLab/AllenBrainConnectivityGraph',
@@ -51,7 +51,7 @@ const projects = [
     {
         title: 'Virtual Reality surrogate system for Argus® II Patients',
         description: 'As part of a software engineer research internship at Second Sight Medical Product, I worked on a virtual reality system for Argus II patients to help them navigate in a virtual environment. Enhancing their rehabilitation procedure. The system was developed using Unity and C#, bypassing their camera Unit. I also developed a VR simulation of what a patient sees using the Argus II system.',
-        image: "assets/VRScanning.png",
+        image: "assets/images/VRScanning.png",
         links: {
             demo: null,
             github: null,
@@ -61,7 +61,7 @@ const projects = [
     {   
         title: "Is effort related to social dominance?",
         description: "As part of my Master's thesis, I investigated the relationship between effort and social dominance in hierarchical groups of mice. This work was part of a larger project on the neural mechanisms of social dominance (specifically, the connections from mPFC to LH) and was conducted in laboratory of <a href='https://tyelab.org/' target='_blank'>Prof. Kay M. Tye</a> at the <a href='https://www.salk.edu/' target='_blank'>Salk Institute</a> in San Diego.",
-        image: "assets/effortTmaze.png",
+        image: "assets/images/effortTmaze.png",
         links: {
             demo: null,
             github: null,
@@ -71,7 +71,7 @@ const projects = [
     {
         title: 'Does subjective feeling of re-experiencing past events relate to memory performance?',
         description: `At the <a href="https://www.campusbiotech.ch/en/node/339" target="_blank"> Laboratory of Cognitive Neuroscience (LNCO)</a> in Prof. Olaf Blanke's lab, together with Dr. Brechet, I investigated the relationship between the subjective feeling of re-experiencing past events and memory performance. In this prroject we worked with healthy human subjects and used virtual reality to manipulate the feeling of re-experiencing past events.`,
-        image: "assets/vrimmersion.png",
+        image: "assets/images/vrimmersion.png",
         links: {
             demo: null,
             github: null,
