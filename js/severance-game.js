@@ -153,9 +153,9 @@ class SeveranceGame extends React.Component {
 
     // Get the clicked element
     const clickedElement = e.target;
-    // Check if we clicked on a number cell that's already selected
-    if (clickedElement.classList.contains('number-cell') && clickedElement.classList.contains('selected')) {
-      // Don't start selection if clicking on already selected numbers
+    
+    // If we're clicking on an already selected number, don't start selection
+    if (clickedElement.classList.contains('number-cell') && this.state.selected.has(parseInt(clickedElement.getAttribute('data-idx')))) {
       return;
     }
     
@@ -231,7 +231,6 @@ class SeveranceGame extends React.Component {
   handleDrop = (zoneId) => {
     if (this.state.selected.size === 0) return;
 
-    // Get all selected numbers and their scores
     const selectedNumbers = [];
     let zoneScoreAdd = 0;
     
@@ -323,6 +322,11 @@ class SeveranceGame extends React.Component {
   }
 
   handleTouchStart = (e) => {
+    if (this.state.selected.size > 0) {
+      // If we have selected numbers, don't start a new selection
+      return;
+    }
+    
     e.preventDefault();
     const touch = e.touches[0];
     const rect = this.numbersRef.current.getBoundingClientRect();
@@ -368,8 +372,14 @@ class SeveranceGame extends React.Component {
     const numberElements = this.state.numbers.map((num, idx) => {
       return React.createElement('div', {
         key: idx,
+        'data-idx': idx,
         className: `number-cell ${this.state.selected.has(idx) ? 'selected' : ''} ${num.isSpawning ? 'spawning' : ''}`,
-        draggable: this.state.selected.has(idx) && !this.state.isSelecting, // Only allow dragging when selected and not currently selecting
+        draggable: this.state.selected.has(idx),
+        onDragStart: (e) => {
+          // Add drag effect
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('text/plain', ''); // Required for Firefox
+        },
         style: {
           ...num.style,
           fontSize: num.style['--font-size']
