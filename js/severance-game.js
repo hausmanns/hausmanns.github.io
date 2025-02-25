@@ -58,17 +58,33 @@ class SeveranceGame extends React.Component {
   }
 
   componentDidMount() {
-    // Generate 100 numbers in a grid
-    const numbers = [];
+        const numbers = [];
     
     for (let i = 0; i < 100; i++) {
       numbers.push({
         id: i,
-        value: generateRandomNumber(0, 10)
+        value: generateRandomNumber(0, 10),
+        isSpawning: true,
+        style: {
+          '--x-radius': `${generateRandomNumber(5, 10)}px`,
+          '--y-radius': `${generateRandomNumber(5, 10)}px`,
+          '--start-angle': `${generateRandomNumber(0, 360)}deg`,
+          '--duration': `${generateRandomNumber(6, 20)}s`
+        }
       });
     }
     
     this.setState({ numbers });
+
+    // Remove spawning flag after initial animation but keep the unique styles
+    setTimeout(() => {
+      this.setState(prevState => ({
+        numbers: prevState.numbers.map(num => ({
+          ...num,
+          isSpawning: false
+        }))
+      }));
+    }, 500);
 
     // Add mouse event listeners for drag selection
     if (this.numbersRef.current) {
@@ -111,16 +127,12 @@ class SeveranceGame extends React.Component {
     });
 
     if (!clickedOnSelected) {
+      // Only update selection-related state, not the numbers
       this.setState({
         isSelecting: true,
-        selectionStart: {
-          x: mouseX,
-          y: mouseY
-        },
-        selectionEnd: {
-          x: mouseX,
-          y: mouseY
-        }
+        selectionStart: { x: mouseX, y: mouseY },
+        selectionEnd: { x: mouseX, y: mouseY },
+        selected: new Set() // Clear selection when starting new selection
       });
     }
   }
@@ -134,13 +146,13 @@ class SeveranceGame extends React.Component {
       y: e.clientY - rect.top
     };
 
+    // Only update selection-related state
     this.setState(prevState => {
       const selected = new Set();
       const selectionBox = this.getSelectionBox(prevState.selectionStart, end);
 
-      // Check which numbers are in the selection box
       Array.from(this.numbersRef.current.children).forEach((element, idx) => {
-        if (idx >= prevState.numbers.length) return; // Skip selection box element
+        if (idx >= prevState.numbers.length) return;
         
         const rect = element.getBoundingClientRect();
         const numRect = {
@@ -204,12 +216,13 @@ class SeveranceGame extends React.Component {
     const progress = Math.min(Math.floor((totalNumbers / 40) * 100), this.state.targetProgress);
     const complete = progress >= this.state.targetProgress;
 
-    // Generate new numbers for selected positions
+    // Generate new numbers for selected positions with spawning animation
     const numbers = [...this.state.numbers];
     this.state.selected.forEach(idx => {
       numbers[idx] = {
         ...numbers[idx],
-        value: generateRandomNumber(0, 10)
+        value: generateRandomNumber(0, 10),
+        isSpawning: true // Add spawning flag
       };
     });
 
@@ -221,6 +234,16 @@ class SeveranceGame extends React.Component {
       progress,
       complete
     });
+
+    // Remove spawning flag after animation completes
+    setTimeout(() => {
+      this.setState(prevState => ({
+        numbers: prevState.numbers.map(num => ({
+          ...num,
+          isSpawning: false
+        }))
+      }));
+    }, 500);
   }
 
   resetGame = () => {
@@ -229,7 +252,8 @@ class SeveranceGame extends React.Component {
     for (let i = 0; i < 100; i++) {
       numbers.push({
         id: i,
-        value: generateRandomNumber(0, 10)
+        value: generateRandomNumber(0, 10),
+        isSpawning: true
       });
     }
     
@@ -241,6 +265,16 @@ class SeveranceGame extends React.Component {
       progress: 0,
       complete: false
     });
+
+    // Remove spawning flag after animation
+    setTimeout(() => {
+      this.setState(prevState => ({
+        numbers: prevState.numbers.map(num => ({
+          ...num,
+          isSpawning: false
+        }))
+      }));
+    }, 500);
   }
 
   render() {
@@ -248,18 +282,15 @@ class SeveranceGame extends React.Component {
       ? this.getSelectionBox(this.state.selectionStart, this.state.selectionEnd)
       : null;
 
-    // Create numbers
-    const numberElements = this.state.numbers.map((num, idx) => 
-      React.createElement('div', {
+    // Create numbers with spawn animation class and use stored animation properties
+    const numberElements = this.state.numbers.map((num, idx) => {
+      return React.createElement('div', {
         key: idx,
-        className: `number-cell ${this.state.selected.has(idx) ? 'selected' : ''}`,
+        className: `number-cell ${this.state.selected.has(idx) ? 'selected' : ''} ${num.isSpawning ? 'spawning' : ''}`,
         draggable: this.state.selected.has(idx),
-        onDragStart: (e) => {
-          e.dataTransfer.setData('text/plain', 'dragging');
-          e.dataTransfer.effectAllowed = 'move';
-        }
-      }, num.value)
-    );
+        style: num.style
+      }, num.value);
+    });
 
     // Create selection box if dragging
     const selectionBoxElement = selectionBox && React.createElement('div', {

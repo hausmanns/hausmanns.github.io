@@ -584,6 +584,29 @@ body {
     justify-items: center;
 }
 
+/* Number cell animation */
+@keyframes circularMotion {
+    from {
+        transform: rotate(var(--start-angle)) translate(var(--x-radius), var(--y-radius)) rotate(calc(-1 * var(--start-angle)));
+    }
+    to {
+        transform: rotate(calc(var(--start-angle) + 360deg)) translate(var(--x-radius), var(--y-radius)) rotate(calc(-1 * (var(--start-angle) + 360deg)));
+    }
+}
+
+/* Size pulse animation */
+@keyframes sizePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+@keyframes colorPulse {
+    0% { color: var(--severance-text); }
+    50% { color: var(--severance-primary); }
+    100% { color: var(--severance-text); }
+}
+
 /* Individual number cells in game */
 .number-cell {
     color: var(--severance-text);
@@ -599,6 +622,8 @@ body {
     justify-content: center;
     width: 100%;
     height: 100%;
+    animation: circularMotion var(--duration) linear infinite;
+    transform-origin: center;
 }
 
 /* Number cell hover state */
@@ -619,6 +644,22 @@ body {
 /* Active selected number cell */
 .number-cell.selected:active {
     cursor: grabbing;
+}
+
+/* Add spawn animation */
+@keyframes spawn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.number-cell.spawning {
+    animation: spawn 0.5s ease-out forwards;
 }
 
 /* Selection box for game */
@@ -652,8 +693,6 @@ body {
     padding: 5px;
     transition: all 0.3s ease;
     align-content: flex-start;
-    overflow-y: auto;
-    max-height: 100px;
 }
 
 /* Drop zone when being dragged over */
