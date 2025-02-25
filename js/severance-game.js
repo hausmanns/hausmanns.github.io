@@ -456,26 +456,28 @@ document.addEventListener('DOMContentLoaded', function() {
   let forceScrollContainer = document.querySelector('.force-scroll-container');
   let isGameVisible = false;
   
-  // Add click event listener to the trigger
-  document.querySelector('.easter-egg-trigger').addEventListener('click', () => {
-    if (!isGameVisible) {
-      forceScrollContainer.classList.add('revealed');
-      isGameVisible = true;
-      
-      if (!window.gameRendered) {
-        ReactDOM.render(
-          React.createElement(SeveranceGame),
-          document.getElementById('severance-game')
-        );
-        window.gameRendered = true;
-        document.querySelector('.easter-egg-section').style.opacity = '1';
+  // Add click event listener to both triggers
+  document.querySelectorAll('.easter-egg-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      if (!isGameVisible) {
+        forceScrollContainer.classList.add('revealed');
+        isGameVisible = true;
+        
+        if (!window.gameRendered) {
+          ReactDOM.render(
+            React.createElement(SeveranceGame),
+            document.getElementById('severance-game')
+          );
+          window.gameRendered = true;
+          document.querySelector('.easter-egg-section').style.opacity = '1';
+        }
       }
       
-      // Scroll to the game section after a short delay
+      // Always scroll to game section when clicking triggers
       setTimeout(() => {
         forceScrollContainer.scrollIntoView({ behavior: 'smooth' });
       }, 300);
-    }
+    });
   });
 
   // Handle direct navigation to easter egg

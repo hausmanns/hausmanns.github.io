@@ -7,6 +7,7 @@
     --section-padding: 5rem 2rem;
     --transition: all 0.3s ease-in-out;
     --severance-primary: #00a2ff;
+    --severance-easter-egg-logo: #0c306f;
     --severance-secondary: #009688;
     --severance-background: #1e2939;
     --severance-text: #ffffff;
@@ -1022,13 +1023,71 @@ body {
 }
 
 /* Easter egg trigger styling */
+@keyframes subtle-pulse {
+    0% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+    50% {
+        transform: scale(1.05);
+        color: var(--severance-easter-egg-logo);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+}
+
+/* Easter egg trigger animations - separate for header and footer */
+@keyframes subtle-pulse-header {
+    0% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+    50% {
+        transform: scale(1.05);
+        color: var(--severance-easter-egg-logo);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+}
+
+@keyframes subtle-pulse-footer {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Base easter egg trigger styling */
 .easter-egg-trigger {
     transition: color 0.3s ease;
     position: relative;
+    display: inline-block;
 }
 
+/* Header-specific trigger styling */
+.logo.easter-egg-trigger {
+    animation: subtle-pulse-header 3s ease-in-out infinite;
+}
+
+/* Footer-specific trigger styling */
+.footer .easter-egg-trigger {
+    animation: subtle-pulse-footer 3s ease-in-out infinite;
+}
+
+/* Update hover effects */
 .easter-egg-trigger:hover {
-    color: var(--accent-color);
+    color: var(--severance-primary);
+    animation-play-state: paused;
+    transform: scale(1.1);
 }
 
 .easter-egg-trigger::after {
@@ -1038,11 +1097,20 @@ body {
     height: 1px;
     bottom: -2px;
     left: 0;
-    background-color: var(--accent-color);
+    background-color: var(--severance-primary);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
 .easter-egg-trigger:hover::after {
     transform: scaleX(1);
+}
+
+/* Apply the same animation to the logo when it's a trigger */
+.logo.easter-egg-trigger {
+    animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+.logo.easter-egg-trigger:hover {
+    animation-play-state: paused;
 }
