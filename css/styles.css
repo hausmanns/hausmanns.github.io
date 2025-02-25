@@ -1,4 +1,4 @@
-/* Global Styles and Variables */
+/* Global variables and basic style reset */
 :root {
     --primary-color: #2d3436;
     --accent-color: #0984e3;
@@ -6,24 +6,32 @@
     --background-color: #ffffff;
     --section-padding: 5rem 2rem;
     --transition: all 0.3s ease-in-out;
+    --severance-primary: #00a2ff;
+    --severance-easter-egg-logo: #0c306f;
+    --severance-secondary: #009688;
+    --severance-background: #1e2939;
+    --severance-text: #ffffff;
 }
 
-/* Animation Classes */
+/* Fade-in animation styling */
 .reveal {
     opacity: 0;
     visibility: hidden;
 }
 
+/* Base reset for all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Smooth scrolling behavior for the entire page */
 html {
     scroll-behavior: smooth;
 }
 
+/* Base body styling and typography */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
@@ -31,13 +39,27 @@ body {
     background-color: var(--background-color);
 }
 
+/* Main content container width constraint */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-/* Header and Navigation */
+/* Update force-scroll container to be a normal section */
+.force-scroll-container {
+    height: auto;
+    position: relative;
+    background-color: var(--severance-background);
+    display: none; /* Hidden by default */
+}
+
+.force-scroll-container.revealed {
+    display: block;
+    height: auto;
+}
+
+/* Fixed header styling */
 .header {
     position: fixed;
     top: 0;
@@ -48,6 +70,7 @@ body {
     z-index: 1000;
 }
 
+/* Navigation layout container */
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -57,18 +80,21 @@ body {
     margin: 0 auto;
 }
 
+/* Website logo styling */
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
 }
 
+/* Main navigation links */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
+/* Navigation link appearance and hover effects */
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
@@ -81,6 +107,7 @@ body {
     color: var(--accent-color);
 }
 
+/* Mobile menu button (hamburger) */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -88,6 +115,7 @@ body {
     cursor: pointer;
 }
 
+/* Hamburger menu icon bars */
 .hamburger span {
     width: 25px;
     height: 3px;
@@ -95,25 +123,25 @@ body {
     transition: var(--transition);
 }
 
-/* Sections */
+/* Common section styling: dist between each section */
 .section {
-    padding: var(--section-padding);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    padding: 100px 0;
+    margin-bottom: 100px;
 }
 
-/* Bio Section */
+/* Biography section specific styling */
 .bio-section {
     padding-top: 120px;
 }
 
+/* Profile layout container */
 .profile-container {
     display: flex;
     gap: 4rem;
     align-items: flex-start;
 }
 
+/* Profile image container and alignment */
 .profile-image-container {
     flex: 0 0 300px;
     display: flex;
@@ -122,38 +150,45 @@ body {
     gap: 1rem;
 }
 
+/* Profile image wrapper */
 .profile-image {
     width: 100%;
 }
 
+/* Profile image appearance */
 .profile-image img {
     width: 100%;
     border-radius: 50%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Biography text content */
 .bio-content {
     flex: 1;
 }
 
+/* Main heading in biography */
 .bio-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
 
+/* Subtitle in biography */
 .bio-content h2 {
     font-size: 1.5rem;
     color: var(--accent-color);
     margin-bottom: 1.5rem;
 }
 
+/* Social media links container */
 .social-links {
     display: flex;
     gap: 1.5rem;
     margin-top: 2rem;
 }
 
+/* Individual social media links */
 .social-links a {
     font-size: 1.5rem;
     color: var(--primary-color);
@@ -165,29 +200,34 @@ body {
     transform: translateY(-3px);
 }
 
+/* Bluesky social icon specific styling */
 .bluesky-icon {
     width: 1.3rem;
     height: 1.3rem;
     transition: var(--transition);
 }
 
+/* Bluesky icon hover effect */
 .social-links a:hover .bluesky-icon {
     transform: translateY(-3px);
     filter: brightness(120%);
 }
 
-/* Projects Section */
+/* Project description link styling */
 .project-description a {
     color: #007bff;
     text-decoration: none;
     transition: color .5s ease;
 }
+
+/* Project description link hover state */
 .project-description a:hover {
     color: #ff00e6;
     text-decoration: underline;
     
 }
 
+/* Projects grid layout */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -195,6 +235,7 @@ body {
     margin-top: 3rem;
 }
 
+/* Individual project card styling */
 .project-card {
     background: white;
     border-radius: 15px;
@@ -205,12 +246,14 @@ body {
     flex-direction: column;
 }
 
+/* Project thumbnail image */
 .project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
+/* Project card content area */
 .project-info {
     padding: 1.5rem;
     flex-grow: 1;
@@ -218,19 +261,21 @@ body {
     flex-direction: column;
 }
 
+/* Project card title */
 .project-info h3 {
     margin-bottom: 1rem;
     color: var(--primary-color);
     font-size: 1.3rem;
 }
 
+/* Project description text */
 .project-info p {
     margin-bottom: 1.5rem;
     color: #666;
     flex-grow: 1;
 }
 
-/* Project Links */
+/* Project link buttons container */
 .project-links a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -239,11 +284,13 @@ body {
     transition: var(--transition);
 }
 
+/* Secondary project link (not DOI) */
 .project-links a:not([href*="doi.org"]):last-child {
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
 }
 
+/* DOI (academic paper) link */
 .project-links a[href*="doi.org"] {
     background-color: #2eaccc;
     color: white !important;  /* Ensure text is always white */
@@ -252,18 +299,19 @@ body {
     display: inline-block; /* Ensure proper button display */
 }
 
+/* Primary project link */
 .project-links a:not([href*="doi.org"]):first-child {
     background-color: var(--accent-color);
     color: white;
 }
 
+/* Project link hover effects */
 .project-links a:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(195, 0, 255, 0.8);
 }
 
-/* Blog Section */
-
+/* Blog card styling */
 .blog-card {
     background: white;
     border-radius: 10px;
@@ -275,25 +323,30 @@ body {
     transform: translateY(0);
 }
 
+/* Blog post content area */
 .blog-content {
     padding: 1.5rem;
 }
 
+/* Blog post title */
 .blog-content h3 {
     margin-bottom: 0.5rem;
     color: var(--primary-color);
 }
 
+/* Blog post date display */
 .post-date {
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
+/* Blog post text */
 .blog-content p {
     margin-bottom: 1rem;
 }
 
+/* Read more link styling */
 .read-more {
     color: var(--accent-color);
     text-decoration: none;
@@ -301,17 +354,20 @@ body {
     transition: var(--transition);
 }
 
+/* Read more hover effect */
 .read-more:hover {
     transform: translateY(-2px);
     text-shadow: 0 5px 10px rgba(195, 0, 255, 0.8);
 }
 
+/* Blog post action links */
 .blog-links {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
+/* Blog link button styling */
 .blog-links a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -320,37 +376,43 @@ body {
     transition: var(--transition);
 }
 
+/* Read more button styling */
 .blog-links .read-more {
     background-color: var(--accent-color);
     color: white;
 }
 
+/* Read paper button styling */
 .blog-links .read-paper {
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
 }
 
+/* Blog link hover effects */
 .blog-links a:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
 }
 
-/* Contact Section */
+/* Contact form container */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
 }
 
+/* Form input groups */
 .form-group {
     margin-bottom: 1.5rem;
 }
 
+/* Form labels */
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
+/* Form input fields */
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -360,12 +422,14 @@ body {
     transition: var(--transition);
 }
 
+/* Form input focus state */
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--accent-color);
     outline: none;
 }
 
+/* Form submit button */
 .submit-btn {
     background-color: var(--accent-color);
     color: white;
@@ -376,11 +440,12 @@ body {
     transition: var(--transition);
 }
 
+/* Submit button hover state */
 .submit-btn:hover {
     background-color: #0773c5;
 }
 
-/* Footer */
+/* Page footer */
 .footer {
     background-color: var(--primary-color);
     color: white;
@@ -388,7 +453,7 @@ body {
     padding: 2rem;
 }
 
-/* Responsive Design */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -434,6 +499,7 @@ body {
     }
 }
 
+/* Profile image container layout */
 .profile-image-container {
     display: flex;
     flex-direction: column;
@@ -441,10 +507,12 @@ body {
     gap: 4rem;
 }
 
+/* Education section container */
 .education-section {
     margin-top: 2rem;
 }
 
+/* Education section header */
 .education-header {
     display: flex;
     align-items: center;
@@ -452,25 +520,595 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Education section icons */
 .education-header i {
     color: var(--accent-color);
     font-size: 1.5rem;
 }
 
+/* Education list container */
 .education-list {
     list-style: none;
     padding-left: 0;
 }
 
+/* Education list items */
 .education-list li {
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
     position: relative;
 }
 
+/* Education list bullet points */
 .education-list li::before {
     content: "•";
     position: absolute;
     left: 0;
     color: var(--accent-color);
+}
+
+/* Update easter egg section to be a normal section */
+.easter-egg-section {
+    min-height: 100vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 4rem 0;
+}
+
+/* Severance game container */
+.severance-game {
+    width: 1300px;
+    height: 850px;
+    background-color: #0f1923;
+    border: 3px solid var(--severance-primary);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 162, 255, 0.3);
+    overflow: hidden;
+    position: relative;
+    font-family: 'Courier New', monospace;
+}
+
+/* Severance game title */
+.severance-title {
+    color: var(--severance-text);
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Numbers grid for game */
+.numbers-grid {
+    position: relative;
+    height: 70%;
+    margin-bottom: 20px;
+    user-select: none;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px;
+    padding: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+/* Number cell animation */
+@keyframes circularMotion {
+    from {
+        transform: rotate(var(--start-angle)) translate(var(--x-radius), var(--y-radius)) rotate(calc(-1 * var(--start-angle)));
+    }
+    to {
+        transform: rotate(calc(var(--start-angle) + 360deg)) translate(var(--x-radius), var(--y-radius)) rotate(calc(-1 * (var(--start-angle) + 360deg)));
+    }
+}
+
+/* Individual number cells in game */
+.number-cell {
+    color: var(--severance-text);
+    cursor: pointer;
+    font-size: var(--font-size); /* Use the dynamic font size */
+    min-width: 40px; /* Ensure cell size consistency */
+    min-height: 40px;
+    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+    user-select: none;
+    text-shadow: 0 0 5px rgba(0, 162, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: circularMotion var(--duration) linear infinite;
+    transform-origin: center;
+}
+
+/* Number cell hover state */
+.number-cell:hover {
+    color: var(--severance-primary);
+    text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
+    transform: scale(1.5);
+}
+
+/* Selected number cell */
+.number-cell.selected {
+    color: var(--severance-primary);
+    text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
+    transform: scale(1.2);
+    cursor: grab;
+}
+
+/* Active selected number cell */
+.number-cell.selected:active {
+    cursor: grabbing;
+}
+
+/* Add spawn animation */
+@keyframes spawn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.number-cell.spawning {
+    animation: spawn 0.5s ease-out forwards, circularMotion var(--duration) linear infinite;
+}
+
+/* Selection box for game */
+.selection-box {
+    position: absolute;
+    border: 1px solid var(--severance-primary);
+    background-color: rgba(0, 162, 255, 0.1);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Drop zones container */
+.drop-zones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    height: 20%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+/* Individual drop zone */
+.drop-zone {
+    width: 28%;
+    height: 100%;
+    min-height: 80px;
+    background-color: rgba(0, 150, 136, 0.2);
+    border: 2px dashed var(--severance-secondary);
+    border-radius: 8px;
+    padding: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Drop zone when being dragged over */
+.drop-zone.dragover {
+    background-color: rgba(0, 150, 136, 0.4);
+    border-style: solid;
+}
+
+/* Dropped number display */
+.dropped-number {
+    background-color: rgba(0, 162, 255, 0.7);
+    color: white;
+    padding: 2px 4px;
+    margin: 2px;
+    border-radius: 3px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+/* Zone progress container */
+.zone-progress-container {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+}
+
+/* Zone progress bar */
+.zone-progress-bar {
+    height: 4px;
+    background-color: rgba(0, 150, 136, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.zone-progress {
+    height: 100%;
+    background-color: var(--severance-secondary);
+    transition: width 0.3s ease;
+}
+
+/* Zone numbers container */
+.zone-numbers {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: 12px; /* Reduced padding since we only show progress bar */
+}
+
+/* Game message display */
+.game-message {
+    position: absolute;
+    bottom: 100px;
+    width: calc(100% - 40px);
+    color: var(--severance-text);
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Progress bar container */
+.progress-bar {
+    height: 4px;
+    background-color: rgba(0, 150, 136, 0.3);
+    margin-top: 10px;
+    position: relative;
+}
+
+/* Progress indicator */
+.progress {
+    height: 100%;
+    background-color: var(--severance-secondary);
+    width: 0;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Game completion message */
+.congratulations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(14, 22, 33, 0.9);
+    color: var(--severance-text);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Successful completion */
+.congratulations.show.success {
+    opacity: 1;
+    pointer-events: auto;
+    background-color: rgba(14, 22, 33, 0.95);
+}
+
+.congratulations.show.success h2 {
+    color: var(--severance-primary);
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.congratulations.show.success p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 80%;
+    margin-bottom: 30px;
+}
+
+.congratulations.show.success button {
+    background-color: var(--severance-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.congratulations.show.success button:hover {
+    background-color: #0077cc;
+    transform: translateY(-1px);
+}
+
+/* Failed completion */
+.congratulations.show.failure {
+    opacity: 1;
+    pointer-events: auto;
+    animation: glitchEffect 0.3s ease-out;
+}
+
+.congratulations.show.failure h2 {
+    animation: textGlitch 1s infinite;
+    color: #ff3333;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.congratulations.show.failure p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #ff3333;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.congratulations.show.failure button {
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.congratulations.show.failure button:hover {
+    background-color: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Congratulations heading */
+.congratulations h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--severance-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.congratulations.show h2:not(:only-child) {
+    animation: textGlitch 1s infinite;
+    color: #ff3333;
+}
+
+@keyframes textGlitch {
+    0% {
+        text-shadow: 2px 2px #ff3333, -2px -2px #00a2ff;
+    }
+    25% {
+        text-shadow: -2px 2px #ff3333, 2px -2px #00a2ff;
+    }
+    50% {
+        text-shadow: 2px -2px #ff3333, -2px 2px #00a2ff;
+    }
+    75% {
+        text-shadow: -2px -2px #ff3333, 2px 2px #00a2ff;
+    }
+    100% {
+        text-shadow: 2px 2px #ff3333, -2px -2px #00a2ff;
+    }
+}
+
+/* Congratulations text */
+.congratulations p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Congratulations button */
+.congratulations button {
+    background-color: var(--severance-secondary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Congratulations button hover state */
+.congratulations button:hover {
+    background-color: #00796b;
+    transform: translateY(-2px);
+}
+
+/* Main progress container */
+.main-progress-container {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    right: 20px;
+}
+
+.main-progress-bar {
+    height: 10px;
+    background-color: rgba(255, 0, 0, 0.2);
+    border-radius: 3px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.main-progress {
+    height: 100%;
+    background-color: #ff3333;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Remove unused score display styles */
+.zone-score,
+.zone-score-container,
+.main-progress-label {
+    display: none;
+}
+
+/* Game mobile responsiveness */
+@media (max-width: 768px) {
+    .severance-game {
+        width: 100%;
+        max-width: 800px;
+        height: 500px;
+    }
+}
+
+/* Success specific styles */
+.success-title {
+    color: var(--severance-primary) !important;
+    font-size: 28px !important;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: none;
+    animation: none !important;
+    text-shadow: none !important;
+}
+
+.success-message {
+    color: var(--severance-text) !important;
+    font-size: 16px;
+    text-shadow: none !important;
+    animation: none !important;
+}
+
+.success-button {
+    background-color: var(--severance-primary);
+    text-transform: none;
+    letter-spacing: normal;
+    padding: 12px 24px;
+}
+
+.success-button:hover {
+    background-color: #0077cc;
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(0, 162, 255, 0.3);
+}
+
+/* Override any glitch animations for success state */
+.congratulations.show.success h2,
+.congratulations.show.success p,
+.congratulations.show.success button {
+    animation: none !important;
+    text-shadow: none !important;
+}
+
+.congratulations.show.failure .failure-message p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ff3333;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    line-height: 1.5;
+    text-align: center;
+}
+
+.congratulations.show.failure .failure-message p:last-child {
+    margin-bottom: 30px;
+}
+
+/* Easter egg trigger styling */
+@keyframes subtle-pulse {
+    0% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+    50% {
+        transform: scale(1.05);
+        color: var(--severance-easter-egg-logo);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+}
+
+/* Easter egg trigger animations - separate for header and footer */
+@keyframes subtle-pulse-header {
+    0% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+    50% {
+        transform: scale(1.05);
+        color: var(--severance-easter-egg-logo);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--text-color);
+    }
+}
+
+@keyframes subtle-pulse-footer {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Base easter egg trigger styling */
+.easter-egg-trigger {
+    transition: color 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+/* Header-specific trigger styling */
+.logo.easter-egg-trigger {
+    animation: subtle-pulse-header 3s ease-in-out infinite;
+}
+
+/* Footer-specific trigger styling */
+.footer .easter-egg-trigger {
+    animation: subtle-pulse-footer 3s ease-in-out infinite;
+}
+
+/* Update hover effects */
+.easter-egg-trigger:hover {
+    color: var(--severance-primary);
+    animation-play-state: paused;
+    transform: scale(1.1);
+}
+
+.easter-egg-trigger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--severance-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.easter-egg-trigger:hover::after {
+    transform: scaleX(1);
+}
+
+/* Apply the same animation to the logo when it's a trigger */
+.logo.easter-egg-trigger {
+    animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+.logo.easter-egg-trigger:hover {
+    animation-play-state: paused;
 }
