@@ -123,12 +123,10 @@ body {
     transition: var(--transition);
 }
 
-/* Common section styling */
+/* Common section styling: dist between each section */
 .section {
-    padding: var(--section-padding);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    padding: 100px 0;
+    margin-bottom: 100px;
 }
 
 /* Biography section specific styling */
