@@ -1,0 +1,34 @@
+@media screen and (max-width: 768px) {
+  .severance-game-container {
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .numbers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .number-cell {
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 16px !important;
+  }
+
+  .drop-zones {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .drop-zone {
+    width: 100%;
+    height: 60px;
+  }
+
+  .game-message {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

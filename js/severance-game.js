@@ -125,6 +125,13 @@ class SeveranceGame extends React.Component {
       window.addEventListener('mousemove', this.updateSelection);
       window.addEventListener('mouseup', this.endSelection);
     }
+
+    // Add touch event listeners for mobile
+    if (this.numbersRef.current) {
+      this.numbersRef.current.addEventListener('touchstart', this.handleTouchStart);
+      this.numbersRef.current.addEventListener('touchmove', this.handleTouchMove);
+      this.numbersRef.current.addEventListener('touchend', this.handleTouchEnd);
+    }
   }
 
   componentWillUnmount() {
@@ -132,6 +139,12 @@ class SeveranceGame extends React.Component {
       this.numbersRef.current.removeEventListener('mousedown', this.startSelection);
       window.removeEventListener('mousemove', this.updateSelection);
       window.removeEventListener('mouseup', this.endSelection);
+    }
+
+    if (this.numbersRef.current) {
+      this.numbersRef.current.removeEventListener('touchstart', this.handleTouchStart);
+      this.numbersRef.current.removeEventListener('touchmove', this.handleTouchMove);
+      this.numbersRef.current.removeEventListener('touchend', this.handleTouchEnd);
     }
   }
 
@@ -307,6 +320,43 @@ class SeveranceGame extends React.Component {
         }))
       }));
     }, 500);
+  }
+
+  handleTouchStart = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const rect = this.numbersRef.current.getBoundingClientRect();
+    const touchX = touch.clientX - rect.left;
+    const touchY = touch.clientY - rect.top;
+
+    this.setState({
+      isSelecting: true,
+      selectionStart: { x: touchX, y: touchY },
+      selectionEnd: { x: touchX, y: touchY },
+      selected: new Set()
+    });
+  }
+
+  handleTouchMove = (e) => {
+    if (!this.state.isSelecting || !this.numbersRef.current) return;
+    e.preventDefault();
+
+    const touch = e.touches[0];
+    const rect = this.numbersRef.current.getBoundingClientRect();
+    const end = {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top
+    };
+
+    this.updateSelection({
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+  }
+
+  handleTouchEnd = (e) => {
+    e.preventDefault();
+    this.endSelection();
   }
 
   render() {
