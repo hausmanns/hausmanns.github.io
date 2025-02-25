@@ -15,7 +15,7 @@
 <body>
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">SH.</div>
+            <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -125,19 +125,22 @@
             </div>
         </section>
         
-        <!-- Easter Egg: Severance Number Refining Game -->
-        <section id="easter-egg" class="section easter-egg-section">
-            <div class="container">
-                <div id="severance-game" class="severance-game">
-                    <!-- React will render the game here -->
+        <!-- Force Scroll Container -->
+        <div class="force-scroll-container">
+            <!-- Easter Egg: Severance Number Refining Game -->
+            <section id="easter-egg" class="section easter-egg-section">
+                <div class="container">
+                    <div id="severance-game" class="severance-game">
+                        <!-- React will render the game here -->
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Seb Hausmann. All rights reserved.</p>
+            <p>2025 <span class="easter-egg-trigger" style="cursor: pointer;">Seb</span> Hausmann. All rights reserved.</p>
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

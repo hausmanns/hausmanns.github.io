@@ -453,34 +453,36 @@ class SeveranceGame extends React.Component {
 
 // Wait for DOM to be ready and render the game
 document.addEventListener('DOMContentLoaded', function() {
-  // Create GSAP animation to fade in the easter egg when user scrolls to it
-  gsap.registerPlugin(ScrollTrigger);
+  let forceScrollContainer = document.querySelector('.force-scroll-container');
+  let isGameVisible = false;
   
-  gsap.to('.easter-egg-section', {
-    scrollTrigger: {
-      trigger: '.contact-section',
-      start: 'bottom bottom',
-      end: 'bottom top',
-      toggleActions: 'play none none reverse',
-      onEnter: () => {
-        // Ensure the game is rendered when the section becomes visible
-        if (!window.gameRendered) {
-          ReactDOM.render(
-            React.createElement(SeveranceGame),
-            document.getElementById('severance-game')
-          );
-          window.gameRendered = true;
-        }
+  // Add click event listener to the trigger
+  document.querySelector('.easter-egg-trigger').addEventListener('click', () => {
+    if (!isGameVisible) {
+      forceScrollContainer.classList.add('revealed');
+      isGameVisible = true;
+      
+      if (!window.gameRendered) {
+        ReactDOM.render(
+          React.createElement(SeveranceGame),
+          document.getElementById('severance-game')
+        );
+        window.gameRendered = true;
+        document.querySelector('.easter-egg-section').style.opacity = '1';
       }
-    },
-    opacity: 1,
-    duration: 1.5,
-    ease: "power2.out"
+      
+      // Scroll to the game section after a short delay
+      setTimeout(() => {
+        forceScrollContainer.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
   });
-  
-  // Also handle explicit navigation to the easter egg (in case scrollTrigger doesn't fire)
+
+  // Handle direct navigation to easter egg
   if (window.location.hash === '#easter-egg') {
-    document.querySelector('.easter-egg-section').style.opacity = 1;
+    forceScrollContainer.classList.add('revealed');
+    isGameVisible = true;
+    document.querySelector('.easter-egg-section').style.opacity = '1';
     if (!window.gameRendered) {
       ReactDOM.render(
         React.createElement(SeveranceGame),
@@ -490,3 +492,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+// Remove GSAP-specific code since we're using our own scroll behavior

@@ -45,6 +45,19 @@ body {
     padding: 0 2rem;
 }
 
+/* Update force-scroll container to be a normal section */
+.force-scroll-container {
+    height: auto;
+    position: relative;
+    background-color: var(--severance-background);
+    display: none; /* Hidden by default */
+}
+
+.force-scroll-container.revealed {
+    display: block;
+    height: auto;
+}
+
 /* Fixed header styling */
 .header {
     position: fixed;
@@ -535,15 +548,16 @@ body {
     color: var(--accent-color);
 }
 
-/* Severance Easter Egg section */
+/* Update easter egg section to be a normal section */
 .easter-egg-section {
     min-height: 100vh;
-    background-color: var(--severance-background);
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.5s ease;
+    padding: 4rem 0;
 }
 
 /* Severance game container */
@@ -1005,4 +1019,30 @@ body {
 
 .congratulations.show.failure .failure-message p:last-child {
     margin-bottom: 30px;
+}
+
+/* Easter egg trigger styling */
+.easter-egg-trigger {
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.easter-egg-trigger:hover {
+    color: var(--accent-color);
+}
+
+.easter-egg-trigger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.easter-egg-trigger:hover::after {
+    transform: scaleX(1);
 }
