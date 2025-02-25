@@ -154,7 +154,7 @@ class SeveranceGame extends React.Component {
     // Get the clicked element
     const clickedElement = e.target;
     
-    // If we're clicking on an already selected number, don't start selection
+    // If we're clicking on an already selected number, allow dragging
     if (clickedElement.classList.contains('number-cell') && this.state.selected.has(parseInt(clickedElement.getAttribute('data-idx')))) {
       return;
     }
@@ -167,7 +167,7 @@ class SeveranceGame extends React.Component {
       isSelecting: true,
       selectionStart: { x: mouseX, y: mouseY },
       selectionEnd: { x: mouseX, y: mouseY },
-      selected: new Set() // Clear any existing selection
+      selected: new Set() // Only clear selection if we're starting a new selection
     });
   }
 
@@ -322,8 +322,12 @@ class SeveranceGame extends React.Component {
   }
 
   handleTouchStart = (e) => {
-    if (this.state.selected.size > 0) {
-      // If we have selected numbers, don't start a new selection
+    if (!this.numbersRef.current) return;
+
+    const touchElement = e.touches[0].target;
+    
+    // If touching an already selected number, allow dragging
+    if (touchElement.classList.contains('number-cell') && this.state.selected.has(parseInt(touchElement.getAttribute('data-idx')))) {
       return;
     }
     
