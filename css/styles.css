@@ -126,7 +126,7 @@ body {
 /* Common section styling: dist between each section */
 .section {
     padding: 100px 0;
-    margin-bottom: 100px;
+    margin-bottom: 0px;
 }
 
 /* Biography section specific styling */
