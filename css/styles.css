@@ -594,19 +594,6 @@ body {
     }
 }
 
-/* Size pulse animation */
-@keyframes sizePulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.5); }
-    100% { transform: scale(1); }
-}
-
-@keyframes colorPulse {
-    0% { color: var(--severance-text); }
-    50% { color: var(--severance-primary); }
-    100% { color: var(--severance-text); }
-}
-
 /* Individual number cells in game */
 .number-cell {
     color: var(--severance-text);
