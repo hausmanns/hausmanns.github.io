@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script defer data-domain="hausmanns.github.io" src="https://plausible.laperrucherie.synology.me/js/script.js"></script>
-<link rel="icon" type="image/png" href="assets/images/logo/wolf.webp">
+    <link rel="icon" type="image/png" href="assets/images/logo/wolf.webp">
+    <!-- Adding React for the Easter Egg Game -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -121,6 +124,15 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Easter Egg: Severance Number Refining Game -->
+        <section id="easter-egg" class="section easter-egg-section">
+            <div class="container">
+                <div id="severance-game" class="severance-game">
+                    <!-- React will render the game here -->
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -131,5 +143,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/severance-game.js"></script>
 </body>
 </html>

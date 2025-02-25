@@ -6,6 +6,10 @@
     --background-color: #ffffff;
     --section-padding: 5rem 2rem;
     --transition: all 0.3s ease-in-out;
+    --severance-primary: #00a2ff;
+    --severance-secondary: #009688;
+    --severance-background: #1e2939;
+    --severance-text: #ffffff;
 }
 
 /* Animation Classes */
@@ -473,4 +477,208 @@ body {
     position: absolute;
     left: 0;
     color: var(--accent-color);
+}
+
+/* Easter Egg: Severance Game Styles */
+.easter-egg-section {
+    min-height: 100vh;
+    background-color: var(--severance-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.severance-game {
+    width: 800px;
+    height: 600px;
+    background-color: #0f1923;
+    border: 3px solid var(--severance-primary);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 162, 255, 0.3);
+    overflow: hidden;
+    position: relative;
+    font-family: 'Courier New', monospace;
+}
+
+.severance-title {
+    color: var(--severance-text);
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.numbers-grid {
+    position: relative;
+    height: 70%;
+    margin-bottom: 20px;
+    user-select: none;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 5px;
+    padding: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.number-cell {
+    color: var(--severance-text);
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+    user-select: none;
+    text-shadow: 0 0 5px rgba(0, 162, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.number-cell:hover {
+    color: var(--severance-primary);
+    text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
+    transform: scale(1.4);
+}
+
+.number-cell.selected {
+    color: var(--severance-primary);
+    text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
+    transform: scale(1.2);
+    cursor: grab;
+}
+
+.number-cell.selected:active {
+    cursor: grabbing;
+}
+
+.selection-box {
+    position: absolute;
+    border: 1px solid var(--severance-primary);
+    background-color: rgba(0, 162, 255, 0.1);
+    pointer-events: none;
+    z-index: 100;
+}
+
+.drop-zones {
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+}
+
+.drop-zone {
+    width: 22%;
+    height: 100%;
+    background-color: rgba(0, 150, 136, 0.2);
+    border: 2px dashed var(--severance-secondary);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    transition: all 0.3s ease;
+    align-content: flex-start;
+    overflow: hidden;
+}
+
+.drop-zone.dragover {
+    background-color: rgba(0, 150, 136, 0.4);
+    border-style: solid;
+}
+
+.dropped-number {
+    background-color: rgba(0, 162, 255, 0.7);
+    color: white;
+    padding: 2px 4px;
+    margin: 2px;
+    border-radius: 3px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.game-message {
+    position: absolute;
+    bottom: 10px;
+    width: calc(100% - 40px);
+    color: var(--severance-text);
+    text-align: center;
+    font-size: 14px;
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: rgba(0, 150, 136, 0.3);
+    margin-top: 10px;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--severance-secondary);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.congratulations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(14, 22, 33, 0.9);
+    color: var(--severance-text);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.congratulations.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.congratulations h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--severance-primary);
+}
+
+.congratulations p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.congratulations button {
+    background-color: var(--severance-secondary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.congratulations button:hover {
+    background-color: #00796b;
+    transform: translateY(-2px);
+}
+
+/* Mobile adjustments for the game */
+@media (max-width: 768px) {
+    .severance-game {
+        width: 100%;
+        max-width: 800px;
+        height: 500px;
+    }
 }
