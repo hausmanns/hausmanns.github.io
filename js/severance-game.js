@@ -9,6 +9,7 @@ function generateRandomNumber(min, max) {
 // Class for the Drop Zone component
 class DropZone extends React.Component {
   render() {
+    const percentage = (this.props.score / 500) * 100; // Calculate percentage based on max 500
     return React.createElement('div', {
       className: `drop-zone ${this.props.isDragOver ? 'dragover' : ''}`,
       onDragOver: (e) => {
@@ -25,12 +26,29 @@ class DropZone extends React.Component {
         e.preventDefault();
         this.props.onDrop(this.props.id);
       }
-    }, this.props.numbers.map((num, idx) => 
-      React.createElement('span', { 
-        key: idx, 
-        className: 'dropped-number'
-      }, num)
-    ));
+    }, [
+      // Show only progress bar, no score
+      React.createElement('div', {
+        key: 'progress-container',
+        className: 'zone-progress-container'
+      }, React.createElement('div', {
+        key: 'progress',
+        className: 'zone-progress-bar'
+      }, React.createElement('div', {
+        className: 'zone-progress',
+        style: { width: `${percentage}%` }
+      }))),
+      // Numbers container
+      React.createElement('div', {
+        key: 'numbers',
+        className: 'zone-numbers'
+      }, this.props.numbers.map((num, idx) => 
+        React.createElement('span', { 
+          key: idx, 
+          className: 'dropped-number'
+        }, num)
+      ))
+    ]);
   }
 }
 
@@ -43,6 +61,7 @@ class SeveranceGame extends React.Component {
       numbers: [],
       selected: new Set(),
       dropZones: [[], [], [], []],
+      zoneScores: [0, 0, 0, 0],
       dragOverZone: null,
       progress: 0,
       complete: false,
@@ -50,27 +69,41 @@ class SeveranceGame extends React.Component {
       isDragging: false,
       selectionStart: null,
       selectionEnd: null,
-      isSelecting: false
+      isSelecting: false,
+      gameOver: false,
+      gameWon: false,
+      mainProgress: 0 // Track main progress separately from individual zones
     };
 
     this.gameRef = React.createRef();
     this.numbersRef = React.createRef();
   }
 
+  generateNumber() {
+    // Update font size range to ensure max score of 1000 (25 numbers per zone * 40 max font size)
+    const fontSize = generateRandomNumber(14, 40);
+    return {
+      value: generateRandomNumber(0, 10),
+      fontSize: fontSize,
+      style: {
+        '--x-radius': `${generateRandomNumber(5, 10)}px`,
+        '--y-radius': `${generateRandomNumber(5, 10)}px`,
+        '--start-angle': `${generateRandomNumber(0, 360)}deg`,
+        '--duration': `${generateRandomNumber(6, 20)}s`,
+        '--font-size': `${fontSize}px`
+      }
+    };
+  }
+
   componentDidMount() {
-        const numbers = [];
+    const numbers = [];
     
     for (let i = 0; i < 100; i++) {
+      const number = this.generateNumber();
       numbers.push({
         id: i,
-        value: generateRandomNumber(0, 10),
-        isSpawning: true,
-        style: {
-          '--x-radius': `${generateRandomNumber(5, 10)}px`,
-          '--y-radius': `${generateRandomNumber(5, 10)}px`,
-          '--start-angle': `${generateRandomNumber(0, 360)}deg`,
-          '--duration': `${generateRandomNumber(6, 20)}s`
-        }
+        ...number,
+        isSpawning: true
       });
     }
     
@@ -185,38 +218,45 @@ class SeveranceGame extends React.Component {
   handleDrop = (zoneId) => {
     if (this.state.selected.size === 0) return;
 
-    // Get all selected numbers
+    // Get all selected numbers and their scores
     const selectedNumbers = [];
+    let zoneScoreAdd = 0;
+    
     this.state.selected.forEach(idx => {
       selectedNumbers.push(this.state.numbers[idx].value);
+      zoneScoreAdd += Math.floor(this.state.numbers[idx].fontSize);
     });
 
-    // Update drop zones
+    // Update drop zones and scores
     const dropZones = [...this.state.dropZones];
+    const zoneScores = [...this.state.zoneScores];
     dropZones[zoneId] = [...dropZones[zoneId], ...selectedNumbers];
+    zoneScores[zoneId] += zoneScoreAdd;
 
-    // Calculate new progress
-    let totalNumbers = 0;
-    dropZones.forEach(zone => {
-      totalNumbers += zone.length;
-    });
-    
-    const progress = Math.min(Math.floor((totalNumbers / 40) * 100), this.state.targetProgress);
-    const complete = progress >= this.state.targetProgress;
+    // Calculate new main progress (max: 1000)
+    const mainProgress = Math.min(
+      this.state.mainProgress + (zoneScoreAdd / 2), // Divide by 2 to slow down main progress
+      1000
+    );
 
-    // Generate new numbers for selected positions with spawning animation and circular motion styles
+    // Check win/loss conditions
+    let gameOver = false;
+    let gameWon = false;
+
+    if (mainProgress >= 1000) {
+      gameOver = true;
+      // Check if any zone reached 500
+      gameWon = zoneScores.some(score => score >= 500);
+    }
+
+    // Generate new numbers for selected positions
     const numbers = [...this.state.numbers];
     this.state.selected.forEach(idx => {
+      const newNumber = this.generateNumber();
       numbers[idx] = {
         ...numbers[idx],
-        value: generateRandomNumber(0, 10),
-        isSpawning: true,
-        style: {
-          '--x-radius': `${generateRandomNumber(5, 10)}px`,
-          '--y-radius': `${generateRandomNumber(5, 10)}px`,
-          '--start-angle': `${generateRandomNumber(0, 360)}deg`,
-          '--duration': `${generateRandomNumber(6, 20)}s`
-        }
+        ...newNumber,
+        isSpawning: true
       };
     });
 
@@ -224,12 +264,14 @@ class SeveranceGame extends React.Component {
       numbers,
       selected: new Set(),
       dropZones,
+      zoneScores,
       dragOverZone: null,
-      progress,
-      complete
+      mainProgress,
+      gameOver,
+      gameWon
     });
 
-    // Remove spawning flag after animation completes but keep the circular motion
+    // Remove spawning flag after animation
     setTimeout(() => {
       this.setState(prevState => ({
         numbers: prevState.numbers.map(num => ({
@@ -244,25 +286,22 @@ class SeveranceGame extends React.Component {
     const numbers = [];
     
     for (let i = 0; i < 100; i++) {
+      const number = this.generateNumber();
       numbers.push({
         id: i,
-        value: generateRandomNumber(0, 10),
-        isSpawning: true,
-        style: {
-          '--x-radius': `${generateRandomNumber(5, 10)}px`,
-          '--y-radius': `${generateRandomNumber(5, 10)}px`,
-          '--start-angle': `${generateRandomNumber(0, 360)}deg`,
-          '--duration': `${generateRandomNumber(6, 20)}s`
-        }
+        ...number,
+        isSpawning: true
       });
     }
     
     this.setState({
       numbers,
       dropZones: [[], [], [], []],
+      zoneScores: [0, 0, 0, 0],
       selected: new Set(),
-      progress: 0,
-      complete: false  // Reset the complete state
+      mainProgress: 0,
+      gameOver: false,
+      gameWon: false
     });
 
     // Remove spawning flag after animation but keep the circular motion
@@ -281,13 +320,16 @@ class SeveranceGame extends React.Component {
       ? this.getSelectionBox(this.state.selectionStart, this.state.selectionEnd)
       : null;
 
-    // Create numbers with spawn animation class and use stored animation properties
+    // Create numbers with spawn animation and font size
     const numberElements = this.state.numbers.map((num, idx) => {
       return React.createElement('div', {
         key: idx,
         className: `number-cell ${this.state.selected.has(idx) ? 'selected' : ''} ${num.isSpawning ? 'spawning' : ''}`,
         draggable: this.state.selected.has(idx) && !this.state.isSelecting, // Only allow dragging when selected and not currently selecting
-        style: num.style
+        style: {
+          ...num.style,
+          fontSize: num.style['--font-size']
+        }
       }, num.value);
     });
 
@@ -302,7 +344,7 @@ class SeveranceGame extends React.Component {
       }
     });
 
-    // Create drop zones
+    // Create drop zones with scores
     const dropZones = [];
     for (let i = 0; i < 4; i++) {
       dropZones.push(
@@ -313,7 +355,8 @@ class SeveranceGame extends React.Component {
           onDragEnter: (id) => this.setState({ dragOverZone: id }),
           onDragLeave: () => this.setState({ dragOverZone: null }),
           onDrop: this.handleDrop,
-          numbers: this.state.dropZones[i]
+          numbers: this.state.dropZones[i],
+          score: this.state.zoneScores[i]
         })
       );
     }
@@ -366,6 +409,38 @@ class SeveranceGame extends React.Component {
       }, [
         React.createElement('h2', { key: 'title' }, 'You have been severed'),
         React.createElement('p', { key: 'message' }, 'Excellent work refining those numbers. The board is pleased.'),
+        React.createElement('button', { 
+          key: 'reset', 
+          onClick: this.resetGame 
+        }, 'Begin New Sequence')
+      ]),
+
+      // Update main progress bar to show only percentage
+      React.createElement('div', {
+        className: 'main-progress-container'
+      }, [
+        React.createElement('div', {
+          key: 'bar',
+          className: 'main-progress-bar'
+        }, React.createElement('div', {
+          className: 'main-progress',
+          style: { width: `${(this.state.mainProgress / 1000) * 100}%` }
+        }))
+      ]),
+
+      // Update congratulations screen with win/loss message
+      (this.state.gameOver || this.state.gameWon) && 
+      React.createElement('div', {
+        className: 'congratulations show'
+      }, [
+        React.createElement('h2', { 
+          key: 'title' 
+        }, this.state.gameWon ? 'You have been severed' : 'Refinement Failed'),
+        React.createElement('p', { 
+          key: 'message' 
+        }, this.state.gameWon 
+          ? 'Excellent work refining those numbers. The board is pleased.' 
+          : 'You failed to reach the required score in any box. The board is disappointed.'),
         React.createElement('button', { 
           key: 'reset', 
           onClick: this.resetGame 

@@ -548,7 +548,7 @@ body {
 
 /* Severance game container */
 .severance-game {
-    width: 1000px;
+    width: 1300px;
     height: 850px;
     background-color: #0f1923;
     border: 3px solid var(--severance-primary);
@@ -576,8 +576,8 @@ body {
     margin-bottom: 20px;
     user-select: none;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 5px;
     padding: 20px;
     align-items: center;
@@ -598,7 +598,9 @@ body {
 .number-cell {
     color: var(--severance-text);
     cursor: pointer;
-    font-size: 20px;
+    font-size: var(--font-size); /* Use the dynamic font size */
+    min-width: 40px; /* Ensure cell size consistency */
+    min-height: 40px;
     transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
     font-family: 'Courier New', monospace;
     padding: 10px;
@@ -673,11 +675,11 @@ body {
     background-color: rgba(0, 150, 136, 0.2);
     border: 2px dashed var(--severance-secondary);
     border-radius: 8px;
-    display: flex;
-    flex-wrap: wrap;
     padding: 5px;
     transition: all 0.3s ease;
-    align-content: flex-start;
+    position: relative; /* For absolute positioning of score */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Drop zone when being dragged over */
@@ -697,10 +699,43 @@ body {
     display: inline-block;
 }
 
+/* Zone progress container */
+.zone-progress-container {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+}
+
+/* Zone progress bar */
+.zone-progress-bar {
+    height: 4px;
+    background-color: rgba(0, 150, 136, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.zone-progress {
+    height: 100%;
+    background-color: var(--severance-secondary);
+    transition: width 0.3s ease;
+}
+
+/* Zone numbers container */
+.zone-numbers {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: 12px; /* Reduced padding since we only show progress bar */
+}
+
 /* Game message display */
 .game-message {
     position: absolute;
-    bottom: 10px;
+    bottom: 100px;
     width: calc(100% - 40px);
     color: var(--severance-text);
     text-align: center;
@@ -777,6 +812,35 @@ body {
 .congratulations button:hover {
     background-color: #00796b;
     transform: translateY(-2px);
+}
+
+/* Main progress container */
+.main-progress-container {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    right: 20px;
+}
+
+.main-progress-bar {
+    height: 10px;
+    background-color: rgba(0, 162, 255, 0.2);
+    border-radius: 3px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-progress {
+    height: 100%;
+    background-color: var(--severance-primary);
+    transition: width 5.3s ease;
+}
+
+/* Remove unused score display styles */
+.zone-score,
+.zone-score-container,
+.main-progress-label {
+    display: none;
 }
 
 /* Game mobile responsiveness */
