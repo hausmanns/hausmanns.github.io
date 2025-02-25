@@ -204,13 +204,19 @@ class SeveranceGame extends React.Component {
     const progress = Math.min(Math.floor((totalNumbers / 40) * 100), this.state.targetProgress);
     const complete = progress >= this.state.targetProgress;
 
-    // Generate new numbers for selected positions with spawning animation
+    // Generate new numbers for selected positions with spawning animation and circular motion styles
     const numbers = [...this.state.numbers];
     this.state.selected.forEach(idx => {
       numbers[idx] = {
         ...numbers[idx],
         value: generateRandomNumber(0, 10),
-        isSpawning: true // Add spawning flag
+        isSpawning: true,
+        style: {
+          '--x-radius': `${generateRandomNumber(5, 10)}px`,
+          '--y-radius': `${generateRandomNumber(5, 10)}px`,
+          '--start-angle': `${generateRandomNumber(0, 360)}deg`,
+          '--duration': `${generateRandomNumber(6, 20)}s`
+        }
       };
     });
 
@@ -223,7 +229,7 @@ class SeveranceGame extends React.Component {
       complete
     });
 
-    // Remove spawning flag after animation completes
+    // Remove spawning flag after animation completes but keep the circular motion
     setTimeout(() => {
       this.setState(prevState => ({
         numbers: prevState.numbers.map(num => ({
@@ -241,20 +247,25 @@ class SeveranceGame extends React.Component {
       numbers.push({
         id: i,
         value: generateRandomNumber(0, 10),
-        isSpawning: true
+        isSpawning: true,
+        style: {
+          '--x-radius': `${generateRandomNumber(5, 10)}px`,
+          '--y-radius': `${generateRandomNumber(5, 10)}px`,
+          '--start-angle': `${generateRandomNumber(0, 360)}deg`,
+          '--duration': `${generateRandomNumber(6, 20)}s`
+        }
       });
     }
     
     this.setState({
       numbers,
-      selected: new Set(),
       dropZones: [[], [], [], []],
-      dragOverZone: null,
+      selected: new Set(),
       progress: 0,
-      complete: false
+      complete: false  // Reset the complete state
     });
 
-    // Remove spawning flag after animation
+    // Remove spawning flag after animation but keep the circular motion
     setTimeout(() => {
       this.setState(prevState => ({
         numbers: prevState.numbers.map(num => ({
