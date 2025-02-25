@@ -104,37 +104,25 @@ class SeveranceGame extends React.Component {
 
   startSelection = (e) => {
     if (!this.numbersRef.current) return;
+
+    // Get the clicked element
+    const clickedElement = e.target;
+    // Check if we clicked on a number cell that's already selected
+    if (clickedElement.classList.contains('number-cell') && clickedElement.classList.contains('selected')) {
+      // Don't start selection if clicking on already selected numbers
+      return;
+    }
     
     const rect = this.numbersRef.current.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     
-    // Check if we clicked on a selected number
-    const clickedOnSelected = this.state.numbers.some((num, idx) => {
-      if (this.state.selected.has(idx)) {
-        const element = this.numbersRef.current.children[idx];
-        const rect = element.getBoundingClientRect();
-        const numRect = {
-          left: rect.left - this.numbersRef.current.getBoundingClientRect().left,
-          top: rect.top - this.numbersRef.current.getBoundingClientRect().top,
-          width: rect.width,
-          height: rect.height
-        };
-        return mouseX >= numRect.left && mouseX <= numRect.left + numRect.width &&
-               mouseY >= numRect.top && mouseY <= numRect.top + numRect.height;
-      }
-      return false;
+    this.setState({
+      isSelecting: true,
+      selectionStart: { x: mouseX, y: mouseY },
+      selectionEnd: { x: mouseX, y: mouseY },
+      selected: new Set() // Clear any existing selection
     });
-
-    if (!clickedOnSelected) {
-      // Only update selection-related state, not the numbers
-      this.setState({
-        isSelecting: true,
-        selectionStart: { x: mouseX, y: mouseY },
-        selectionEnd: { x: mouseX, y: mouseY },
-        selected: new Set() // Clear selection when starting new selection
-      });
-    }
   }
 
   updateSelection = (e) => {
@@ -287,7 +275,7 @@ class SeveranceGame extends React.Component {
       return React.createElement('div', {
         key: idx,
         className: `number-cell ${this.state.selected.has(idx) ? 'selected' : ''} ${num.isSpawning ? 'spawning' : ''}`,
-        draggable: this.state.selected.has(idx),
+        draggable: this.state.selected.has(idx) && !this.state.isSelecting, // Only allow dragging when selected and not currently selecting
         style: num.style
       }, num.value);
     });
