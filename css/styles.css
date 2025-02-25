@@ -1,4 +1,4 @@
-/* Global Styles and Variables */
+/* Global variables and basic style reset */
 :root {
     --primary-color: #2d3436;
     --accent-color: #0984e3;
@@ -12,22 +12,25 @@
     --severance-text: #ffffff;
 }
 
-/* Animation Classes */
+/* Fade-in animation styling */
 .reveal {
     opacity: 0;
     visibility: hidden;
 }
 
+/* Base reset for all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Smooth scrolling behavior for the entire page */
 html {
     scroll-behavior: smooth;
 }
 
+/* Base body styling and typography */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
@@ -35,13 +38,14 @@ body {
     background-color: var(--background-color);
 }
 
+/* Main content container width constraint */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-/* Header and Navigation */
+/* Fixed header styling */
 .header {
     position: fixed;
     top: 0;
@@ -52,6 +56,7 @@ body {
     z-index: 1000;
 }
 
+/* Navigation layout container */
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -61,18 +66,21 @@ body {
     margin: 0 auto;
 }
 
+/* Website logo styling */
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
 }
 
+/* Main navigation links */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
+/* Navigation link appearance and hover effects */
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
@@ -85,6 +93,7 @@ body {
     color: var(--accent-color);
 }
 
+/* Mobile menu button (hamburger) */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -92,6 +101,7 @@ body {
     cursor: pointer;
 }
 
+/* Hamburger menu icon bars */
 .hamburger span {
     width: 25px;
     height: 3px;
@@ -99,7 +109,7 @@ body {
     transition: var(--transition);
 }
 
-/* Sections */
+/* Common section styling */
 .section {
     padding: var(--section-padding);
     min-height: 100vh;
@@ -107,17 +117,19 @@ body {
     align-items: center;
 }
 
-/* Bio Section */
+/* Biography section specific styling */
 .bio-section {
     padding-top: 120px;
 }
 
+/* Profile layout container */
 .profile-container {
     display: flex;
     gap: 4rem;
     align-items: flex-start;
 }
 
+/* Profile image container and alignment */
 .profile-image-container {
     flex: 0 0 300px;
     display: flex;
@@ -126,38 +138,45 @@ body {
     gap: 1rem;
 }
 
+/* Profile image wrapper */
 .profile-image {
     width: 100%;
 }
 
+/* Profile image appearance */
 .profile-image img {
     width: 100%;
     border-radius: 50%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Biography text content */
 .bio-content {
     flex: 1;
 }
 
+/* Main heading in biography */
 .bio-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
 
+/* Subtitle in biography */
 .bio-content h2 {
     font-size: 1.5rem;
     color: var(--accent-color);
     margin-bottom: 1.5rem;
 }
 
+/* Social media links container */
 .social-links {
     display: flex;
     gap: 1.5rem;
     margin-top: 2rem;
 }
 
+/* Individual social media links */
 .social-links a {
     font-size: 1.5rem;
     color: var(--primary-color);
@@ -169,29 +188,34 @@ body {
     transform: translateY(-3px);
 }
 
+/* Bluesky social icon specific styling */
 .bluesky-icon {
     width: 1.3rem;
     height: 1.3rem;
     transition: var(--transition);
 }
 
+/* Bluesky icon hover effect */
 .social-links a:hover .bluesky-icon {
     transform: translateY(-3px);
     filter: brightness(120%);
 }
 
-/* Projects Section */
+/* Project description link styling */
 .project-description a {
     color: #007bff;
     text-decoration: none;
     transition: color .5s ease;
 }
+
+/* Project description link hover state */
 .project-description a:hover {
     color: #ff00e6;
     text-decoration: underline;
     
 }
 
+/* Projects grid layout */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -199,6 +223,7 @@ body {
     margin-top: 3rem;
 }
 
+/* Individual project card styling */
 .project-card {
     background: white;
     border-radius: 15px;
@@ -209,12 +234,14 @@ body {
     flex-direction: column;
 }
 
+/* Project thumbnail image */
 .project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
+/* Project card content area */
 .project-info {
     padding: 1.5rem;
     flex-grow: 1;
@@ -222,19 +249,21 @@ body {
     flex-direction: column;
 }
 
+/* Project card title */
 .project-info h3 {
     margin-bottom: 1rem;
     color: var(--primary-color);
     font-size: 1.3rem;
 }
 
+/* Project description text */
 .project-info p {
     margin-bottom: 1.5rem;
     color: #666;
     flex-grow: 1;
 }
 
-/* Project Links */
+/* Project link buttons container */
 .project-links a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -243,11 +272,13 @@ body {
     transition: var(--transition);
 }
 
+/* Secondary project link (not DOI) */
 .project-links a:not([href*="doi.org"]):last-child {
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
 }
 
+/* DOI (academic paper) link */
 .project-links a[href*="doi.org"] {
     background-color: #2eaccc;
     color: white !important;  /* Ensure text is always white */
@@ -256,18 +287,19 @@ body {
     display: inline-block; /* Ensure proper button display */
 }
 
+/* Primary project link */
 .project-links a:not([href*="doi.org"]):first-child {
     background-color: var(--accent-color);
     color: white;
 }
 
+/* Project link hover effects */
 .project-links a:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(195, 0, 255, 0.8);
 }
 
-/* Blog Section */
-
+/* Blog card styling */
 .blog-card {
     background: white;
     border-radius: 10px;
@@ -279,25 +311,30 @@ body {
     transform: translateY(0);
 }
 
+/* Blog post content area */
 .blog-content {
     padding: 1.5rem;
 }
 
+/* Blog post title */
 .blog-content h3 {
     margin-bottom: 0.5rem;
     color: var(--primary-color);
 }
 
+/* Blog post date display */
 .post-date {
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
+/* Blog post text */
 .blog-content p {
     margin-bottom: 1rem;
 }
 
+/* Read more link styling */
 .read-more {
     color: var(--accent-color);
     text-decoration: none;
@@ -305,17 +342,20 @@ body {
     transition: var(--transition);
 }
 
+/* Read more hover effect */
 .read-more:hover {
     transform: translateY(-2px);
     text-shadow: 0 5px 10px rgba(195, 0, 255, 0.8);
 }
 
+/* Blog post action links */
 .blog-links {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
+/* Blog link button styling */
 .blog-links a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -324,37 +364,43 @@ body {
     transition: var(--transition);
 }
 
+/* Read more button styling */
 .blog-links .read-more {
     background-color: var(--accent-color);
     color: white;
 }
 
+/* Read paper button styling */
 .blog-links .read-paper {
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
 }
 
+/* Blog link hover effects */
 .blog-links a:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
 }
 
-/* Contact Section */
+/* Contact form container */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
 }
 
+/* Form input groups */
 .form-group {
     margin-bottom: 1.5rem;
 }
 
+/* Form labels */
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
+/* Form input fields */
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -364,12 +410,14 @@ body {
     transition: var(--transition);
 }
 
+/* Form input focus state */
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--accent-color);
     outline: none;
 }
 
+/* Form submit button */
 .submit-btn {
     background-color: var(--accent-color);
     color: white;
@@ -380,11 +428,12 @@ body {
     transition: var(--transition);
 }
 
+/* Submit button hover state */
 .submit-btn:hover {
     background-color: #0773c5;
 }
 
-/* Footer */
+/* Page footer */
 .footer {
     background-color: var(--primary-color);
     color: white;
@@ -392,7 +441,7 @@ body {
     padding: 2rem;
 }
 
-/* Responsive Design */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -438,6 +487,7 @@ body {
     }
 }
 
+/* Profile image container layout */
 .profile-image-container {
     display: flex;
     flex-direction: column;
@@ -445,10 +495,12 @@ body {
     gap: 4rem;
 }
 
+/* Education section container */
 .education-section {
     margin-top: 2rem;
 }
 
+/* Education section header */
 .education-header {
     display: flex;
     align-items: center;
@@ -456,22 +508,26 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Education section icons */
 .education-header i {
     color: var(--accent-color);
     font-size: 1.5rem;
 }
 
+/* Education list container */
 .education-list {
     list-style: none;
     padding-left: 0;
 }
 
+/* Education list items */
 .education-list li {
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
     position: relative;
 }
 
+/* Education list bullet points */
 .education-list li::before {
     content: "•";
     position: absolute;
@@ -479,7 +535,7 @@ body {
     color: var(--accent-color);
 }
 
-/* Easter Egg: Severance Game Styles */
+/* Severance Easter Egg section */
 .easter-egg-section {
     min-height: 100vh;
     background-color: var(--severance-background);
@@ -490,6 +546,7 @@ body {
     transition: opacity 0.5s ease;
 }
 
+/* Severance game container */
 .severance-game {
     width: 1000px;
     height: 850px;
@@ -503,6 +560,7 @@ body {
     font-family: 'Courier New', monospace;
 }
 
+/* Severance game title */
 .severance-title {
     color: var(--severance-text);
     text-align: center;
@@ -511,6 +569,7 @@ body {
     letter-spacing: 2px;
 }
 
+/* Numbers grid for game */
 .numbers-grid {
     position: relative;
     height: 70%;
@@ -525,6 +584,7 @@ body {
     justify-items: center;
 }
 
+/* Individual number cells in game */
 .number-cell {
     color: var(--severance-text);
     cursor: pointer;
@@ -541,12 +601,14 @@ body {
     height: 100%;
 }
 
+/* Number cell hover state */
 .number-cell:hover {
     color: var(--severance-primary);
     text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
     transform: scale(1.5);
 }
 
+/* Selected number cell */
 .number-cell.selected {
     color: var(--severance-primary);
     text-shadow: 0 0 10px rgba(0, 162, 255, 0.8);
@@ -554,10 +616,12 @@ body {
     cursor: grab;
 }
 
+/* Active selected number cell */
 .number-cell.selected:active {
     cursor: grabbing;
 }
 
+/* Selection box for game */
 .selection-box {
     position: absolute;
     border: 1px solid var(--severance-primary);
@@ -566,6 +630,7 @@ body {
     z-index: 100;
 }
 
+/* Drop zones container */
 .drop-zones {
     display: flex;
     justify-content: space-around;
@@ -574,6 +639,7 @@ body {
     margin-bottom: 30px;
 }
 
+/* Individual drop zone */
 .drop-zone {
     width: 22%;
     height: 100%;
@@ -590,11 +656,13 @@ body {
     max-height: 100px;
 }
 
+/* Drop zone when being dragged over */
 .drop-zone.dragover {
     background-color: rgba(0, 150, 136, 0.4);
     border-style: solid;
 }
 
+/* Dropped number display */
 .dropped-number {
     background-color: rgba(0, 162, 255, 0.7);
     color: white;
@@ -605,6 +673,7 @@ body {
     display: inline-block;
 }
 
+/* Game message display */
 .game-message {
     position: absolute;
     bottom: 10px;
@@ -614,6 +683,7 @@ body {
     font-size: 14px;
 }
 
+/* Progress bar container */
 .progress-bar {
     height: 4px;
     background-color: rgba(0, 150, 136, 0.3);
@@ -621,6 +691,7 @@ body {
     position: relative;
 }
 
+/* Progress indicator */
 .progress {
     height: 100%;
     background-color: var(--severance-secondary);
@@ -628,6 +699,7 @@ body {
     transition: width 0.3s ease;
 }
 
+/* Game completion message */
 .congratulations {
     position: absolute;
     top: 0;
@@ -646,22 +718,26 @@ body {
     transition: opacity 0.5s ease;
 }
 
+/* Visible congratulations screen */
 .congratulations.show {
     opacity: 1;
     pointer-events: auto;
 }
 
+/* Congratulations heading */
 .congratulations h2 {
     font-size: 32px;
     margin-bottom: 20px;
     color: var(--severance-primary);
 }
 
+/* Congratulations text */
 .congratulations p {
     font-size: 18px;
     margin-bottom: 30px;
 }
 
+/* Congratulations button */
 .congratulations button {
     background-color: var(--severance-secondary);
     color: white;
@@ -673,12 +749,13 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Congratulations button hover state */
 .congratulations button:hover {
     background-color: #00796b;
     transform: translateY(-2px);
 }
 
-/* Mobile adjustments for the game */
+/* Game mobile responsiveness */
 @media (max-width: 768px) {
     .severance-game {
         width: 100%;
