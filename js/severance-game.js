@@ -9,7 +9,7 @@ function generateRandomNumber(min, max) {
 // Class for the Drop Zone component
 class DropZone extends React.Component {
   render() {
-    const percentage = (this.props.score / 500) * 100; // Calculate percentage based on max 500
+    const percentage = (this.props.score / 250) * 100; // Calculate percentage based on max 250 score
     return React.createElement('div', {
       className: `drop-zone ${this.props.isDragOver ? 'dragover' : ''}`,
       onDragOver: (e) => {
@@ -60,8 +60,8 @@ class SeveranceGame extends React.Component {
     this.state = {
       numbers: [],
       selected: new Set(),
-      dropZones: [[], [], [], []],
-      zoneScores: [0, 0, 0, 0],
+      dropZones: [[], [], []], // Changed to 3 zones
+      zoneScores: [0, 0, 0], // Changed to 3 scores
       dragOverZone: null,
       progress: 0,
       complete: false,
@@ -72,7 +72,7 @@ class SeveranceGame extends React.Component {
       isSelecting: false,
       gameOver: false,
       gameWon: false,
-      mainProgress: 0 // Track main progress separately from individual zones
+      mainProgress: 0
     };
 
     this.gameRef = React.createRef();
@@ -233,21 +233,15 @@ class SeveranceGame extends React.Component {
     dropZones[zoneId] = [...dropZones[zoneId], ...selectedNumbers];
     zoneScores[zoneId] += zoneScoreAdd;
 
-    // Calculate new main progress (max: 1000)
-    const mainProgress = Math.min(
-      this.state.mainProgress + (zoneScoreAdd / 2), // Divide by 2 to slow down main progress
-      1000
-    );
+    // Calculate main progress independently (max 1000)
+    const mainProgress = this.state.mainProgress + zoneScoreAdd;
 
-    // Check win/loss conditions
-    let gameOver = false;
-    let gameWon = false;
+    // Check win/lose conditions
+    const allBoxesFull = zoneScores.every(score => score >= 250);
+    const mainBarFull = mainProgress >= 1000;
 
-    if (mainProgress >= 1000) {
-      gameOver = true;
-      // Check if any zone reached 500
-      gameWon = zoneScores.some(score => score >= 500);
-    }
+    let gameOver = mainBarFull || allBoxesFull;
+    let gameWon = allBoxesFull && !mainBarFull;
 
     // Generate new numbers for selected positions
     const numbers = [...this.state.numbers];
@@ -296,8 +290,8 @@ class SeveranceGame extends React.Component {
     
     this.setState({
       numbers,
-      dropZones: [[], [], [], []],
-      zoneScores: [0, 0, 0, 0],
+      dropZones: [[], [], []], // Changed to 3 zones
+      zoneScores: [0, 0, 0], // Changed to 3 scores
       selected: new Set(),
       mainProgress: 0,
       gameOver: false,
@@ -346,7 +340,7 @@ class SeveranceGame extends React.Component {
 
     // Create drop zones with scores
     const dropZones = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) { // Changed to 3 zones
       dropZones.push(
         React.createElement(DropZone, {
           key: i,
@@ -428,23 +422,30 @@ class SeveranceGame extends React.Component {
         }))
       ]),
 
-      // Update congratulations screen with win/loss message
+      // Update congratulations screen with distinct success/failure states
       (this.state.gameOver || this.state.gameWon) && 
       React.createElement('div', {
-        className: 'congratulations show'
+        className: `congratulations show ${this.state.gameWon ? 'success' : 'failure'}`
       }, [
         React.createElement('h2', { 
-          key: 'title' 
-        }, this.state.gameWon ? 'You have been severed' : 'Refinement Failed'),
-        React.createElement('p', { 
-          key: 'message' 
+          key: 'title',
+          className: this.state.gameWon ? 'success-title' : 'failure-title'
+        }, this.state.gameWon ? 'Refinement Complete' : 'CATASTROPHIC FAILURE'),
+        React.createElement('div', { 
+          key: 'message',
+          className: this.state.gameWon ? 'success-message' : 'failure-message'
         }, this.state.gameWon 
-          ? 'Excellent work refining those numbers. The board is pleased.' 
-          : 'You failed to reach the required score in any box. The board is disappointed.'),
+          ? 'All data has been properly categorized. Your work meets our standards.'
+          : ['Your inability to properly distribute the numbers has resulted in a critical system overload.',
+             'The board is disappointed in your performance.',
+             'You will be terminated.'].map((line, index) => 
+              React.createElement('p', { key: index }, line)
+          )),
         React.createElement('button', { 
-          key: 'reset', 
+          key: 'reset',
+          className: this.state.gameWon ? 'success-button' : 'failure-button',
           onClick: this.resetGame 
-        }, 'Begin New Sequence')
+        }, this.state.gameWon ? 'Process New Data' : 'RETRY SEQUENCE')
       ])
     ]);
   }
