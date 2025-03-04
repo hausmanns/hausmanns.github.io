@@ -273,8 +273,8 @@ body {
 .profile-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 3rem;
-    align-items: center;
+    gap: 1.5rem;
+    align-items: flex-start;
     position: relative;
     z-index: 1;
 }
@@ -490,6 +490,11 @@ body {
     background: var(--bg-secondary);
     border-radius: 10px;
     padding: 1rem;
+    width: 155%;
+    max-width: 1200px;
+    margin-left: 50%;
+    transform: translateX(-67%);
+    box-sizing: border-box;
 }
 
 .skills-header {
@@ -505,9 +510,39 @@ body {
 }
 
 .skills-categories {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* First category takes full width on smaller screens but first column on larger screens */
+.skills-categories .skill-category:nth-child(1) {
+    grid-column: 1 / 2;
+}
+
+/* Second category aligned in the middle */
+.skills-categories .skill-category:nth-child(2) {
+    grid-column: 2 / 3;
+}
+
+/* Third category aligned to the right */
+.skills-categories .skill-category:nth-child(3) {
+    grid-column: 3 / 4;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+    .skills-categories {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .skills-categories .skill-category:nth-child(1),
+    .skills-categories .skill-category:nth-child(2),
+    .skills-categories .skill-category:nth-child(3) {
+        grid-column: unset;
+    }
 }
 
 .skill-category {
@@ -533,7 +568,7 @@ body {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.6rem;
 }
 
@@ -578,7 +613,7 @@ body {
 
 @media (max-width: 768px) {
     .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .skill-item {
@@ -595,6 +630,12 @@ body {
     
     .skill-details {
         font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1185,7 +1226,7 @@ body {
     }
     
     .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -2115,4 +2156,13 @@ body {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 500;
+}
+
+/* For screens below 768px */
+@media (max-width: 768px) {
+    .skills-section {
+        width: calc(100% - 2rem);
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
 }
