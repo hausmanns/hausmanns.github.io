@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developing My First Mobile App: PDF Manager for iOS and Android | Seb Hausmann</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer data-domain="hausmanns.github.io" src="https://plausible.laperrucherie.synology.me/js/script.js"></script>
+    <link rel="icon" type="image/png" href="../assets/images/logo/wolf.webp">
+    <style>
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .blog-post-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .blog-post-header .title-container {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .app-preview {
+            flex: 0 0 200px;
+            margin-bottom: 1rem;
+        }
+        
+        .app-preview-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .blog-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-image figcaption {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .app-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .app-links img {
+            height: 50px;
+            transition: transform 0.2s;
+        }
+        
+        .app-links img:hover {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .blog-post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .blog-post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .blog-post-content .highlight {
+            background-color: var(--accent-color-light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content code {
+            font-family: monospace;
+            background-color: var(--background-secondary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-left: 0;
+            margin-right: 0;
+            font-style: italic;
+        }
+        
+        .blog-post-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .blog-post-footer .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .blog-post-footer .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background-color: var(--background-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card h4 i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section blog-post-section">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="title-container">
+                        <h1>Developing MagicPDF: My First Mobile App for iOS and Android</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar-alt"></i> January 15, 2023</span>
+                            <span>• <i class="fas fa-tag"></i> Mobile Development, iOS, Android, PDF Tools</span>
+                        </div>
+                    </div>
+                    <div class="app-preview">
+                        <img src="../assets/images/magic_pdf_logo.png" alt="MagicPDF App Preview" class="app-preview-image">
+                    </div>
+                </div>
+                
+                <div class="blog-post-content">
+                    <p>
+                        Academic and professional life often means dealing with numerous PDF documents. As a researcher who frequently juggles papers, reports, and documentation, I found myself constantly switching between different tools to handle basic PDF tasks. This frustration led me to develop my first mobile application — MagicPDF, a comprehensive PDF management tool available for both iOS and Android platforms.
+                    </p>
+                    
+                    <figure class="blog-image">
+                        <img src="../assets/images/placeholder-magicpdf-screenshot.jpg" alt="MagicPDF Interface" />
+                        <figcaption>The main interface of MagicPDF showing the document library and tools</figcaption>
+                    </figure>
+                    
+                    <h2>Why I Built This App</h2>
+                    <p>
+                        During my academic career, I've encountered several pain points when working with PDFs:
+                    </p>
+                    <ul>
+                        <li>Needing to merge multiple research papers or reports</li>
+                        <li>Wanting to extract specific pages from long documents</li>
+                        <li>Requiring summaries of lengthy papers for quick reference</li>
+                        <li>Organizing and searching through dozens of academic PDFs</li>
+                    </ul>
+                    <p>
+                        Most existing solutions either offered just one of these features, required a desktop computer, or were overly complex. I wanted something that could handle all these tasks directly from my phone or tablet, with an intuitive interface built specifically for mobile devices.
+                    </p>
+                    
+                    <h2>Core Features</h2>
+                    
+                    <div class="app-features">
+                        <div class="feature-card">
+                            <h4><i class="fas fa-object-group"></i> PDF Merging</h4>
+                            <p>Combine multiple PDFs into a single document with a simple drag-and-drop interface. Perfect for creating course materials or research compilations.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4><i class="fas fa-cut"></i> Page Management</h4>
+                            <p>Extract, delete, or reorder pages within documents. The visual interface makes it easy to see exactly what you're modifying.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4><i class="fas fa-file-alt"></i> PDF Summarization</h4>
+                            <p>Generate concise summaries of PDF content using natural language processing. Particularly useful for long academic papers or reports.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4><i class="fas fa-compress-arrows-alt"></i> Compression</h4>
+                            <p>Reduce PDF file sizes while maintaining readability, making documents easier to share and store on mobile devices.</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Technical Implementation</h2>
+                    
+                    <figure class="blog-image">
+                        <img src="../assets/images/placeholder-magicpdf-architecture.jpg" alt="MagicPDF Architecture" />
+                        <figcaption>Architecture diagram of MagicPDF showing the interaction between components</figcaption>
+                    </figure>
+                    
+                    <h3>Cross-Platform Development</h3>
+                    <p>
+                        One of my primary goals was to make the app available for both iOS and Android users. After evaluating several frameworks, I chose Flutter for its:
+                    </p>
+                    <ul>
+                        <li>Native-like performance on both platforms</li>
+                        <li>Single codebase for easier maintenance</li>
+                        <li>Rich widget library for creating polished interfaces</li>
+                        <li>Strong PDF manipulation libraries</li>
+                    </ul>
+                    
+                    <h3>PDF Processing</h3>
+                    <p>
+                        Working with PDFs at a programmatic level required careful consideration of both performance and accuracy. Key challenges included:
+                    </p>
+                    <ul>
+                        <li>Handling large files efficiently on mobile devices with limited resources</li>
+                        <li>Maintaining PDF formatting, especially for complex documents with images, tables, and form fields</li>
+                        <li>Optimizing processing to avoid excessive battery drain</li>
+                    </ul>
+                    <p>
+                        I implemented a hybrid approach that processes smaller tasks on-device while leveraging cloud functions for more complex operations like summarization.
+                    </p>
+                    
+                    <h3>Document Security</h3>
+                    <p>
+                        Given that many PDFs contain sensitive information, security was paramount. The app includes:
+                    </p>
+                    <ul>
+                        <li>Local processing for most operations, keeping data on the user's device</li>
+                        <li>End-to-end encryption for any cloud-based processing</li>
+                        <li>Optional password protection for modified documents</li>
+                        <li>Automatic deletion of temporary files</li>
+                    </ul>
+                    
+                    <h2>Natural Language Processing for Summarization</h2>
+                    <p>
+                        The PDF summarization feature was particularly challenging and rewarding to implement. It employs a multi-stage process:
+                    </p>
+                    <ol>
+                        <li>Text extraction that preserves document structure</li>
+                        <li>Important sentence identification using a trained model</li>
+                        <li>Context-aware condensation to create readable summaries</li>
+                        <li>Format-preserved output that maintains citations and key references</li>
+                    </ol>
+                    <p>
+                        The algorithm balances brevity with information retention, proving especially valuable for academic papers where skimming the abstract might not provide enough detail.
+                    </p>
+                    
+                    <h2>User Experience Design</h2>
+                    <p>
+                        As a researcher rather than a designer by training, I invested significant time in the UX design process. Key principles included:
+                    </p>
+                    <ul>
+                        <li>Minimizing steps required to complete common tasks</li>
+                        <li>Providing visual feedback throughout document processing</li>
+                        <li>Implementing intuitive gestures for document manipulation</li>
+                        <li>Ensuring accessibility for users with different needs</li>
+                    </ul>
+                    <p>
+                        I conducted multiple rounds of user testing with colleagues, iterating based on their feedback to refine the interface.
+                    </p>
+                    
+                    <h2>Challenges and Learnings</h2>
+                    
+                    <h3>Performance Optimization</h3>
+                    <p>
+                        Processing PDFs on mobile devices proved more resource-intensive than anticipated. I learned to implement:
+                    </p>
+                    <ul>
+                        <li>Progressive loading for large documents</li>
+                        <li>Background processing with low-priority threads</li>
+                        <li>Memory management optimizations to prevent crashes</li>
+                    </ul>
+                    
+                    <h3>Platform Differences</h3>
+                    <p>
+                        Despite Flutter's cross-platform benefits, I encountered several platform-specific challenges:
+                    </p>
+                    <ul>
+                        <li>iOS file system access restrictions required different approaches than Android</li>
+                        <li>Device-specific rendering issues needed targeted fixes</li>
+                        <li>Platform-specific UI conventions required some interface differences</li>
+                    </ul>
+                    
+                    <h3>App Store Approval Process</h3>
+                    <p>
+                        Navigating the app store submission processes was an education in itself. Apple's review process was particularly rigorous, requiring several rounds of adjustments to meet their guidelines.
+                    </p>
+                    
+                    <h2>Future Directions</h2>
+                    <p>
+                        This project continues to evolve based on user feedback and emerging technologies. Planned enhancements include:
+                    </p>
+                    <ul>
+                        <li>OCR capabilities for scanning physical documents</li>
+                        <li>Advanced annotation tools with stylus support</li>
+                        <li>Cloud synchronization across devices</li>
+                        <li>Integration with popular academic reference managers</li>
+                    </ul>
+                    
+                    <h2>Conclusion</h2>
+                    <p>
+                        Developing MagicPDF was a significant learning experience, pushing me to bridge my technical background with new skills in mobile development and user experience design. The app has become an essential tool in my own academic workflow, and I'm gratified to see it helping other researchers and professionals simplify their document management process.
+                    </p>
+                    <p>
+                        The project reinforced my belief that the best tools often emerge from addressing personal pain points, and I'm excited to continue evolving this application based on real-world usage and feedback.
+                    </p>
+
+                    <div class="app-links">
+                        <a href="#" class="app-store-link">
+                            <img src="../assets/images/appstore.svg" alt="Download on the App Store" />
+                        </a>
+                        <a href="#" class="play-store-link">
+                            <img src="../assets/images/googleplay.svg" alt="Get it on Google Play" />
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-post-footer">
+                    <a href="../index.html#blog" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>2025 <span class="easter-egg-trigger" style="cursor: pointer;">Seb</span> Hausmann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/scripts.js"></script>
+</body>
+</html> 

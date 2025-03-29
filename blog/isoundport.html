@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building iSoundPort - iTunes to Spotify Converter | Seb Hausmann</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer data-domain="hausmanns.github.io" src="https://plausible.laperrucherie.synology.me/js/script.js"></script>
+    <link rel="icon" type="image/png" href="../assets/images/logo/wolf.webp">
+    <style>
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .blog-post-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .blog-post-header .title-container {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .app-preview {
+            flex: 0 0 200px;
+            margin-bottom: 1rem;
+        }
+        
+        .app-preview-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .blog-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-image figcaption {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .app-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .app-links img {
+            height: 50px;
+            transition: transform 0.2s;
+        }
+        
+        .app-links img:hover {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .blog-post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .blog-post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .blog-post-content .highlight {
+            background-color: var(--accent-color-light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content code {
+            font-family: monospace;
+            background-color: var(--background-secondary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-left: 0;
+            margin-right: 0;
+            font-style: italic;
+        }
+        
+        .blog-post-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .blog-post-footer .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .blog-post-footer .back-link i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section blog-post-section">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="app-preview">
+                        <img src="../assets/images/placeholder-isoundport.png" alt="iSoundPort App Preview" class="app-preview-image">
+                    </div>
+                    <div class="title-container">
+                        <h1>Building iSoundPort: My Journey Creating a Full-Stack Music Playlist Converter</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 10, 2023</span>
+                            <span>• <i class="fas fa-tag"></i> Web Development, Full Stack, Flask, Firebase, Spotify API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-post-content">
+                    <p>
+                        For years, I've been a music enthusiast with playlists spread across different streaming platforms. The frustration of recreating carefully curated playlists when switching services led me to build <a href="https://isoundport.com" target="_blank">iSoundPort</a> — a web application that seamlessly converts iTunes playlists to Spotify.
+                    </p>
+                    
+                    <h2>The Problem</h2>
+                    <p>
+                        Moving between music streaming platforms has always been a pain point. When I decided to switch from Apple Music to Spotify, I faced the tedious task of manually recreating dozens of playlists I'd built over years. I knew there had to be a better way, and that's when the idea for iSoundPort was born.
+                    </p>
+                    
+                    <figure class="blog-image">
+                        <img src="../assets/images/_4Converting.png" alt="iSoundPort Interface" />
+                        <figcaption>iSoundPort's main interface showing the playlist conversion process</figcaption>
+                    </figure>
+                    
+                    <h2>Technical Architecture</h2>
+                    <p>
+                        I designed iSoundPort as a full-stack web application with the following components:
+                    </p>
+                    
+                    <h3>Backend Framework: Flask</h3>
+                    <p>
+                        I chose Flask as my backend framework for its lightweight nature and flexibility. Flask allowed me to quickly develop a RESTful API that could handle the complex playlist conversion process, manage authentication tokens, and interface with external services.
+                    </p>
+                    
+                    <h3>Authentication System: Firebase Authentication</h3>
+                    <p>
+                        Security and user management were key considerations. Firebase Authentication provided a robust, ready-to-implement solution that handled:
+                    </p>
+                    <ul>
+                        <li>Secure user registration and login</li>
+                        <li>OAuth integration for Spotify login</li>
+                        <li>Token management for API access</li>
+                        <li>Session persistence across devices</li>
+                    </ul>
+                    
+                    <h3>Database: Firebase Realtime Database</h3>
+                    <p>
+                        For storing user profiles, conversion history, and application state, I implemented Firebase Realtime Database. This NoSQL cloud database allowed for:
+                    </p>
+                    <ul>
+                        <li>Real-time synchronization of conversion status</li>
+                        <li>Storage of user preferences and history</li>
+                        <li>Scaling without managing complex database infrastructure</li>
+                    </ul>
+                    
+                    <h3>Payment Processing: Stripe</h3>
+                    <p>
+                        While the basic functionality is free, premium features needed a sustainable business model. Stripe integration allowed for:
+                    </p>
+                    <ul>
+                        <li>Secure payment processing</li>
+                        <li>Subscription management for premium features</li>
+                        <li>Detailed analytics on conversion patterns</li>
+                    </ul>
+                    
+                    <h3>API Integration: Spotify Web API</h3>
+                    <p>
+                        The core functionality relies on Spotify's Web API. I developed a sophisticated matching algorithm that:
+                    </p>
+                    <ul>
+                        <li>Parses iTunes XML playlist exports</li>
+                        <li>Performs intelligent search queries on Spotify</li>
+                        <li>Uses multiple matching criteria (artist, title, album, duration) to find the right tracks</li>
+                        <li>Handles edge cases like remixes, covers, and regional availability</li>
+                    </ul>
+                    
+                    <h3>Deployment: Docker & Render</h3>
+                    <p>
+                        For deployment, I containerized the application using Docker which ensured consistency across different environments. The containerized application is hosted on Render, which provides:
+                    </p>
+                    <ul>
+                        <li>Automatic deployments from GitHub</li>
+                        <li>Load balancing for handling traffic spikes</li>
+                        <li>SSL certificate management</li>
+                    </ul>
+                    
+                    <figure class="blog-image">
+                        <img src="../assets/images/placeholder-isoundport-architecture.jpg" alt="iSoundPort Architecture" />
+                        <figcaption>High-level architecture diagram of the iSoundPort application</figcaption>
+                    </figure>
+                    
+                    <h2>Technical Challenges</h2>
+                    
+                    <h3>Track Matching Accuracy</h3>
+                    <p>
+                        The biggest challenge was achieving high accuracy in track matching. Songs often have different versions, remasters, or slight naming differences between platforms. I developed a multi-stage matching algorithm that:
+                    </p>
+                    <ol>
+                        <li>Performs exact match searches first</li>
+                        <li>Falls back to fuzzy matching for title and artist</li>
+                        <li>Uses track duration as a validation step</li>
+                        <li>Provides confidence scores for each match</li>
+                    </ol>
+                    
+                    <h3>API Rate Limiting</h3>
+                    <p>
+                        Spotify's API has strict rate limits that presented challenges for users with large playlists. I implemented a queuing system with exponential backoff strategies to handle these limits gracefully without compromising the user experience.
+                    </p>
+                    
+                    <h3>User Experience</h3>
+                    <p>
+                        Converting large playlists can take time. To maintain a good user experience, I implemented:
+                    </p>
+                    <ul>
+                        <li>Real-time progress updates</li>
+                        <li>Background processing with email notifications</li>
+                        <li>Resumable conversions in case of interruptions</li>
+                    </ul>
+                    
+                    <h2>Lessons Learned</h2>
+                    
+                    <h3>Authentication Complexity</h3>
+                    <p>
+                        Working with multiple authentication systems (Firebase and Spotify OAuth) taught me the importance of careful token management and security considerations for refresh tokens.
+                    </p>
+                    
+                    <h3>Full-Stack Integration</h3>
+                    <p>
+                        Building iSoundPort deepened my understanding of how frontend and backend systems interact. The project required careful coordination between user interfaces, API calls, background processing, and database operations.
+                    </p>
+                    
+                    <h3>Production Deployment</h3>
+                    <p>
+                        Moving from development to production highlighted the importance of environment management, secret handling, and continuous integration workflows. Docker containers significantly simplified this process.
+                    </p>
+                    
+                    <h2>Future Enhancements</h2>
+                    <p>
+                        The journey doesn't end here. I'm working on several enhancements:
+                    </p>
+                    <ul>
+                        <li>Support for additional streaming platforms (YouTube Music, Deezer, etc.)</li>
+                        <li>Advanced playlist organization tools</li>
+                        <li>Collaborative playlist conversion</li>
+                        <li>Improved matching algorithms using audio fingerprinting</li>
+                    </ul>
+                    
+                    <h2>Conclusion</h2>
+                    <p>
+                        Building iSoundPort was not just about solving a personal problem—it became a journey of technical exploration and growth. The project integrated multiple modern web technologies into a cohesive system that provides real value to users.
+                    </p>
+                    <p>
+                        If you're interested in trying iSoundPort, visit <a href="https://isoundport.com" target="_blank">isoundport.com</a>. I welcome feedback and feature suggestions from fellow music enthusiasts and developers alike!
+                    </p>
+                </div>
+                
+                <div class="blog-post-footer">
+                    <a href="../index.html#blog" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>2025 <span class="easter-egg-trigger" style="cursor: pointer;">Seb</span> Hausmann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/scripts.js"></script>
+</body>
+</html> 
