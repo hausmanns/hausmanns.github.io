@@ -500,3 +500,16 @@ function initializePortfolio() {
     
     console.log("Initialization complete!");
 }
+
+// Initialize scroll-to-top functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollToTopButton = document.querySelector('.scroll-to-top');
+    if (scrollToTopButton) {
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
