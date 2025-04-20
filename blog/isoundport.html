@@ -51,6 +51,12 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+
+        /* Style for images with no shadow */
+        .blog-image img.no-shadow,
+        .app-preview-image.no-shadow {
+            box-shadow: none;
+        }
         
         .blog-image figcaption {
             margin-top: 0.8rem;
@@ -107,13 +113,28 @@
             font-size: 1.5rem;
         }
         
+        /* General image styling within blog content */
         .blog-post-content img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
             margin: 1.5rem 0;
+            display: block; /* Ensure margin works correctly */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover */
+            cursor: pointer; /* Indicate clickable */
+        }
+
+        /* Image hover effect */
+        .blog-post-content img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
+        /* Apply no-shadow specifically for hover as well */
+        .blog-post-content img.no-shadow:hover {
+            box-shadow: none; /* Override hover shadow for no-shadow images */
+        }
+
         .blog-post-content .highlight {
             background-color: var(--accent-color-light);
             padding: 0.2rem 0.4rem;
@@ -152,14 +173,74 @@
         .blog-post-footer .back-link i {
             margin-right: 0.5rem;
         }
+
+        /* Lightbox Styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lightbox-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            cursor: default;
+        }
+
+        .lightbox-content img {
+            display: block;
+            max-width: 100%;
+            max-height: calc(100vh - 40px); /* Adjust based on padding/margins */
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            /* Override blog image styles */
+            margin: 0; 
+            transform: none;
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -30px; 
+            right: -5px;
+            font-size: 2rem;
+            color: #fff;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Ensure lightbox images don't inherit hover effects */
+        .lightbox-content img:hover {
+            transform: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
     </style>
 </head>
 <body>
-    <!-- Preloader -->
+    <!-- Preloader
     <div class="preloader">
         <div class="loader"></div>
     </div>
-
+    -->
     <header class="header">
         <nav class="nav-container">
             <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
@@ -187,7 +268,7 @@
             <div class="blog-post-container">
                 <div class="blog-post-header">
                     <div class="app-preview">
-                        <img src="../assets/images/placeholder-isoundport.png" alt="iSoundPort App Preview" class="app-preview-image">
+                        <img src="../assets/images/placeholder-isoundport.png" alt="iSoundPort App Preview" class="app-preview-image no-shadow lightbox-trigger">
                     </div>
                     <div class="title-container">
                         <h1>Building iSoundPort: My Journey Creating a Full-Stack Music Playlist Converter</h1>
@@ -209,7 +290,7 @@
                     </p>
                     
                     <figure class="blog-image">
-                        <img src="../assets/images/_4Converting.png" alt="iSoundPort Interface" />
+                        <img src="../assets/images/_4Converting.png" alt="iSoundPort Interface" class="lightbox-trigger" />
                         <figcaption>iSoundPort's main interface showing the playlist conversion process</figcaption>
                     </figure>
                     
@@ -231,7 +312,6 @@
                         <li>Secure user registration and login</li>
                         <li>OAuth integration for Spotify login</li>
                         <li>Token management for API access</li>
-                        <li>Session persistence across devices</li>
                     </ul>
                     
                     <h3>Database: Firebase Realtime Database</h3>
@@ -240,7 +320,7 @@
                     </p>
                     <ul>
                         <li>Real-time synchronization of conversion status</li>
-                        <li>Storage of user preferences and history</li>
+                        <li>Storage of user history</li>
                         <li>Scaling without managing complex database infrastructure</li>
                     </ul>
                     
@@ -251,7 +331,6 @@
                     <ul>
                         <li>Secure payment processing</li>
                         <li>Subscription management for premium features</li>
-                        <li>Detailed analytics on conversion patterns</li>
                     </ul>
                     
                     <h3>API Integration: Spotify Web API</h3>
@@ -261,8 +340,8 @@
                     <ul>
                         <li>Parses iTunes XML playlist exports</li>
                         <li>Performs intelligent search queries on Spotify</li>
-                        <li>Uses multiple matching criteria (artist, title, album, duration) to find the right tracks</li>
-                        <li>Handles edge cases like remixes, covers, and regional availability</li>
+                        <li>Uses multiple matching criteria to find the right tracks</li>
+                        <li>Handles edge cases like remixes, covers, and featurings</li>
                     </ul>
                     
                     <h3>Deployment: Docker & Render</h3>
@@ -276,7 +355,7 @@
                     </ul>
                     
                     <figure class="blog-image">
-                        <img src="../assets/images/placeholder-isoundport-architecture.jpg" alt="iSoundPort Architecture" />
+                        <img src="../assets/images/Architecture.png" alt="iSoundPort Architecture" class="no-shadow lightbox-trigger" />
                         <figcaption>High-level architecture diagram of the iSoundPort application</figcaption>
                     </figure>
                     
@@ -289,7 +368,6 @@
                     <ol>
                         <li>Performs exact match searches first</li>
                         <li>Falls back to fuzzy matching for title and artist</li>
-                        <li>Uses track duration as a validation step</li>
                         <li>Provides confidence scores for each match</li>
                     </ol>
                     
@@ -297,16 +375,6 @@
                     <p>
                         Spotify's API has strict rate limits that presented challenges for users with large playlists. I implemented a queuing system with exponential backoff strategies to handle these limits gracefully without compromising the user experience.
                     </p>
-                    
-                    <h3>User Experience</h3>
-                    <p>
-                        Converting large playlists can take time. To maintain a good user experience, I implemented:
-                    </p>
-                    <ul>
-                        <li>Real-time progress updates</li>
-                        <li>Background processing with email notifications</li>
-                        <li>Resumable conversions in case of interruptions</li>
-                    </ul>
                     
                     <h2>Lessons Learned</h2>
                     
@@ -343,6 +411,9 @@
                     <p>
                         If you're interested in trying iSoundPort, visit <a href="https://isoundport.com" target="_blank">isoundport.com</a>. I welcome feedback and feature suggestions from fellow music enthusiasts and developers alike!
                     </p>
+                    <p>
+                        Please note that the app is currently only availble through the free tier of Spotify, as it first needs to be approved by Spotify.
+                    </p>
                 </div>
                 
                 <div class="blog-post-footer">
@@ -368,5 +439,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="../js/scripts.js"></script>
+
+    <!-- Lightbox Functionality -->
+    <div class="lightbox-overlay" id="lightbox-overlay">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="" alt="Enlarged view" id="lightbox-image">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightboxOverlay = document.getElementById('lightbox-overlay');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+
+            if (!lightboxOverlay || !lightboxImage || !lightboxClose) {
+                console.error('Lightbox elements not found!');
+                return;
+            }
+
+            imageTriggers.forEach(img => {
+                img.addEventListener('click', (e) => {
+                    // Prevent triggering if clicking on a link within a figcaption perhaps
+                    if (e.target.tagName === 'IMG') { 
+                        lightboxImage.src = img.src;
+                        lightboxOverlay.classList.add('visible');
+                    }
+                });
+            });
+
+            const closeLightbox = () => {
+                lightboxOverlay.classList.remove('visible');
+                // Optional: Delay src reset to avoid flash of empty image during transition
+                setTimeout(() => {
+                    lightboxImage.src = ''; 
+                }, 300); // Match transition duration
+            };
+
+            // Close on clicking the overlay (background) or the close button
+            lightboxOverlay.addEventListener('click', (e) => {
+                if (e.target === lightboxOverlay) {
+                    closeLightbox();
+                }
+            });
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            // Optional: Close lightbox with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightboxOverlay.classList.contains('visible')) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
