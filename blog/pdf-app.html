@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developing Our First Mobile App: PDF Manager for iOS and Android | Seb Hausmann</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer data-domain="hausmanns.github.io" src="https://plausible.laperrucherie.synology.me/js/script.js"></script>
+    <link rel="icon" type="image/png" href="../assets/images/logo/wolf.webp">
+    <style>
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .blog-post-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .blog-post-header .title-container {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .app-preview {
+            flex: 0 0 200px;
+            margin-bottom: 1rem;
+        }
+        
+        .app-preview-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .blog-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-image figcaption {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .app-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .app-links img {
+            height: 50px;
+            transition: transform 0.2s;
+        }
+        
+        .app-links img:hover {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .blog-post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .blog-post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .blog-post-content .highlight {
+            background-color: var(--accent-color-light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content code {
+            font-family: monospace;
+            background-color: var(--background-secondary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-left: 0;
+            margin-right: 0;
+            font-style: italic;
+        }
+        
+        .blog-post-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .blog-post-footer .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .blog-post-footer .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background-color: var(--background-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card h4 i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section blog-post-section">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="title-container">
+                        <h1>Developing WizPDF: My First Mobile App for iOS and Android</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 3, 2024</span>
+                            <span>• <i class="fas fa-tag"></i> Mobile Development, iOS, Android, PDF Tools</span>
+                        </div>
+                    </div>
+                    <div class="app-preview">
+                        <img src="../assets/images/magic_pdf_logo.png" alt="WizPDF App Preview" class="app-preview-image">
+                    </div>
+                </div>
+                
+                <div class="blog-post-content">
+                    <p>
+                        In an age where digital documents are ubiquitous, I found myself constantly wrestling with PDFs. Merging research papers, extracting specific pages, and needing quick summaries—these seemingly simple tasks often required jumping between multiple desktop apps or expensive subscriptions. Frustrated by this workflow, I decided to build WizPDF, a sleek mobile app that puts professional PDF tools right in your pocket.
+                    </p>
+                    
+                    <figure class="blog-image">
+                        <img src="../assets/images/placeholder-homescreen.jpg" alt="WizPDF Home Screen" />
+                        <figcaption>The main interface of WizPDF showing the feature cards and beautiful gradient tab bar</figcaption>
+                    </figure>
+                    
+                    <h2>Why I Built This App</h2>
+                    <p>
+                        As someone who regularly handles dozens of PDF documents, I kept hitting the same pain points:
+                    </p>
+                    <ul>
+                        <li>Needing to combine multiple research papers into a single document</li>
+                        <li>Wanting to rearrange or remove specific pages from large PDFs</li>
+                        <li>Requiring quick summaries of lengthy documents</li>
+                        <li>Doing all this on-the-go, without a desktop computer</li>
+                    </ul>
+                    <p>
+                        Most mobile PDF solutions were either too limited, ridiculously expensive, or buried these functions under confusing interfaces. I wanted to create something that was both powerful and delightfully simple to use—and WizPDF was born.
+                    </p>
+                    
+                    <h2>Core Features</h2>
+                    
+                    <div class="app-features">
+                        <div class="feature-card">
+                            <h4><i class="fas fa-object-group"></i> PDF Merging</h4>
+                            <p>Select and combine multiple PDFs into a single document with a few taps. Easily rearrange the order of files before merging, with a clean interface that makes the process intuitive and fast.</p>
+                            <figure class="feature-image">
+                                <img src="../assets/images/placeholder-merger-screen.jpg" alt="PDF Merger Interface" />
+                                <figcaption>The PDF Merger screen showing selected documents ready to be combined</figcaption>
+                            </figure>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4><i class="fas fa-cut"></i> Page Manipulation</h4>
+                            <p>Reorder, delete, and extract pages from PDF documents with our visual page interface. Preview each page thumbnail and easily rearrange with intuitive up/down controls.</p>
+                            <figure class="feature-image">
+                                <img src="../assets/images/placeholder-page-manipulator.jpg" alt="Page Manipulator Interface" />
+                                <figcaption>The Page Manipulator screen allowing users to reorder and delete pages</figcaption>
+                            </figure>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4><i class="fas fa-file-alt"></i> PDF Summarization</h4>
+                            <p>Generate AI-powered summaries of PDF documents in short, medium, or long formats. Perfect for quickly extracting key information from lengthy papers or reports.</p>
+                            <figure class="feature-image">
+                                <img src="../assets/images/placeholder-summary-screen.jpg" alt="PDF Summary Interface" />
+                                <figcaption>The PDF Summary screen showing the summarization options and results</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    
+                    <h2>Technical Implementation</h2>
+                    
+                    <figure class="blog-image">
+                        <img src="../assets/images/placeholder-architecture.jpg" alt="WizPDF Architecture" />
+                        <figcaption>Simplified architecture diagram of WizPDF showing React Native frontend and Firebase backend</figcaption>
+                    </figure>
+                    
+                    <h3>React Native with Expo</h3>
+                    <p>
+                        I chose React Native with Expo for cross-platform development, which proved to be an excellent decision. Using TypeScript for type safety made the codebase more maintainable, while Expo's toolchain simplified deployment and testing.
+                    </p>
+                    <pre><code>
+// Navigation setup with bottom tabs for a seamless UX
+const TabNavigator = () => {
+  return (
+    &lt;Tab.Navigator&gt;
+      &lt;Tab.Screen name="Home" component={HomeScreen} /&gt;
+      &lt;Tab.Screen name="Merge" component={PdfMergerScreen} /&gt;
+      &lt;Tab.Screen name="Summaries" component={PdfSummaryScreen} /&gt;
+      &lt;Tab.Screen name="Sort" component={PageManipulatorScreen} /&gt;
+    &lt;/Tab.Navigator&gt;
+  );
+};
+                    </code></pre>
+                    <p>
+                        The entire app is built around a bottom tab navigation that provides quick access to each core feature, with a unified design language throughout.
+                    </p>
+                    
+                    <h3>PDF Processing Engine</h3>
+                    <p>
+                        Working with PDFs on mobile devices presented several challenges, particularly around memory management and performance. I used the powerful <code>pdf-lib</code> library for core operations like merging and page manipulation:
+                    </p>
+                    <pre><code>
+export const manipulatePDF = async (options: ManipulateOptions): Promise&lt;string&gt; => {
+  try {
+    const pdfBytes = await FileSystem.readAsStringAsync(options.file.uri, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+    
+    const pdf = await PDFDocument.load(pdfBytes);
+    const newPdf = await PDFDocument.create();
+    
+    // Copy pages in the specified order
+    for (const pageIndex of options.pageOrder) {
+      const adjustedIndex = pageIndex - 1;
+      if (adjustedIndex >= 0 && adjustedIndex < pdf.getPageCount()) {
+        const [copiedPage] = await newPdf.copyPages(pdf, [adjustedIndex]);
+        newPdf.addPage(copiedPage);
+      }
+    }
+    // Save and return the new document...
+  }
+};
+                    </code></pre>
+                    <p>
+                        This approach allowed for efficient PDF manipulation right on the device, without sending sensitive documents to external servers.
+                    </p>
+                    
+                    <h3>Cloud Functions for AI Summaries</h3>
+                    <p>
+                        For the PDF summarization feature, I used Firebase Cloud Functions to handle the AI processing. This kept the app lightweight while still offering powerful functionality:
+                    </p>
+                    <pre><code>
+// In the app - sending the PDF for summarization
+const handlePdfUpload = async () => {
+  // Check user limits...
+  try {
+    // Get PDF content as base64
+    const base64Content = await FileSystem.readAsStringAsync(fileUri, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+
+    // Call Firebase function
+    const generatePdfSummary = httpsCallable(functions, 'generatePdfSummary');
+    const response = await generatePdfSummary({ 
+      pdfContent: base64Content,
+      summaryLength,
+      fileName,
+    });
+    const data = response.data as { summary: string };
+    setSummary(data.summary);
+  } catch (error) {
+    // Handle error...
+  }
+};
+                    </code></pre>
+                    
+                    <h3>Monetization with In-App Purchases</h3>
+                    <p>
+                        I implemented a freemium approach with in-app purchases that lets users try all features with limited usage before upgrading:
+                    </p>
+                    <ul>
+                        <li>Free tier offers limited merges, summaries, and page manipulations</li>
+                        <li>Premium upgrade for unlimited merges and page manipulations</li>
+                        <li>Additional summary packs available for purchase</li>
+                    </ul>
+                    <figure class="blog-image">
+                        <img src="../assets/images/placeholder-premium.jpg" alt="Premium Features" />
+                        <figcaption>The premium features dialog showing upgrade options</figcaption>
+                    </figure>
+                    
+                    <h2>UI/UX Design</h2>
+                    
+                    <h3>Beautiful UI with React Native Paper</h3>
+                    <p>
+                        The app's polished UI was built with React Native Paper, which provides Material Design components that work well across platforms:
+                    </p>
+                    <pre><code>
+return (
+  &lt;ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]}&gt;
+    &lt;View style={styles.contentContainer}&gt;
+      &lt;Card style={styles.welcomeCard}&gt;
+        &lt;Card.Content style={styles.welcomeContent}&gt;
+          &lt;View style={styles.welcomeText}&gt;
+            &lt;Title&gt;Welcome to WizPDF&lt;/Title&gt;
+            &lt;Paragraph&gt;
+              Your all-in-one PDF toolkit for merging, summarizing, and manipulating PDF files.
+              {!isPremium && ' Try our features for free or upgrade to premium for unlimited access!'}
+            &lt;/Paragraph&gt;
+          &lt;/View&gt;
+          &lt;Image 
+            source={require('../../assets/magic_pdf_logo.png')}
+            style={styles.welcomeLogo}
+            resizeMode="contain"
+          /&gt;
+        &lt;/Card.Content&gt;
+      &lt;/Card&gt;
+      
+      {/* Feature cards */}
+    &lt;/View&gt;
+  &lt;/ScrollView&gt;
+);
+                    </code></pre>
+                    
+                    <h3>Haptic Feedback for Enhanced Interaction</h3>
+                    <p>
+                        I added haptic feedback throughout the app to create a more engaging tactile experience:
+                    </p>
+                    <pre><code>
+&lt;HapticButton
+  mode="contained"
+  onPress={handleSelectFiles}
+  style={styles.button}
+  hapticStyle="medium"
+&gt;
+  Select PDF Files
+&lt;/HapticButton&gt;
+                    </code></pre>
+                    <p>
+                        These small touches make the app feel premium and responsive, enhancing the overall user experience.
+                    </p>
+                    
+                    <h2>Challenges and Solutions</h2>
+                    
+                    <h3>Performance Optimization</h3>
+                    <p>
+                        Handling large PDF files on mobile devices required careful optimization to prevent crashes and maintain smooth performance:
+                    </p>
+                    <ul>
+                        <li>Implemented efficient file loading and processing for large documents</li>
+                        <li>Optimized memory usage when handling multiple PDFs</li>
+                        <li>Added loading indicators to provide feedback during processing</li>
+                    </ul>
+                    
+                    <h3>Cross-Platform File Handling</h3>
+                    <p>
+                        File system access varies significantly between iOS and Android, requiring platform-specific implementations:
+                    </p>
+                    <pre><code>
+export const sharePDF = async (filePath: string): Promise&lt;void&gt; => {
+  try {
+    if (Platform.OS === 'android') {
+      // Android-specific file system access
+      const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
+      // Handle Android storage...
+    } else {
+      // iOS sharing is simpler
+      const canShare = await Sharing.isAvailableAsync();
+      if (canShare) {
+        await Sharing.shareAsync(filePath);
+      }
+    }
+  } catch (error) {
+    console.error('Error sharing PDF:', error);
+    throw error;
+  }
+};
+                    </code></pre>
+                    
+                    <h3>App Store Approval Process</h3>
+                    <p>
+                        Navigating the App Store approval process was an education in itself. Apple's guidelines for in-app purchases are particularly strict, requiring careful implementation of purchase restoration and clear disclosure of pricing.
+                    </p>
+                    
+                    <h2>Conclusion</h2>
+                    <p>
+                        Building WizPDF has been an incredibly rewarding project, from identifying a personal need to creating a polished product that solves real problems. The combination of React Native with Expo, Firebase Cloud Functions, and pdf-lib has enabled me to create a powerful yet intuitive PDF toolkit that lives right on your mobile device.
+                    </p>
+                    <p>
+                        I hope this behind-the-scenes look at WizPDF's development provides some insight for other developers looking to create their own mobile apps. If you're interested in trying WizPDF yourself, it's available now on the App Store and Google Play.
+                    </p>
+
+                    <div class="app-links">
+                        <a href="#" class="app-store-link">
+                            <img src="../assets/images/appstore.svg" alt="Download on the App Store" />
+                        </a>
+                        <a href="#" class="play-store-link">
+                            <img src="../assets/images/googleplay.svg" alt="Get it on Google Play" />
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-post-footer">
+                    <a href="../index.html#blog" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>2025 <span class="easter-egg-trigger" style="cursor: pointer;">Seb</span> Hausmann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/scripts.js"></script>
+</body>
+</html> 
