@@ -13,11 +13,11 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </head>
 <body>
-    <!-- Preloader -->
+    <!-- Preloader 
     <div class="preloader">
         <div class="loader"></div>
     </div>
-
+    -->
     <header class="header">
         <nav class="nav-container">
             <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
@@ -326,7 +326,8 @@
                             </div>
                         </div>
                     </div>
-                    
+                     
+                    <!-- Temporarily commented out
                     <div class="blog-card" style="display: flex; visibility: visible; opacity: 1;">
                         <div class="blog-content">
                             <h3>Developing My First Mobile App: PDF Manager for iOS and Android</h3>
@@ -337,6 +338,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
                     
                     <div class="blog-card" style="display: flex; visibility: visible; opacity: 1;">
                         <div class="blog-content">
@@ -461,18 +463,23 @@
                 {
                     title: 'Building iSoundPort: My Journey Creating a Full-Stack Music Playlist Converter',
                     date: '2023-04-10',
+                    image: 'assets/images/placeholder-isoundport.png',
                     excerpt: 'How I built a web application that seamlessly converts iTunes playlists to Spotify using Flask, Firebase, and the Spotify API, with Stripe integration for payments.',
                     link: 'blog/isoundport.html'
                 },
+                /* Temporarily commented out
                 {
                     title: 'Developing My First Mobile App: PDF Manager for iOS and Android',
                     date: '2023-01-15',
+                    image: 'assets/images/pdf-app-hero.webp',
                     excerpt: 'The process of creating my first mobile application — a comprehensive PDF management tool for merging, modifying, and summarizing PDFs on both iOS and Android platforms.',
                     link: 'blog/pdf-app.html'
                 },
+                */
                 {
                     title: 'Measuring and modeling the motor system with machine learning',
                     date: '2021-10-01',
+                    image: 'assets/images/measuringblog.jpg',
                     excerpt: 'A comprehensive review we wrote, exploring novel machine learning methods for understanding the motor system. Drawing parallels with artificial neural networks.',
                     link: 'https://www.sciencedirect.com/science/article/pii/S0959438821000519'
                 }
@@ -515,6 +522,7 @@
                     blogCard.className = 'blog-card';
                     blogCard.innerHTML = `
                         <div class="blog-content">
+                            ${post.image ? `<img src="${post.image}" alt="${post.title}" class="blog-image">` : ''}
                             <h3>${post.title}</h3>
                             <div class="post-date"><i class="far fa-calendar-alt"></i> ${post.date}</div>
                             <p>${post.excerpt}</p>
