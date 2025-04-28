@@ -49,7 +49,8 @@
         .blog-image img {
             max-width: 100%;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: none;
+            background: transparent;
         }
         
         .blog-image figcaption {
@@ -111,7 +112,9 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            margin: 1.5rem 0;
+            box-shadow: none;
+            background: transparent;
+            aspect-ratio: unset;
         }
         
         .blog-post-content .highlight {
@@ -181,11 +184,11 @@
     </style>
 </head>
 <body>
-    <!-- Preloader -->
+    <!-- Preloader
     <div class="preloader">
         <div class="loader"></div>
     </div>
-
+    -->
     <header class="header">
         <nav class="nav-container">
             <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
@@ -213,7 +216,7 @@
             <div class="blog-post-container">
                 <div class="blog-post-header">
                     <div class="title-container">
-                        <h1>Developing WizPDF: My First Mobile App for iOS and Android</h1>
+                        <h1>Developing <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a>: My First Mobile App for iOS and Android</h1>
                         <div class="blog-post-meta">
                             <span><i class="far fa-calendar-alt"></i> April 3, 2024</span>
                             <span>• <i class="fas fa-tag"></i> Mobile Development, iOS, Android, PDF Tools</span>
@@ -226,17 +229,17 @@
                 
                 <div class="blog-post-content">
                     <p>
-                        In an age where digital documents are ubiquitous, I found myself constantly wrestling with PDFs. Merging research papers, extracting specific pages, and needing quick summaries—these seemingly simple tasks often required jumping between multiple desktop apps or expensive subscriptions. Frustrated by this workflow, I decided to build WizPDF, a sleek mobile app that puts professional PDF tools right in your pocket.
+                        In an age where digital documents are ubiquitous, we - together with my colleague Tom Suter - found ourselves constantly wrestling with PDFs. Merging research papers, extracting specific pages, and needing quick summaries—these seemingly simple tasks often required jumping between multiple desktop apps or expensive subscriptions. Frustrated by this workflow, we decided to build <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a>, a sleek mobile app that puts professional PDF tools right in your pocket.
                     </p>
                     
                     <figure class="blog-image">
-                        <img src="../assets/images/placeholder-homescreen.jpg" alt="WizPDF Home Screen" />
-                        <figcaption>The main interface of WizPDF showing the feature cards and beautiful gradient tab bar</figcaption>
+                        <img src="../assets/images/ioswizpdf.png" alt="WizPDF Home Screen" />
+                        <figcaption>The main interface of <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a> showing the feature cards and beautiful gradient tab bar</figcaption>
                     </figure>
                     
-                    <h2>Why I Built This App</h2>
+                    <h2>Why We Built This App</h2>
                     <p>
-                        As someone who regularly handles dozens of PDF documents, I kept hitting the same pain points:
+                        As a team who regularly handles dozens of PDF documents, we kept hitting the same pain points:
                     </p>
                     <ul>
                         <li>Needing to combine multiple research papers into a single document</li>
@@ -245,35 +248,33 @@
                         <li>Doing all this on-the-go, without a desktop computer</li>
                     </ul>
                     <p>
-                        Most mobile PDF solutions were either too limited, ridiculously expensive, or buried these functions under confusing interfaces. I wanted to create something that was both powerful and delightfully simple to use—and WizPDF was born.
+                        Most mobile PDF solutions were either too limited, ridiculously expensive, or buried these functions under confusing interfaces. We wanted to create something that was both powerful and delightfully simple to use—and <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a> was born.
                     </p>
                     
                     <h2>Core Features</h2>
                     
-                    <div class="app-features">
-                        <div class="feature-card">
+                    <div class="app-features" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0;">
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
                             <h4><i class="fas fa-object-group"></i> PDF Merging</h4>
                             <p>Select and combine multiple PDFs into a single document with a few taps. Easily rearrange the order of files before merging, with a clean interface that makes the process intuitive and fast.</p>
                             <figure class="feature-image">
-                                <img src="../assets/images/placeholder-merger-screen.jpg" alt="PDF Merger Interface" />
+                                <img src="../assets/images/wizpdfmerge.png" alt="PDF Merger Interface" />
                                 <figcaption>The PDF Merger screen showing selected documents ready to be combined</figcaption>
                             </figure>
                         </div>
-                        
-                        <div class="feature-card">
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
                             <h4><i class="fas fa-cut"></i> Page Manipulation</h4>
                             <p>Reorder, delete, and extract pages from PDF documents with our visual page interface. Preview each page thumbnail and easily rearrange with intuitive up/down controls.</p>
                             <figure class="feature-image">
-                                <img src="../assets/images/placeholder-page-manipulator.jpg" alt="Page Manipulator Interface" />
+                                <img src="../assets/images/wizpdfreorder.png" alt="Page Manipulator Interface" />
                                 <figcaption>The Page Manipulator screen allowing users to reorder and delete pages</figcaption>
                             </figure>
                         </div>
-                        
-                        <div class="feature-card">
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
                             <h4><i class="fas fa-file-alt"></i> PDF Summarization</h4>
                             <p>Generate AI-powered summaries of PDF documents in short, medium, or long formats. Perfect for quickly extracting key information from lengthy papers or reports.</p>
                             <figure class="feature-image">
-                                <img src="../assets/images/placeholder-summary-screen.jpg" alt="PDF Summary Interface" />
+                                <img src="../assets/images/wizpdfsummary.png" alt="PDF Summary Interface" />
                                 <figcaption>The PDF Summary screen showing the summarization options and results</figcaption>
                             </figure>
                         </div>
@@ -283,152 +284,39 @@
                     
                     <figure class="blog-image">
                         <img src="../assets/images/placeholder-architecture.jpg" alt="WizPDF Architecture" />
-                        <figcaption>Simplified architecture diagram of WizPDF showing React Native frontend and Firebase backend</figcaption>
+                        <figcaption>Simplified architecture diagram of <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a> showing React Native frontend and Firebase backend</figcaption>
                     </figure>
                     
                     <h3>React Native with Expo</h3>
                     <p>
-                        I chose React Native with Expo for cross-platform development, which proved to be an excellent decision. Using TypeScript for type safety made the codebase more maintainable, while Expo's toolchain simplified deployment and testing.
-                    </p>
-                    <pre><code>
-// Navigation setup with bottom tabs for a seamless UX
-const TabNavigator = () => {
-  return (
-    &lt;Tab.Navigator&gt;
-      &lt;Tab.Screen name="Home" component={HomeScreen} /&gt;
-      &lt;Tab.Screen name="Merge" component={PdfMergerScreen} /&gt;
-      &lt;Tab.Screen name="Summaries" component={PdfSummaryScreen} /&gt;
-      &lt;Tab.Screen name="Sort" component={PageManipulatorScreen} /&gt;
-    &lt;/Tab.Navigator&gt;
-  );
-};
-                    </code></pre>
-                    <p>
-                        The entire app is built around a bottom tab navigation that provides quick access to each core feature, with a unified design language throughout.
+                        We chose React Native with Expo for cross-platform development, which proved to be an excellent decision. Using TypeScript for type safety made the codebase more maintainable, while Expo's toolchain simplified deployment and testing. The entire app is built around a bottom tab navigation that provides quick access to each core feature, with a unified design language throughout. Navigating between Home, Merge, Summaries, and Sort is seamless and intuitive, making it easy for users to access the tools they need.
                     </p>
                     
                     <h3>PDF Processing Engine</h3>
                     <p>
-                        Working with PDFs on mobile devices presented several challenges, particularly around memory management and performance. I used the powerful <code>pdf-lib</code> library for core operations like merging and page manipulation:
-                    </p>
-                    <pre><code>
-export const manipulatePDF = async (options: ManipulateOptions): Promise&lt;string&gt; => {
-  try {
-    const pdfBytes = await FileSystem.readAsStringAsync(options.file.uri, {
-      encoding: FileSystem.EncodingType.Base64,
-    });
-    
-    const pdf = await PDFDocument.load(pdfBytes);
-    const newPdf = await PDFDocument.create();
-    
-    // Copy pages in the specified order
-    for (const pageIndex of options.pageOrder) {
-      const adjustedIndex = pageIndex - 1;
-      if (adjustedIndex >= 0 && adjustedIndex < pdf.getPageCount()) {
-        const [copiedPage] = await newPdf.copyPages(pdf, [adjustedIndex]);
-        newPdf.addPage(copiedPage);
-      }
-    }
-    // Save and return the new document...
-  }
-};
-                    </code></pre>
-                    <p>
-                        This approach allowed for efficient PDF manipulation right on the device, without sending sensitive documents to external servers.
+                        Working with PDFs on mobile devices presented several challenges, particularly around memory management and performance. We leveraged a powerful open-source library to handle core operations like merging and page manipulation. This allowed users to combine documents, reorder or extract pages, and save new PDFs—all directly on their device, without sending sensitive documents to external servers. The process is fast, secure, and works offline, making it ideal for privacy-conscious users.
                     </p>
                     
                     <h3>Cloud Functions for AI Summaries</h3>
                     <p>
-                        For the PDF summarization feature, I used Firebase Cloud Functions to handle the AI processing. This kept the app lightweight while still offering powerful functionality:
+                        For the PDF summarization feature, we used cloud-based AI processing. When a user requests a summary, the app securely uploads the document to the cloud, where an AI model generates a concise summary in the chosen length. The summary is then delivered back to the app, allowing users to quickly understand the key points of lengthy documents. This approach keeps the app lightweight while still offering powerful functionality.
                     </p>
-                    <pre><code>
-// In the app - sending the PDF for summarization
-const handlePdfUpload = async () => {
-  // Check user limits...
-  try {
-    // Get PDF content as base64
-    const base64Content = await FileSystem.readAsStringAsync(fileUri, {
-      encoding: FileSystem.EncodingType.Base64,
-    });
-
-    // Call Firebase function
-    const generatePdfSummary = httpsCallable(functions, 'generatePdfSummary');
-    const response = await generatePdfSummary({ 
-      pdfContent: base64Content,
-      summaryLength,
-      fileName,
-    });
-    const data = response.data as { summary: string };
-    setSummary(data.summary);
-  } catch (error) {
-    // Handle error...
-  }
-};
-                    </code></pre>
                     
                     <h3>Monetization with In-App Purchases</h3>
                     <p>
-                        I implemented a freemium approach with in-app purchases that lets users try all features with limited usage before upgrading:
+                        We implemented a freemium approach with in-app purchases that lets users try all features with limited usage before upgrading. The free tier offers a set number of merges, summaries, and page manipulations, while a premium upgrade unlocks unlimited access. For those who need more summaries, additional packs are available for purchase. This model ensures everyone can try the app, while power users can unlock its full potential.
                     </p>
-                    <ul>
-                        <li>Free tier offers limited merges, summaries, and page manipulations</li>
-                        <li>Premium upgrade for unlimited merges and page manipulations</li>
-                        <li>Additional summary packs available for purchase</li>
-                    </ul>
-                    <figure class="blog-image">
-                        <img src="../assets/images/placeholder-premium.jpg" alt="Premium Features" />
-                        <figcaption>The premium features dialog showing upgrade options</figcaption>
-                    </figure>
                     
                     <h2>UI/UX Design</h2>
                     
                     <h3>Beautiful UI with React Native Paper</h3>
                     <p>
-                        The app's polished UI was built with React Native Paper, which provides Material Design components that work well across platforms:
+                        The app's polished UI was built with a modern component library that provides Material Design elements working seamlessly across platforms. The home screen welcomes users with a friendly message and a clean layout, while feature cards guide them to the main tools. The design is consistent, visually appealing, and easy to navigate, making the app accessible to everyone.
                     </p>
-                    <pre><code>
-return (
-  &lt;ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]}&gt;
-    &lt;View style={styles.contentContainer}&gt;
-      &lt;Card style={styles.welcomeCard}&gt;
-        &lt;Card.Content style={styles.welcomeContent}&gt;
-          &lt;View style={styles.welcomeText}&gt;
-            &lt;Title&gt;Welcome to WizPDF&lt;/Title&gt;
-            &lt;Paragraph&gt;
-              Your all-in-one PDF toolkit for merging, summarizing, and manipulating PDF files.
-              {!isPremium && ' Try our features for free or upgrade to premium for unlimited access!'}
-            &lt;/Paragraph&gt;
-          &lt;/View&gt;
-          &lt;Image 
-            source={require('../../assets/magic_pdf_logo.png')}
-            style={styles.welcomeLogo}
-            resizeMode="contain"
-          /&gt;
-        &lt;/Card.Content&gt;
-      &lt;/Card&gt;
-      
-      {/* Feature cards */}
-    &lt;/View&gt;
-  &lt;/ScrollView&gt;
-);
-                    </code></pre>
                     
                     <h3>Haptic Feedback for Enhanced Interaction</h3>
                     <p>
-                        I added haptic feedback throughout the app to create a more engaging tactile experience:
-                    </p>
-                    <pre><code>
-&lt;HapticButton
-  mode="contained"
-  onPress={handleSelectFiles}
-  style={styles.button}
-  hapticStyle="medium"
-&gt;
-  Select PDF Files
-&lt;/HapticButton&gt;
-                    </code></pre>
-                    <p>
-                        These small touches make the app feel premium and responsive, enhancing the overall user experience.
+                        To make the app feel more responsive and premium, we added haptic feedback throughout the user experience. Whenever users select files, merge documents, or complete an action, subtle vibrations provide tactile confirmation. These small touches enhance the overall feel of the app and make interactions more satisfying.
                     </p>
                     
                     <h2>Challenges and Solutions</h2>
@@ -445,28 +333,8 @@ return (
                     
                     <h3>Cross-Platform File Handling</h3>
                     <p>
-                        File system access varies significantly between iOS and Android, requiring platform-specific implementations:
+                        File system access varies significantly between iOS and Android, requiring platform-specific implementations. On Android, the app requests the necessary permissions to access and save files, while on iOS, sharing and exporting documents is streamlined and user-friendly. Please note: the Android version of <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a> is not yet available, but we are working on it. This ensures a smooth experience for all users, regardless of their device.
                     </p>
-                    <pre><code>
-export const sharePDF = async (filePath: string): Promise&lt;void&gt; => {
-  try {
-    if (Platform.OS === 'android') {
-      // Android-specific file system access
-      const permissions = await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
-      // Handle Android storage...
-    } else {
-      // iOS sharing is simpler
-      const canShare = await Sharing.isAvailableAsync();
-      if (canShare) {
-        await Sharing.shareAsync(filePath);
-      }
-    }
-  } catch (error) {
-    console.error('Error sharing PDF:', error);
-    throw error;
-  }
-};
-                    </code></pre>
                     
                     <h3>App Store Approval Process</h3>
                     <p>
@@ -475,18 +343,19 @@ export const sharePDF = async (filePath: string): Promise&lt;void&gt; => {
                     
                     <h2>Conclusion</h2>
                     <p>
-                        Building WizPDF has been an incredibly rewarding project, from identifying a personal need to creating a polished product that solves real problems. The combination of React Native with Expo, Firebase Cloud Functions, and pdf-lib has enabled me to create a powerful yet intuitive PDF toolkit that lives right on your mobile device.
+                        Building <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a> has been an incredibly rewarding project, from identifying a personal need to creating a polished product that solves real problems. The combination of React Native with Expo, Firebase Cloud Functions, and pdf-lib has enabled us to create a powerful yet intuitive PDF toolkit that lives right on your mobile device.
                     </p>
                     <p>
-                        I hope this behind-the-scenes look at WizPDF's development provides some insight for other developers looking to create their own mobile apps. If you're interested in trying WizPDF yourself, it's available now on the App Store and Google Play.
+                        We hope this behind-the-scenes look at <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a>'s development provides some insight for other developers looking to create their own mobile apps. If you're interested in trying <a href="https://wizpdf.xyz" target="_blank" rel="noopener">WizPDF</a> yourself, it's available now on the App Store and Google Play.
                     </p>
 
                     <div class="app-links">
-                        <a href="#" class="app-store-link">
+                        <a href="https://apps.apple.com/ch/app/wizpdf-merge-split-sumup/id6744032987?l=fr-FR&platform=iphone" class="app-store-link">
                             <img src="../assets/images/appstore.svg" alt="Download on the App Store" />
                         </a>
-                        <a href="#" class="play-store-link">
-                            <img src="../assets/images/googleplay.svg" alt="Get it on Google Play" />
+                        <a href="#" class="play-store-link" style="pointer-events: none; opacity: 0.5;">
+                            <img src="../assets/images/googleplay.svg" alt="Android version coming soon" />
+                            <span style="display:block; text-align:center; font-size:0.95em; color:#888;">Android version coming soon</span>
                         </a>
                     </div>
                 </div>
