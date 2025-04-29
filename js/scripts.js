@@ -92,9 +92,11 @@ const projects = [
 
 // Preloader
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        preloader.classList.add('fade-out');
-    }, 500);
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+        }, 500);
+    }
 });
 
 // Theme Toggle
@@ -306,16 +308,19 @@ function initProjectAnimations() {
 }
 
 // Form validation
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    const email = document.getElementById('email').value;
-    const name = document.getElementById('name').value;
-    const message = document.getElementById('message').value;
-    
-    if (!isValidEmail(email) || name.trim() === '' || message.trim() === '') {
-        e.preventDefault();
-        alert('Please fill out all fields correctly.');
-    }
-});
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        const message = document.getElementById('message').value;
+        
+        if (!isValidEmail(email) || name.trim() === '' || message.trim() === '') {
+            e.preventDefault();
+            alert('Please fill out all fields correctly.');
+        }
+    });
+}
 
 // Email validation helper
 function isValidEmail(email) {
@@ -366,20 +371,20 @@ function initAnimations() {
     });
 }
 
-// Update the initializePortfolio function to not include blog initialization
+// Update the initializePortfolio function to check for page-specific elements
 function initializePortfolio() {
     // Initialize animations
     initAnimations();
     
-    // Render projects
-    renderProjects();
-    initProjectAnimations();
+    // Only render projects if we're on the main page (check for projects grid)
+    const projectsGrid = document.querySelector('.projects-grid');
+    if (projectsGrid) {
+        renderProjects();
+        initProjectAnimations();
+    }
     
     // Initialize scroll animations
     handleScrollAnimations();
-    
-    // Initialize contact form
-    initContactForm();
 }
 
 // Initialize everything when the DOM is loaded
