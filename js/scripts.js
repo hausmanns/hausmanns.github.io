@@ -90,16 +90,6 @@ const projects = [
     }
 ];
 
-const blogPosts = [
-    {
-        title: 'Measuring and modeling the motor system with machine learning',
-        date: '2021-10-01',
-        excerpt: 'A comprehensive review we wrote, exploring novel machine learning methods for understanding the motor systemn. Drawing parallels with artificial neural networks.',
-        link: 'https://www.sciencedirect.com/science/article/pii/S0959438821000519',
-        readMoreLink: null
-    },
-];
-
 // Preloader
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -315,77 +305,6 @@ function initProjectAnimations() {
     });
 }
 
-// Render blog posts dynamically
-function renderBlogPosts() {
-    console.log("Rendering blog posts...");
-    const blogGrid = document.querySelector('.blog-grid');
-    
-    if (!blogGrid) {
-        console.error("Blog grid element not found!");
-        return;
-    }
-    
-    // Clear existing content including the fallback
-    blogGrid.innerHTML = '';
-    
-    console.log(`Found ${blogPosts.length} blog posts to render`);
-    
-    // If no blog posts, show a message
-    if (blogPosts.length === 0) {
-        blogGrid.innerHTML = '<p class="no-posts">No blog posts yet. Check back soon!</p>';
-        return;
-    }
-    
-    // Render each blog post
-    blogPosts.forEach((post, index) => {
-        console.log(`Rendering blog post ${index + 1}: ${post.title}`);
-        const blogCard = document.createElement('div');
-        blogCard.className = 'blog-card reveal';
-        
-        let linksHTML = '';
-        if (post.link) {
-            linksHTML += `<a href="${post.link}" target="_blank" class="read-paper">Read Paper</a>`;
-        }
-        if (post.readMoreLink) {
-            linksHTML += `<a href="${post.readMoreLink}" class="read-more">Read More</a>`;
-        }
-        
-        blogCard.innerHTML = `
-            <div class="blog-content">
-                <h3>${post.title}</h3>
-                <div class="post-date"><i class="far fa-calendar-alt"></i> ${post.date}</div>
-                <p>${post.excerpt}</p>
-                ${linksHTML ? `<div class="blog-links">${linksHTML}</div>` : ''}
-            </div>
-        `;
-        
-        blogGrid.appendChild(blogCard);
-    });
-    
-    // Initialize animations for the newly added elements
-    initBlogAnimations();
-}
-
-// Initialize animations specifically for blog posts
-function initBlogAnimations() {
-    gsap.utils.toArray('.blog-card').forEach((card, i) => {
-        gsap.fromTo(
-            card,
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                delay: i * 0.1,
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 90%'
-                }
-            }
-        );
-    });
-}
-
 // Form validation
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     const email = document.getElementById('email').value;
@@ -445,61 +364,26 @@ function initAnimations() {
             }
         );
     });
-    
-    // Animate blog cards
-    gsap.utils.toArray('.blog-card').forEach((card, i) => {
-        gsap.fromTo(
-            card,
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                delay: i * 0.1,
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 90%'
-                }
-            }
-        );
-    });
 }
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded, initializing...");
-    initializePortfolio();
-});
-
-// Backup initialization in case DOMContentLoaded doesn't fire properly
-window.onload = function() {
-    console.log("Window loaded, checking if initialization is needed...");
-    // Check if projects are rendered
-    const projectsGrid = document.querySelector('.projects-grid');
-    if (projectsGrid && projectsGrid.children.length <= 1) {
-        console.log("Projects not rendered yet, initializing...");
-        initializePortfolio();
-    }
-};
-
-// Main initialization function
+// Update the initializePortfolio function to not include blog initialization
 function initializePortfolio() {
-    // Ensure we render projects and blog posts first
-    renderProjects();
-    renderBlogPosts();
-    
-    // Then initialize animations
+    // Initialize animations
     initAnimations();
     
-    // Add scroll event listeners
-    window.addEventListener('scroll', updateActiveNavLink);
-    window.addEventListener('scroll', handleScrollAnimations);
+    // Render projects
+    renderProjects();
+    initProjectAnimations();
     
-    // Trigger initial scroll animations check
+    // Initialize scroll animations
     handleScrollAnimations();
     
-    console.log("Initialization complete!");
+    // Initialize contact form
+    initContactForm();
 }
+
+// Initialize everything when the DOM is loaded
+document.addEventListener('DOMContentLoaded', initializePortfolio);
 
 // Initialize scroll-to-top functionality
 document.addEventListener('DOMContentLoaded', function() {
