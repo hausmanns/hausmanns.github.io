@@ -75,6 +75,28 @@ For GitHub Pages or other static hosting:
 2. Commit the `publications.json` file to your repository
 3. Set up a GitHub Action to automatically update publications:
 
+The GitHub Action is already configured in `.github/workflows/update-publications.yml`. It will:
+
+- **Run automatically** every Sunday at 6 AM UTC
+- **Run manually** when you trigger it from the GitHub Actions tab
+- **Run on changes** to the scholar_api.py or workflow files
+- **Only commit** when there are actual changes to publications
+
+**To enable the GitHub Action:**
+
+1. Push all files to your GitHub repository:
+```bash
+git add .
+git commit -m "Add Publications section with auto-update"
+git push
+```
+
+2. Go to your GitHub repository → Actions tab
+3. You should see the "Update Publications" workflow
+4. Click "Run workflow" to test it manually
+
+**GitHub Action Features:**
+
 ```yaml
 # .github/workflows/update-publications.yml
 name: Update Publications
