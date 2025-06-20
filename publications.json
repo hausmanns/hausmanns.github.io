@@ -1,29 +1,48 @@
 {
   "publications": [
     {
-      "title": "VR for neuroscience research: virtual reality system for studying adaptive visuomotor behavior in mice",
-      "authors": [
-        "S Hausmann",
-        "M Mathis"
-      ],
+      "title": "Mice Use Prediction Errors to Adapt to Visuomotor Perturbations in Virtual Reality",
+      "authors": ["SB Hausmann"],
+      "venue": "EPFL",
+      "year": "2025",
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xBW0bCcAAAAJ&citation_for_view=xBW0bCcAAAAJ:YOwf2qJgpHMC"
+    },
+    {
+      "title": "CellSeg3D: self-supervised 3D cell segmentation for fluorescence microscopy",
+      "authors": ["Cyril Achard", "Timokleia Kousi", "Markus Frey", "Maxime Vidal", "Yves Paychère", "Colin Hofmann", "Asim Iqbal", "Sebastien B Hausmann", "Stéphane Pagès", "Mackenzie Weygandt Mathis"],
       "venue": "bioRxiv",
       "year": "2024",
-      "citations": 0,
-      "url": "https://scholar.google.com/citations?user=xBW0bCcAAAAJ"
+      "citations": 2,
+      "url": "https://www.biorxiv.org/content/10.1101/2024.05.17.594691"
+    },
+    {
+      "title": "Cortical ensembles orchestrate social competition through hypothalamic outputs",
+      "authors": ["Nancy Padilla-Coreano", "Kanha Batra", "Makenzie Patarino", "Zexin Chen", "Rachel R Rock", "Ruihan Zhang", "Sébastien B Hausmann", "Javier C Weddington", "Reesha Patel", "Yu E Zhang", "Hao-Shu Fang", "Srishti Mishra", "Deryn O LeDuke", "Jasmin Revanna", "Hao Li", "Matilde Borio", "Rachelle Pamintuan", "Aneesh Bal", "Laurel R Keyes", "Avraham Libster", "Romy Wichmann", "Fergil Mills", "Felix H Taschbach", "Gillian A Matthews", "James P Curley", "Ila R Fiete", "Cewu Lu", "Kay M Tye"],
+      "venue": "Nature",
+      "year": "2022",
+      "citations": 136,
+      "url": "https://www.nature.com/articles/s41586-022-04507-5"
     },
     {
       "title": "Measuring and modeling the motor system with machine learning",
-      "authors": [
-        "M Mathis",
-        "S Hausmann",
-        "others"
-      ],
+      "authors": ["SB Hausmann", "AM Vargas", "A Mathis", "MW Mathis"],
       "venue": "Current Opinion in Neurobiology",
       "year": "2021",
-      "citations": 45,
+      "citations": 66,
       "url": "https://www.sciencedirect.com/science/article/pii/S0959438821000519"
+    },
+    {
+      "title": "Subjective feeling of re‐experiencing past events using immersive virtual reality prevents a loss of episodic memory",
+      "authors": ["L Bréchet", "SB Hausmann", "R Mange", "B Herbelin", "O Blanke", "A Serino"],
+      "venue": "Brain and Behavior",
+      "year": "2020",
+      "citations": 45,
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/brb3.1571"
     }
   ],
-  "updated": "2025-06-20T12:23:14.983387",
-  "user_id": "xBW0bCcAAAAJ"
+  "updated": "2025-06-20T12:33:00.000000",
+  "user_id": "xBW0bCcAAAAJ",
+  "author_name": "Sebastien B. Hausmann",
+  "total_publications": 5
 }
