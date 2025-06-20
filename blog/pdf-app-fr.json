@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "title": "Développer notre première application mobile : Gestionnaire PDF pour iOS et Android | Seb Hausmann",
+    "tags": "Développement Mobile, iOS, Android, Outils PDF"
+  },
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "header": {
+    "title": "Développer <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> : Ma première application mobile pour iOS et Android",
+    "date": "3 avril 2024"
+  },
+  "footer": {
+    "backLink": "Retour au Blog",
+    "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. Tous droits réservés."
+  },
+  "common": {
+    "backToTop": "Retour en haut"
+  }
+} 

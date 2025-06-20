@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "bio": {
+    "title": "Seb Hausmann, PhD",
+    "subtitle": "Data-driven Neuroscientist and Neuroengineer",
+    "welcome": "Welcome to my portfolio! I'm an Engineer from EPFL. Passionate about the brain, I am using advanced neuroengineering techniques. Currently, I just finished my PhD in Mackenzie Mathis' Laboratory of Adaptive Intelligence at EPFL, where I developed cutting-edge VR setups for mice and study the neural mechanisms underlying visuomotor adaptation.",
+    "workInvolves": "🔬 My work involves:",
+    "programming": "🧑‍💻 Programming: <B>Python</B>, C#, SQL, MATLAB, C++",
+    "neuroscience": "🧠 Neuroscience research: <B>Optogenetics</B>, neural circuits, behavioral analysis",
+    "vr": "🎮 Virtual Reality development for <B>biomedical</B> applications",
+    "dataAnalysis": "📊 Advanced <B>data analysis</B> and <B>machine learning</B>",
+    "education": "Education",
+    "educationItems": [
+      "PhD in Neuroscience, Adaptive intelligence - EPFL, Switzerland (2025)",
+      "MSc in Neuroscience & Neuroengineering - EPFL, Switzerland (2019)",
+      "BSc in Life Sciences - EPFL, Switzerland (2017)"
+    ],
+    "languages": "Languages",
+    "languageItems": [
+      { "name": "French", "level": "Native" },
+      { "name": "German", "level": "Native" },
+      { "name": "English", "level": "Fluent" },
+      { "name": "Japanese", "level": "Basics" }
+    ],
+    "technicalSkills": "Technical Skills",
+    "skillCategories": {
+      "programming": {
+        "title": "Programming & Development",
+        "skills": [
+          { "name": "Python", "details": "NumPy, Pandas, scikit-learn" },
+          { "name": "C# / C++", "details": "Unity, Arduino" },
+          { "name": "SQL", "details": "DataJoint" },
+          { "name": "Web Dev", "details": "JavaScript, React, HTML/CSS" }
+        ]
+      },
+      "dataScience": {
+        "title": "Data Science & Research",
+        "skills": [
+          { "name": "Data Analysis", "details": "Statistical Analysis, ML, Passionate about emerging AI tools!" },
+          { "name": "Lab Techniques", "details": "Stereotaxic Surgeries, Microscopy (Confocal), Histology (IHC)" },
+          { "name": "Optogenetics", "details": "Crafting fibers, Neural Circuit Manipulation" },
+          { "name": "Behavioral Analysis", "details": "Pose Estimation (DeepLabCut)" }
+        ]
+      },
+      "design": {
+        "title": "Design & Leadership",
+        "skills": [
+          { "name": "3D & UI Design", "details": "Blender, Figma, Adobe" },
+          { "name": "VR Development", "details": "Unity3D, Behavioral VR" },
+          { "name": "Mentorship", "details": "Student Supervision" },
+          { "name": "Project Mgmt", "details": "Research Leadership" }
+        ]
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "items": [
+      {
+        "title": "VR Mouse Behavior Platform",
+        "tags": ["Unity3D", "C#", "VR", "Neuroscience"],
+        "description": "As part of my PhD, I spearheaded the development of a virtual reality system for studying adaptive visuomotor behavior in mice using <a href='https://unity.com/' target='_blank'>Unity3D</a> game engine. Features markerless behavioral tracking using <a href='https://github.com/DeepLabCut/DeepLabCut' target='_blank'>DeepLabCut</a> and integration with optogenetics and neural recording systems such as neuropixels 2.0 or a mesoscope."
+      },
+      {
+        "title": "Digital Biomarkers Data Analysis Pipeline",
+        "tags": ["Python", "SQL", "Data Analysis", "Machine Learning"],
+        "description": "As part of my PhD, I developed a python-based (<a href='https://www.datajoint.com/' target='_blank'>DataJoint</a>: Python wrapper for SQL) pipeline for processing and analyzing large-scale behavioral and neural data. Automatation of experimental data processing and facilitating the supervision of individual experimental sessions on a daily basis, using advanced signal processing and machine learning techniques."
+      },
+      {
+        "title": "Optogenetics Control System",
+        "tags": ["Arduino", "C++", "Optogenetics", "Hardware"],
+        "description": "Arduino-based system for precise control of optogenetic stimulation during behavioral experiments. Features programmable stimulation patterns."
+      },
+      {
+        "title": "Allen Brain Atlas Connectivity Map",
+        "tags": ["Python", "PyQt", "Neuroscience", "Data Visualization"],
+        "description": "As a side project, I developed a simple GUI based on <a href='https://wiki.python.org/moin/PyQt' target='_blank'> PyQt</a> to explore connectivity map based on various projection signals. Features responsive design, animations, and integration with <a href='https://allensdk.readthedocs.io/en/latest/' target='_blank'> Allen Brain Atlas' API allensdk</a>."
+      },
+      {
+        "title": "Virtual Reality surrogate system for Argus® II Patients",
+        "tags": ["Unity3D", "C#", "VR", "Medical Devices"],
+        "description": "As part of a software engineer research internship at Second Sight Medical Product, I worked on a virtual reality system for Argus II patients to help them navigate in a virtual environment. Enhancing their rehabilitation procedure. The system was developed using Unity and C#, bypassing their camera Unit. I also developed a VR simulation of what a patient sees using the Argus II system."
+      },
+      {
+        "title": "Is effort related to social dominance?",
+        "tags": ["Neuroscience", "Behavior", "Research", "Data Analysis"],
+        "description": "As part of my Master's thesis, I investigated the relationship between effort and social dominance in hierarchical groups of mice. This work was part of a larger project on the neural mechanisms of social dominance (specifically, the connections from mPFC to LH) and was conducted in laboratory of <a href='https://tyelab.org/' target='_blank'>Prof. Kay M. Tye</a> at the <a href='https://www.salk.edu/' target='_blank'>Salk Institute</a> in San Diego."
+      },
+      {
+        "title": "Does subjective feeling of re-experiencing past events relate to memory performance?",
+        "tags": ["VR", "Neuroscience", "Memory", "Research"],
+        "description": "At the <a href='https://www.campusbiotech.ch/en/node/339' target='_blank'> Laboratory of Cognitive Neuroscience (LNCO)</a> in Prof. Olaf Blanke's lab, together with Dr. Brechet, I investigated the relationship between the subjective feeling of re-experiencing past events and memory performance. In this project we worked with healthy human subjects and used virtual reality to manipulate the feeling of re-experiencing past events."
+      }
+    ]
+  },
+  "blog": {
+    "title": "Blog",
+    "items": [
+      {
+        "title": "Building iSoundPort: My Journey Creating a Full-Stack Music Playlist Converter",
+        "date": "2023-04-10",
+        "description": "How I built a web application that seamlessly converts iTunes playlists to Spotify using Flask, Firebase, and the Spotify API, with Stripe integration for payments.",
+        "readBlog": "Read Blog",
+        "visitWebsite": "Visit Website"
+      },
+      {
+        "title": "Developing WizPDF: My First Mobile App for iOS and Android",
+        "date": "2025-04-15",
+        "description": "The process of creating my first mobile application — a comprehensive PDF management tool for merging, modifying, and summarizing PDFs on both iOS and Android platforms.",
+        "readBlog": "Read Blog",
+        "visitWebsite": "Visit Website"
+      },
+      {
+        "title": "Measuring and modeling the motor system with machine learning",
+        "date": "2021-10-01",
+        "description": "A comprehensive review we wrote, exploring novel machine learning methods for understanding the motor system. Drawing parallels with artificial neural networks.",
+        "readPaper": "Read Paper"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "sendMessage": "Send Message"
+  },
+  "footer": {
+    "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. All rights reserved."
+  },
+  "common": {
+    "demo": "Demo",
+    "github": "GitHub",
+    "paper": "Paper",
+    "backToTop": "Back to top"
+  }
+} 

@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "title": "Building iSoundPort - iTunes to Spotify Converter | Seb Hausmann",
+    "tags": "Web Development, Full Stack, Flask, Firebase, Spotify API"
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "header": {
+    "title": "Building iSoundPort: My Journey Creating a Full-Stack Music Playlist Converter",
+    "date": "March 23, 2025"
+  },
+  "content": {
+    "intro": "For years, I've been a music enthusiast with playlists spread across different streaming platforms. The frustration of recreating carefully curated playlists when switching services led me to build <a href=\"https://isoundport.com\" target=\"_blank\">iSoundPort</a> — a web application that seamlessly converts iTunes playlists to Spotify.",
+    "problem": {
+      "title": "The Problem",
+      "content": "Moving between music streaming platforms has always been a pain point. When I decided to switch from Apple Music to Spotify, I faced the tedious task of manually recreating dozens of playlists I'd built over years. I knew there had to be a better way, and that's when the idea for iSoundPort was born."
+    },
+    "architecture": {
+      "title": "Technical Architecture",
+      "intro": "I designed iSoundPort as a full-stack web application with the following components:",
+      "flask": {
+        "title": "Backend Framework: Flask",
+        "content": "I chose Flask as my backend framework for its lightweight nature and flexibility. Flask allowed me to quickly develop a RESTful API that could handle the complex playlist conversion process, manage authentication tokens, and interface with external services."
+      },
+      "firebase": {
+        "title": "Authentication System: Firebase Authentication",
+        "content": "Security and user management were key considerations. Firebase Authentication provided a robust, ready-to-implement solution that handled:",
+        "features": [
+          "Secure user registration and login",
+          "OAuth integration for Spotify login",
+          "Token management for API access"
+        ]
+      },
+      "database": {
+        "title": "Database: Firebase Realtime Database",
+        "content": "For storing user profiles, conversion history, and payement status, I implemented Firebase Database. This NoSQL cloud database allowed for:",
+        "features": [
+          "Storage of user profiles",
+          "Storage of user history",
+          "Storage of payment status",
+          "Scaling without managing complex database infrastructure"
+        ]
+      },
+      "stripe": {
+        "title": "Payment Processing: Stripe",
+        "content": "While the basic functionality is free, premium features needed a sustainable business model. Stripe integration allowed for:",
+        "features": [
+          "Secure payment processing",
+          "Subscription management for premium features"
+        ]
+      },
+      "spotify": {
+        "title": "API Integration: Spotify Web API",
+        "content": "The core functionality relies on Spotify's Web API. I developed a sophisticated matching algorithm that:",
+        "features": [
+          "Parses iTunes XML playlist exports",
+          "Performs intelligent search queries on Spotify",
+          "Uses multiple matching criteria to find the right tracks",
+          "Handles edge cases like remixes, covers, and featurings"
+        ]
+      },
+      "deployment": {
+        "title": "Deployment: Docker & Render",
+        "content": "For deployment, I containerized the application using Docker which ensured consistency across different environments. The containerized application is hosted on Render, which provides:",
+        "features": [
+          "Automatic deployments from GitHub",
+          "Load balancing for handling traffic spikes",
+          "SSL certificate management"
+        ]
+      }
+    },
+    "challenges": {
+      "title": "Technical Challenges",
+      "matching": {
+        "title": "Track Matching Accuracy",
+        "content": "The biggest challenge was achieving high accuracy in track matching. Songs often have different versions, remasters, or slight naming differences between platforms. I developed a multi-stage matching algorithm that:",
+        "steps": [
+          "Performs exact match searches first",
+          "Falls back to fuzzy matching for title and artist",
+          "Provides confidence scores for each match"
+        ]
+      },
+      "rateLimit": {
+        "title": "API Rate Limiting",
+        "content": "Spotify's API has strict rate limits that presented challenges for users with large playlists. I implemented a queuing system with exponential backoff strategies to handle these limits gracefully without compromising the user experience."
+      }
+    },
+    "lessons": {
+      "title": "Lessons Learned",
+      "auth": {
+        "title": "Authentication Complexity",
+        "content": "Working with multiple authentication systems (Firebase and Spotify OAuth) taught me the importance of careful token management and security considerations for refresh tokens."
+      },
+      "fullstack": {
+        "title": "Full-Stack Integration",
+        "content": "Building iSoundPort deepened my understanding of how frontend and backend systems interact. The project required careful coordination between user interfaces, API calls, background processing, and database operations."
+      },
+      "deployment": {
+        "title": "Production Deployment",
+        "content": "Moving from development to production highlighted the importance of environment management, secret handling, and continuous integration workflows. Docker containers significantly simplified this process."
+      }
+    },
+    "future": {
+      "title": "Future Enhancements",
+      "content": "The journey doesn't end here. I'm working on several enhancements:",
+      "features": [
+        "Support for additional streaming platforms (YouTube Music, Deezer, etc.)",
+        "Advanced playlist organization tools",
+        "Collaborative playlist conversion",
+        "Improved matching algorithms using audio fingerprinting"
+      ]
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "content1": "Building iSoundPort was not just about solving a personal problem—it became a journey of technical exploration and growth. The project integrated multiple modern web technologies into a cohesive system that provides real value to users.",
+      "content2": "If you're interested in trying iSoundPort, visit <a href=\"https://isoundport.com\" target=\"_blank\">isoundport.com</a>. I welcome feedback and feature suggestions from fellow music enthusiasts and developers alike!",
+      "content3": "Please note that the app is currently only availble through the free tier of Spotify, as it first needs to be approved by Spotify."
+    }
+  },
+  "footer": {
+    "backLink": "Back to Blog",
+    "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. All rights reserved."
+  },
+  "common": {
+    "backToTop": "Back to top"
+  }
+} 

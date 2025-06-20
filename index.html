@@ -8,6 +8,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!--<script defer data-domain="hausmanns.github.io" src="https://plausible.laperrucherie.synology.me/js/script.js"></script>-->
     <link rel="icon" type="image/png" href="assets/logo/wolf.png">
+    <style>
+        /* Language Selector Styles */
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .language-selector button {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        
+        .language-selector button:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .language-selector button.active {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .language-selector {
+                margin-top: 1rem;
+            }
+        }
+    </style>
     <!-- Adding React for the Easter Egg Game -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -35,6 +72,12 @@
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                         <i class="fas fa-moon"></i>
                     </button>
+                </li>
+                <li>
+                    <div class="language-selector">
+                        <button data-lang="en" onclick="window.i18n && window.i18n.changeLanguage('en')">EN</button>
+                        <button data-lang="fr" onclick="window.i18n && window.i18n.changeLanguage('fr')">FR</button>
+                    </div>
                 </li>
             </ul>
         </nav>
@@ -413,6 +456,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/severance-game.js"></script>
     

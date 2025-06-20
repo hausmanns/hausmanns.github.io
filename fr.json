@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "bio": {
+    "title": "Seb Hausmann, PhD",
+    "subtitle": "Neuroscientifique et Neuroingénieur orienté données",
+    "welcome": "Bienvenue sur mon portfolio ! Je suis Ingénieur de l'EPFL. Passionné par le cerveau, j'utilise des techniques de neuroingénierie avancées. Actuellement, je viens de terminer mon doctorat dans le laboratoire d'Intelligence Adaptative de Mackenzie Mathis à l'EPFL, où j'ai développé des installations VR de pointe pour les souris et étudié les mécanismes neuronaux sous-jacents à l'adaptation visuomotrice.",
+    "workInvolves": "🔬 Mon travail implique :",
+    "programming": "🧑‍💻 Programmation : <B>Python</B>, C#, SQL, MATLAB, C++",
+    "neuroscience": "🧠 Recherche en neurosciences : <B>Optogénétique</B>, circuits neuronaux, analyse comportementale",
+    "vr": "🎮 Développement de Réalité Virtuelle pour des applications <B>biomédicales</B>",
+    "dataAnalysis": "📊 <B>Analyse de données</B> avancée et <B>apprentissage automatique</B>",
+    "education": "Formation",
+    "educationItems": [
+      "Doctorat en Neurosciences, Intelligence adaptative - EPFL, Suisse (2025)",
+      "Master en Neurosciences et Neuroingénierie - EPFL, Suisse (2019)",
+      "Bachelor en Sciences de la Vie - EPFL, Suisse (2017)"
+    ],
+    "languages": "Langues",
+    "languageItems": [
+      { "name": "Français", "level": "Natif" },
+      { "name": "Allemand", "level": "Natif" },
+      { "name": "Anglais", "level": "Courant" },
+      { "name": "Japonais", "level": "Bases" }
+    ],
+    "technicalSkills": "Compétences Techniques",
+    "skillCategories": {
+      "programming": {
+        "title": "Programmation et Développement",
+        "skills": [
+          { "name": "Python", "details": "NumPy, Pandas, scikit-learn" },
+          { "name": "C# / C++", "details": "Unity, Arduino" },
+          { "name": "SQL", "details": "DataJoint" },
+          { "name": "Dév Web", "details": "JavaScript, React, HTML/CSS" }
+        ]
+      },
+      "dataScience": {
+        "title": "Science des Données et Recherche",
+        "skills": [
+          { "name": "Analyse de Données", "details": "Analyse Statistique, ML, Passionné par les outils IA émergents !" },
+          { "name": "Techniques de Laboratoire", "details": "Chirurgies Stéréotaxiques, Microscopie (Confocale), Histologie (IHC)" },
+          { "name": "Optogénétique", "details": "Fabrication de fibres, Manipulation de Circuits Neuronaux" },
+          { "name": "Analyse Comportementale", "details": "Estimation de Posture (DeepLabCut)" }
+        ]
+      },
+      "design": {
+        "title": "Design et Leadership",
+        "skills": [
+          { "name": "Design 3D et UI", "details": "Blender, Figma, Adobe" },
+          { "name": "Développement VR", "details": "Unity3D, VR Comportementale" },
+          { "name": "Mentorat", "details": "Supervision d'Étudiants" },
+          { "name": "Gestion de Projets", "details": "Leadership de Recherche" }
+        ]
+      }
+    }
+  },
+  "projects": {
+    "title": "Projets",
+    "items": [
+      {
+        "title": "Plateforme de Comportement VR pour Souris",
+        "tags": ["Unity3D", "C#", "VR", "Neurosciences"],
+        "description": "Dans le cadre de mon doctorat, j'ai dirigé le développement d'un système de réalité virtuelle pour étudier le comportement adaptatif visuomoteur chez les souris en utilisant le moteur de jeu <a href='https://unity.com/' target='_blank'>Unity3D</a>. Comprend un suivi comportemental sans marqueurs utilisant <a href='https://github.com/DeepLabCut/DeepLabCut' target='_blank'>DeepLabCut</a> et une intégration avec l'optogénétique et les systèmes d'enregistrement neuronal tels que neuropixels 2.0 ou un mésoscope."
+      },
+      {
+        "title": "Pipeline d'Analyse de Données de Biomarqueurs Numériques",
+        "tags": ["Python", "SQL", "Analyse de Données", "Apprentissage Automatique"],
+        "description": "Dans le cadre de mon doctorat, j'ai développé un pipeline basé sur python (<a href='https://www.datajoint.com/' target='_blank'>DataJoint</a> : wrapper Python pour SQL) pour traiter et analyser des données comportementales et neuronales à grande échelle. Automatisation du traitement des données expérimentales et facilitation de la supervision des sessions expérimentales individuelles au quotidien, en utilisant des techniques avancées de traitement du signal et d'apprentissage automatique."
+      },
+      {
+        "title": "Système de Contrôle Optogénétique",
+        "tags": ["Arduino", "C++", "Optogénétique", "Matériel"],
+        "description": "Système basé sur Arduino pour un contrôle précis de la stimulation optogénétique pendant les expériences comportementales. Comprend des modèles de stimulation programmables."
+      },
+      {
+        "title": "Carte de Connectivité Allen Brain Atlas",
+        "tags": ["Python", "PyQt", "Neurosciences", "Visualisation de Données"],
+        "description": "En tant que projet parallèle, j'ai développé une interface graphique simple basée sur <a href='https://wiki.python.org/moin/PyQt' target='_blank'> PyQt</a> pour explorer les cartes de connectivité basées sur divers signaux de projection. Comprend un design réactif, des animations et une intégration avec <a href='https://allensdk.readthedocs.io/en/latest/' target='_blank'> l'API allensdk de l'Allen Brain Atlas</a>."
+      },
+      {
+        "title": "Système de Réalité Virtuelle de substitution pour les patients Argus® II",
+        "tags": ["Unity3D", "C#", "VR", "Dispositifs Médicaux"],
+        "description": "Dans le cadre d'un stage de recherche en ingénierie logicielle chez Second Sight Medical Product, j'ai travaillé sur un système de réalité virtuelle pour les patients Argus II pour les aider à naviguer dans un environnement virtuel. Améliorant leur procédure de rééducation. Le système a été développé en utilisant Unity et C#, contournant leur unité caméra. J'ai également développé une simulation VR de ce qu'un patient voit en utilisant le système Argus II."
+      },
+      {
+        "title": "L'effort est-il lié à la dominance sociale ?",
+        "tags": ["Neurosciences", "Comportement", "Recherche", "Analyse de Données"],
+        "description": "Dans le cadre de ma thèse de Master, j'ai étudié la relation entre l'effort et la dominance sociale dans des groupes hiérarchiques de souris. Ce travail faisait partie d'un projet plus vaste sur les mécanismes neuronaux de la dominance sociale (spécifiquement, les connexions du mPFC vers LH) et a été mené dans le laboratoire du <a href='https://tyelab.org/' target='_blank'>Prof. Kay M. Tye</a> au <a href='https://www.salk.edu/' target='_blank'>Salk Institute</a> à San Diego."
+      },
+      {
+        "title": "Le sentiment subjectif de revivre des événements passés est-il lié à la performance mnésique ?",
+        "tags": ["VR", "Neurosciences", "Mémoire", "Recherche"],
+        "description": "Au <a href='https://www.campusbiotech.ch/en/node/339' target='_blank'> Laboratoire de Neurosciences Cognitives (LNCO)</a> dans le laboratoire du Prof. Olaf Blanke, avec le Dr. Brechet, j'ai étudié la relation entre le sentiment subjectif de revivre des événements passés et la performance mnésique. Dans ce projet, nous avons travaillé avec des sujets humains sains et utilisé la réalité virtuelle pour manipuler le sentiment de revivre des événements passés."
+      }
+    ]
+  },
+  "blog": {
+    "title": "Blog",
+    "items": [
+      {
+        "title": "Construire iSoundPort : Mon parcours pour créer un convertisseur de playlist musicale Full-Stack",
+        "date": "2023-04-10",
+        "description": "Comment j'ai construit une application web qui convertit de manière transparente les playlists iTunes vers Spotify en utilisant Flask, Firebase et l'API Spotify, avec une intégration Stripe pour les paiements.",
+        "readBlog": "Lire le Blog",
+        "visitWebsite": "Visiter le Site"
+      },
+      {
+        "title": "Développer WizPDF : Ma première application mobile pour iOS et Android",
+        "date": "2025-04-15",
+        "description": "Le processus de création de ma première application mobile — un outil complet de gestion PDF pour fusionner, modifier et résumer des PDF sur les plateformes iOS et Android.",
+        "readBlog": "Lire le Blog",
+        "visitWebsite": "Visiter le Site"
+      },
+      {
+        "title": "Mesurer et modéliser le système moteur avec l'apprentissage automatique",
+        "date": "2021-10-01",
+        "description": "Une revue complète que nous avons écrite, explorant de nouvelles méthodes d'apprentissage automatique pour comprendre le système moteur. Établissant des parallèles avec les réseaux de neurones artificiels.",
+        "readPaper": "Lire l'Article"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Me Contacter",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "sendMessage": "Envoyer le Message"
+  },
+  "footer": {
+    "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. Tous droits réservés."
+  },
+  "common": {
+    "demo": "Démo",
+    "github": "GitHub",
+    "paper": "Article",
+    "backToTop": "Retour en haut"
+  }
+} 

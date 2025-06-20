@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "title": "Construire iSoundPort - Convertisseur iTunes vers Spotify | Seb Hausmann",
+    "tags": "Développement Web, Full Stack, Flask, Firebase, API Spotify"
+  },
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "header": {
+    "title": "Construire iSoundPort : Mon parcours pour créer un convertisseur de playlist musicale Full-Stack",
+    "date": "23 mars 2025"
+  },
+  "content": {
+    "intro": "Depuis des années, je suis un passionné de musique avec des playlists réparties sur différentes plateformes de streaming. La frustration de recréer des playlists soigneusement sélectionnées lors du changement de services m'a amené à construire <a href=\"https://isoundport.com\" target=\"_blank\">iSoundPort</a> — une application web qui convertit de manière transparente les playlists iTunes vers Spotify.",
+    "problem": {
+      "title": "Le Problème",
+      "content": "Passer d'une plateforme de streaming musical à une autre a toujours été problématique. Quand j'ai décidé de passer d'Apple Music à Spotify, j'ai fait face à la tâche fastidieuse de recréer manuellement des dizaines de playlists que j'avais construites au fil des années. Je savais qu'il devait y avoir une meilleure façon, et c'est alors que l'idée d'iSoundPort est née."
+    },
+    "architecture": {
+      "title": "Architecture Technique",
+      "intro": "J'ai conçu iSoundPort comme une application web full-stack avec les composants suivants :",
+      "flask": {
+        "title": "Framework Backend : Flask",
+        "content": "J'ai choisi Flask comme framework backend pour sa nature légère et sa flexibilité. Flask m'a permis de développer rapidement une API RESTful qui pouvait gérer le processus complexe de conversion de playlists, gérer les jetons d'authentification et interfacer avec des services externes."
+      },
+      "firebase": {
+        "title": "Système d'Authentification : Firebase Authentication",
+        "content": "La sécurité et la gestion des utilisateurs étaient des considérations clés. Firebase Authentication a fourni une solution robuste et prête à implémenter qui gérait :",
+        "features": [
+          "Inscription et connexion sécurisées des utilisateurs",
+          "Intégration OAuth pour la connexion Spotify",
+          "Gestion des jetons pour l'accès à l'API"
+        ]
+      },
+      "database": {
+        "title": "Base de Données : Firebase Realtime Database",
+        "content": "Pour stocker les profils utilisateurs, l'historique des conversions et le statut de paiement, j'ai implémenté Firebase Database. Cette base de données cloud NoSQL a permis :",
+        "features": [
+          "Stockage des profils utilisateurs",
+          "Stockage de l'historique des utilisateurs",
+          "Stockage du statut de paiement",
+          "Mise à l'échelle sans gérer une infrastructure de base de données complexe"
+        ]
+      },
+      "stripe": {
+        "title": "Traitement des Paiements : Stripe",
+        "content": "Bien que la fonctionnalité de base soit gratuite, les fonctionnalités premium nécessitaient un modèle commercial durable. L'intégration Stripe a permis :",
+        "features": [
+          "Traitement sécurisé des paiements",
+          "Gestion des abonnements pour les fonctionnalités premium"
+        ]
+      },
+      "spotify": {
+        "title": "Intégration API : Spotify Web API",
+        "content": "La fonctionnalité principale repose sur l'API Web de Spotify. J'ai développé un algorithme de correspondance sophistiqué qui :",
+        "features": [
+          "Analyse les exports de playlists XML d'iTunes",
+          "Effectue des requêtes de recherche intelligentes sur Spotify",
+          "Utilise plusieurs critères de correspondance pour trouver les bonnes pistes",
+          "Gère les cas particuliers comme les remixes, reprises et collaborations"
+        ]
+      },
+      "deployment": {
+        "title": "Déploiement : Docker & Render",
+        "content": "Pour le déploiement, j'ai conteneurisé l'application en utilisant Docker qui assurait la cohérence entre différents environnements. L'application conteneurisée est hébergée sur Render, qui fournit :",
+        "features": [
+          "Déploiements automatiques depuis GitHub",
+          "Équilibrage de charge pour gérer les pics de trafic",
+          "Gestion des certificats SSL"
+        ]
+      }
+    },
+    "challenges": {
+      "title": "Défis Techniques",
+      "matching": {
+        "title": "Précision de Correspondance des Pistes",
+        "content": "Le plus grand défi était d'atteindre une haute précision dans la correspondance des pistes. Les chansons ont souvent différentes versions, remasters ou légères différences de nommage entre plateformes. J'ai développé un algorithme de correspondance à plusieurs étapes qui :",
+        "steps": [
+          "Effectue d'abord des recherches de correspondance exacte",
+          "Se rabat sur la correspondance floue pour le titre et l'artiste",
+          "Fournit des scores de confiance pour chaque correspondance"
+        ]
+      },
+      "rateLimit": {
+        "title": "Limitation du Taux d'API",
+        "content": "L'API de Spotify a des limites de taux strictes qui présentaient des défis pour les utilisateurs avec de grandes playlists. J'ai implémenté un système de file d'attente avec des stratégies de temporisation exponentielle pour gérer ces limites gracieusement sans compromettre l'expérience utilisateur."
+      }
+    },
+    "lessons": {
+      "title": "Leçons Apprises",
+      "auth": {
+        "title": "Complexité de l'Authentification",
+        "content": "Travailler avec plusieurs systèmes d'authentification (Firebase et Spotify OAuth) m'a enseigné l'importance de la gestion prudente des jetons et des considérations de sécurité pour les jetons de rafraîchissement."
+      },
+      "fullstack": {
+        "title": "Intégration Full-Stack",
+        "content": "Construire iSoundPort a approfondi ma compréhension de la façon dont les systèmes frontend et backend interagissent. Le projet nécessitait une coordination prudente entre les interfaces utilisateur, les appels d'API, le traitement en arrière-plan et les opérations de base de données."
+      },
+      "deployment": {
+        "title": "Déploiement en Production",
+        "content": "Passer du développement à la production a mis en évidence l'importance de la gestion de l'environnement, de la gestion des secrets et des flux de travail d'intégration continue. Les conteneurs Docker ont considérablement simplifié ce processus."
+      }
+    },
+    "future": {
+      "title": "Améliorations Futures",
+      "content": "Le voyage ne s'arrête pas là. Je travaille sur plusieurs améliorations :",
+      "features": [
+        "Support pour des plateformes de streaming supplémentaires (YouTube Music, Deezer, etc.)",
+        "Outils d'organisation de playlists avancés",
+        "Conversion de playlists collaborative",
+        "Algorithmes de correspondance améliorés utilisant l'empreinte audio"
+      ]
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "content1": "Construire iSoundPort n'était pas seulement résoudre un problème personnel — c'est devenu un voyage d'exploration technique et de croissance. Le projet a intégré plusieurs technologies web modernes dans un système cohérent qui apporte une vraie valeur aux utilisateurs.",
+      "content2": "Si vous êtes intéressé par essayer iSoundPort, visitez <a href=\"https://isoundport.com\" target=\"_blank\">isoundport.com</a>. J'accueille les commentaires et suggestions de fonctionnalités des passionnés de musique et développeurs !",
+      "content3": "Veuillez noter que l'application n'est actuellement disponible que via le niveau gratuit de Spotify, car elle doit d'abord être approuvée par Spotify."
+    }
+  },
+  "footer": {
+    "backLink": "Retour au Blog",
+    "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. Tous droits réservés."
+  },
+  "common": {
+    "backToTop": "Retour en haut"
+  }
+} 
