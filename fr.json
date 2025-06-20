@@ -2,6 +2,7 @@
   "nav": {
     "home": "Accueil",
     "projects": "Projets",
+    "publications": "Publications",
     "blog": "Blog",
     "contact": "Contact"
   },
@@ -97,6 +98,16 @@
         "description": "Au <a href='https://www.campusbiotech.ch/en/node/339' target='_blank'> Laboratoire de Neurosciences Cognitives (LNCO)</a> dans le laboratoire du Prof. Olaf Blanke, avec le Dr. Brechet, j'ai étudié la relation entre le sentiment subjectif de revivre des événements passés et la performance mnésique. Dans ce projet, nous avons travaillé avec des sujets humains sains et utilisé la réalité virtuelle pour manipuler le sentiment de revivre des événements passés."
       }
     ]
+  },
+  "publications": {
+    "title": "Publications",
+    "header": "Publications de Google Scholar mises à jour automatiquement.",
+    "loading": "Chargement des publications...",
+    "error": "Impossible de charger les publications. Veuillez visiter mon",
+    "googleScholar": "profil Google Scholar",
+    "citations": "citation",
+    "citationsPlural": "citations",
+    "noCitations": "Aucune citation pour l'instant"
   },
   "blog": {
     "title": "Blog",

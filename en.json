@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "projects": "Projects",
+    "publications": "Publications",
     "blog": "Blog",
     "contact": "Contact"
   },
@@ -97,6 +98,16 @@
         "description": "At the <a href='https://www.campusbiotech.ch/en/node/339' target='_blank'> Laboratory of Cognitive Neuroscience (LNCO)</a> in Prof. Olaf Blanke's lab, together with Dr. Brechet, I investigated the relationship between the subjective feeling of re-experiencing past events and memory performance. In this project we worked with healthy human subjects and used virtual reality to manipulate the feeling of re-experiencing past events."
       }
     ]
+  },
+  "publications": {
+    "title": "Publications",
+    "header": "Publications from Google Scholar automatically updated.",
+    "loading": "Loading publications...",
+    "error": "Unable to load publications. Please visit my",
+    "googleScholar": "Google Scholar profile",
+    "citations": "citation",
+    "citationsPlural": "citations",
+    "noCitations": "No citations yet"
   },
   "blog": {
     "title": "Blog",
