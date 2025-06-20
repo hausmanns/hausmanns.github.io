@@ -13,11 +13,116 @@
     "title": "Développer <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> : Ma première application mobile pour iOS et Android",
     "date": "3 avril 2024"
   },
+  "content": {
+    "intro": "À une époque où les documents numériques sont omniprésents, nous - avec mon collègue Tom Suter - nous sommes retrouvés constamment aux prises avec les PDF. Fusionner des articles de recherche, extraire des pages spécifiques et avoir besoin de résumés rapides — ces tâches apparemment simples nécessitaient souvent de jongler entre plusieurs applications de bureau ou des abonnements coûteux. Frustrés par ce flux de travail, nous avons décidé de construire <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a>, une application mobile élégante qui met des outils PDF professionnels directement dans votre poche.",
+    "figcaption1": "L'interface principale de <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> montrant les cartes de fonctionnalités et la belle barre d'onglets dégradée",
+    "altText": {
+      "appPreview": "Aperçu de l'application WizPDF",
+      "homeScreen": "Écran d'accueil de WizPDF",
+      "mergerInterface": "Interface de fusion PDF",
+      "manipulatorInterface": "Interface de manipulation de pages",
+      "summaryInterface": "Interface de résumé PDF",
+      "architecture": "Architecture WizPDF"
+    },
+    "sections": {
+      "why": {
+        "title": "Pourquoi nous avons construit cette app",
+        "intro": "En tant qu'équipe qui traite régulièrement des dizaines de documents PDF, nous avons continué à rencontrer les mêmes problèmes :",
+        "painPoints": [
+          "Besoin de combiner plusieurs articles de recherche en un seul document",
+          "Vouloir réorganiser ou supprimer des pages spécifiques de gros PDF",
+          "Nécessiter des résumés rapides de documents volumineux",
+          "Faire tout cela en déplacement, sans ordinateur de bureau"
+        ],
+        "conclusion": "La plupart des solutions PDF mobiles étaient soit trop limitées, ridiculement chères, ou enfouissaient ces fonctions sous des interfaces confuses. Nous voulions créer quelque chose qui soit à la fois puissant et délicieusement simple à utiliser — et <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> est né."
+      },
+      "features": {
+        "title": "Fonctionnalités principales",
+        "merge": {
+          "title": "Fusion de PDF",
+          "content": "Sélectionnez et combinez plusieurs PDF en un seul document en quelques tapotements. Réorganisez facilement l'ordre des fichiers avant la fusion, avec une interface claire qui rend le processus intuitif et rapide.",
+          "figcaption": "L'écran de fusion PDF montrant les documents sélectionnés prêts à être combinés"
+        },
+        "manipulate": {
+          "title": "Manipulation de pages",
+          "content": "Réorganisez, supprimez et extrayez des pages de documents PDF avec notre interface visuelle de pages. Prévisualisez chaque miniature de page et réorganisez facilement avec des contrôles haut/bas intuitifs.",
+          "figcaption": "L'écran de manipulation de pages permettant aux utilisateurs de réorganiser et supprimer des pages"
+        },
+        "summarize": {
+          "title": "Résumé de PDF",
+          "content": "Générez des résumés alimentés par l'IA de documents PDF en formats court, moyen ou long. Parfait pour extraire rapidement les informations clés de longs articles ou rapports.",
+          "figcaption": "L'écran de résumé PDF montrant les options de résumé et les résultats"
+        }
+      },
+      "technical": {
+        "title": "Implémentation technique",
+        "reactNative": {
+          "title": "React Native avec Expo",
+          "content": "Nous avons choisi React Native avec Expo pour le développement multiplateforme, ce qui s'est avéré être un excellent choix. L'utilisation de TypeScript pour la sécurité des types a rendu la base de code plus maintenable, tandis que la chaîne d'outils d'Expo a simplifié le déploiement et les tests. L'application entière est construite autour d'une navigation par onglets qui fournit un accès rapide à chaque fonctionnalité principale, avec un langage de conception unifié partout. Naviguer entre Accueil, Fusionner, Résumés et Trier est fluide et intuitif, facilitant l'accès aux outils dont ils ont besoin."
+        },
+        "pdfEngine": {
+          "title": "Moteur de traitement PDF",
+          "content": "Travailler avec des PDF sur des appareils mobiles a présenté plusieurs défis, en particulier autour de la gestion de la mémoire et des performances. Nous avons tiré parti d'une puissante bibliothèque open source pour gérer les opérations principales comme la fusion et la manipulation de pages. Cela a permis aux utilisateurs de combiner des documents, réorganiser ou extraire des pages, et sauvegarder de nouveaux PDF — tout directement sur leur appareil, sans envoyer de documents sensibles à des serveurs externes. Le processus est rapide, sécurisé et fonctionne hors ligne, le rendant idéal pour les utilisateurs soucieux de la confidentialité."
+        },
+        "cloudFunctions": {
+          "title": "Fonctions cloud pour les résumés IA",
+          "content": "Pour la fonctionnalité de résumé PDF, nous avons utilisé le traitement IA basé sur le cloud. Quand un utilisateur demande un résumé, l'application télécharge de manière sécurisée le document vers le cloud, où un modèle IA génère un résumé concis dans la longueur choisie. Le résumé est ensuite livré à l'application, permettant aux utilisateurs de comprendre rapidement les points clés de documents volumineux. Cette approche garde l'application légère tout en offrant une fonctionnalité puissante."
+        },
+        "monetization": {
+          "title": "Monétisation avec achats intégrés",
+          "content": "Nous avons implémenté une approche freemium avec des achats intégrés qui permet aux utilisateurs d'essayer toutes les fonctionnalités avec une utilisation limitée avant de mettre à niveau. Le niveau gratuit offre un nombre défini de fusions, résumés et manipulations de pages, tandis qu'une mise à niveau premium débloque un accès illimité. Pour ceux qui ont besoin de plus de résumés, des packs supplémentaires sont disponibles à l'achat. Ce modèle assure que tout le monde peut essayer l'application, tandis que les utilisateurs avancés peuvent débloquer son plein potentiel."
+        }
+      },
+      "design": {
+        "title": "Conception UI/UX",
+        "ui": {
+          "title": "Belle interface avec React Native Paper",
+          "content": "L'interface polie de l'application a été construite avec une bibliothèque de composants moderne qui fournit des éléments Material Design fonctionnant parfaitement sur toutes les plateformes. L'écran d'accueil accueille les utilisateurs avec un message amical et une mise en page propre, tandis que les cartes de fonctionnalités les guident vers les outils principaux. La conception est cohérente, visuellement attrayante et facile à naviguer, rendant l'application accessible à tous."
+        },
+        "haptic": {
+          "title": "Retour haptique pour une interaction améliorée",
+          "content": "Pour rendre l'application plus réactive et premium, nous avons ajouté un retour haptique dans toute l'expérience utilisateur. Chaque fois que les utilisateurs sélectionnent des fichiers, fusionnent des documents ou terminent une action, des vibrations subtiles fournissent une confirmation tactile. Ces petites touches améliorent la sensation générale de l'application et rendent les interactions plus satisfaisantes."
+        }
+      },
+      "challenges": {
+        "title": "Défis et solutions",
+        "performance": {
+          "title": "Optimisation des performances",
+          "content": "Gérer de gros fichiers PDF sur des appareils mobiles nécessitait une optimisation soigneuse pour éviter les plantages et maintenir des performances fluides :",
+          "points": [
+            "Implémentation du chargement et traitement efficaces de fichiers pour de gros documents",
+            "Optimisation de l'utilisation de la mémoire lors de la manipulation de plusieurs PDF",
+            "Ajout d'indicateurs de chargement pour fournir des retours pendant le traitement"
+          ]
+        },
+        "fileHandling": {
+          "title": "Gestion de fichiers multiplateforme",
+          "content": "L'accès au système de fichiers varie considérablement entre iOS et Android, nécessitant des implémentations spécifiques à la plateforme. Sur Android, l'application demande les permissions nécessaires pour accéder et sauvegarder des fichiers, tandis que sur iOS, le partage et l'exportation de documents sont rationalisés et conviviaux. Veuillez noter : la version Android de <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> n'est pas encore disponible, mais nous y travaillons. Cela assure une expérience fluide pour tous les utilisateurs, quel que soit leur appareil."
+        },
+        "appStore": {
+          "title": "Processus d'approbation App Store",
+          "content": "Naviguer dans le processus d'approbation de l'App Store a été une éducation en soi. Les directives d'Apple pour les achats intégrés sont particulièrement strictes, nécessitant une implémentation soigneuse de la restauration d'achat et une divulgation claire des prix."
+        }
+      },
+      "conclusion": {
+        "title": "Conclusion",
+        "paragraphs": [
+          "Construire <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> a été un projet incroyablement gratifiant, de l'identification d'un besoin personnel à la création d'un produit poli qui résout de vrais problèmes. La combinaison de React Native avec Expo, Firebase Cloud Functions et pdf-lib nous a permis de créer une boîte à outils PDF puissante mais intuitive qui vit directement sur votre appareil mobile.",
+          "Nous espérons que ce regard dans les coulisses du développement de <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> fournit quelques insights pour d'autres développeurs cherchant à créer leurs propres applications mobiles. Si vous êtes intéressé par essayer <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> vous-même, c'est disponible maintenant sur l'App Store et Google Play."
+        ]
+      }
+    },
+    "appLinks": {
+      "appStore": "Télécharger sur l'App Store",
+      "androidComingSoon": "Version Android bientôt disponible"
+    }
+  },
   "footer": {
     "backLink": "Retour au Blog",
     "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. Tous droits réservés."
   },
   "common": {
-    "backToTop": "Retour en haut"
+    "backToTop": "Retour en haut",
+    "toggleDarkMode": "Basculer le mode sombre"
   }
 } 

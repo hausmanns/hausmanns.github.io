@@ -17,6 +17,12 @@
     "intro": "For years, I've been a music enthusiast with playlists spread across different streaming platforms. The frustration of recreating carefully curated playlists when switching services led me to build <a href=\"https://isoundport.com\" target=\"_blank\">iSoundPort</a> — a web application that seamlessly converts iTunes playlists to Spotify.",
     "figcaption1": "iSoundPort's main interface showing the playlist conversion process",
     "figcaption2": "High-level architecture diagram of the iSoundPort application",
+    "altText": {
+      "appPreview": "iSoundPort App Preview",
+      "interface": "iSoundPort Interface",
+      "architecture": "iSoundPort Architecture",
+      "enlargedView": "Enlarged view"
+    },
     "sections": {
       "problem": {
         "title": "The Problem",
@@ -132,6 +138,7 @@
     "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. All rights reserved."
   },
   "common": {
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "toggleDarkMode": "Toggle dark mode"
   }
 } 

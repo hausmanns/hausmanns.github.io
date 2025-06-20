@@ -13,11 +13,116 @@
     "title": "Developing <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a>: My First Mobile App for iOS and Android",
     "date": "April 3, 2024"
   },
+  "content": {
+    "intro": "In an age where digital documents are ubiquitous, we - together with my colleague Tom Suter - found ourselves constantly wrestling with PDFs. Merging research papers, extracting specific pages, and needing quick summaries—these seemingly simple tasks often required jumping between multiple desktop apps or expensive subscriptions. Frustrated by this workflow, we decided to build <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a>, a sleek mobile app that puts professional PDF tools right in your pocket.",
+    "figcaption1": "The main interface of <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> showing the feature cards and beautiful gradient tab bar",
+    "altText": {
+      "appPreview": "WizPDF App Preview",
+      "homeScreen": "WizPDF Home Screen",
+      "mergerInterface": "PDF Merger Interface",
+      "manipulatorInterface": "Page Manipulator Interface",
+      "summaryInterface": "PDF Summary Interface",
+      "architecture": "WizPDF Architecture"
+    },
+    "sections": {
+      "why": {
+        "title": "Why We Built This App",
+        "intro": "As a team who regularly handles dozens of PDF documents, we kept hitting the same pain points:",
+        "painPoints": [
+          "Needing to combine multiple research papers into a single document",
+          "Wanting to rearrange or remove specific pages from large PDFs",
+          "Requiring quick summaries of lengthy documents",
+          "Doing all this on-the-go, without a desktop computer"
+        ],
+        "conclusion": "Most mobile PDF solutions were either too limited, ridiculously expensive, or buried these functions under confusing interfaces. We wanted to create something that was both powerful and delightfully simple to use—and <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> was born."
+      },
+      "features": {
+        "title": "Core Features",
+        "merge": {
+          "title": "PDF Merging",
+          "content": "Select and combine multiple PDFs into a single document with a few taps. Easily rearrange the order of files before merging, with a clean interface that makes the process intuitive and fast.",
+          "figcaption": "The PDF Merger screen showing selected documents ready to be combined"
+        },
+        "manipulate": {
+          "title": "Page Manipulation",
+          "content": "Reorder, delete, and extract pages from PDF documents with our visual page interface. Preview each page thumbnail and easily rearrange with intuitive up/down controls.",
+          "figcaption": "The Page Manipulator screen allowing users to reorder and delete pages"
+        },
+        "summarize": {
+          "title": "PDF Summarization",
+          "content": "Generate AI-powered summaries of PDF documents in short, medium, or long formats. Perfect for quickly extracting key information from lengthy papers or reports.",
+          "figcaption": "The PDF Summary screen showing the summarization options and results"
+        }
+      },
+      "technical": {
+        "title": "Technical Implementation",
+        "reactNative": {
+          "title": "React Native with Expo",
+          "content": "We chose React Native with Expo for cross-platform development, which proved to be an excellent decision. Using TypeScript for type safety made the codebase more maintainable, while Expo's toolchain simplified deployment and testing. The entire app is built around a bottom tab navigation that provides quick access to each core feature, with a unified design language throughout. Navigating between Home, Merge, Summaries, and Sort is seamless and intuitive, making it easy for users to access the tools they need."
+        },
+        "pdfEngine": {
+          "title": "PDF Processing Engine",
+          "content": "Working with PDFs on mobile devices presented several challenges, particularly around memory management and performance. We leveraged a powerful open-source library to handle core operations like merging and page manipulation. This allowed users to combine documents, reorder or extract pages, and save new PDFs—all directly on their device, without sending sensitive documents to external servers. The process is fast, secure, and works offline, making it ideal for privacy-conscious users."
+        },
+        "cloudFunctions": {
+          "title": "Cloud Functions for AI Summaries",
+          "content": "For the PDF summarization feature, we used cloud-based AI processing. When a user requests a summary, the app securely uploads the document to the cloud, where an AI model generates a concise summary in the chosen length. The summary is then delivered back to the app, allowing users to quickly understand the key points of lengthy documents. This approach keeps the app lightweight while still offering powerful functionality."
+        },
+        "monetization": {
+          "title": "Monetization with In-App Purchases",
+          "content": "We implemented a freemium approach with in-app purchases that lets users try all features with limited usage before upgrading. The free tier offers a set number of merges, summaries, and page manipulations, while a premium upgrade unlocks unlimited access. For those who need more summaries, additional packs are available for purchase. This model ensures everyone can try the app, while power users can unlock its full potential."
+        }
+      },
+      "design": {
+        "title": "UI/UX Design",
+        "ui": {
+          "title": "Beautiful UI with React Native Paper",
+          "content": "The app's polished UI was built with a modern component library that provides Material Design elements working seamlessly across platforms. The home screen welcomes users with a friendly message and a clean layout, while feature cards guide them to the main tools. The design is consistent, visually appealing, and easy to navigate, making the app accessible to everyone."
+        },
+        "haptic": {
+          "title": "Haptic Feedback for Enhanced Interaction",
+          "content": "To make the app feel more responsive and premium, we added haptic feedback throughout the user experience. Whenever users select files, merge documents, or complete an action, subtle vibrations provide tactile confirmation. These small touches enhance the overall feel of the app and make interactions more satisfying."
+        }
+      },
+      "challenges": {
+        "title": "Challenges and Solutions",
+        "performance": {
+          "title": "Performance Optimization",
+          "content": "Handling large PDF files on mobile devices required careful optimization to prevent crashes and maintain smooth performance:",
+          "points": [
+            "Implemented efficient file loading and processing for large documents",
+            "Optimized memory usage when handling multiple PDFs",
+            "Added loading indicators to provide feedback during processing"
+          ]
+        },
+        "fileHandling": {
+          "title": "Cross-Platform File Handling",
+          "content": "File system access varies significantly between iOS and Android, requiring platform-specific implementations. On Android, the app requests the necessary permissions to access and save files, while on iOS, sharing and exporting documents is streamlined and user-friendly. Please note: the Android version of <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> is not yet available, but we are working on it. This ensures a smooth experience for all users, regardless of their device."
+        },
+        "appStore": {
+          "title": "App Store Approval Process",
+          "content": "Navigating the App Store approval process was an education in itself. Apple's guidelines for in-app purchases are particularly strict, requiring careful implementation of purchase restoration and clear disclosure of pricing."
+        }
+      },
+      "conclusion": {
+        "title": "Conclusion",
+        "paragraphs": [
+          "Building <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> has been an incredibly rewarding project, from identifying a personal need to creating a polished product that solves real problems. The combination of React Native with Expo, Firebase Cloud Functions, and pdf-lib has enabled us to create a powerful yet intuitive PDF toolkit that lives right on your mobile device.",
+          "We hope this behind-the-scenes look at <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a>'s development provides some insight for other developers looking to create their own mobile apps. If you're interested in trying <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> yourself, it's available now on the App Store and Google Play."
+        ]
+      }
+    },
+    "appLinks": {
+      "appStore": "Download on the App Store",
+      "androidComingSoon": "Android version coming soon"
+    }
+  },
   "footer": {
     "backLink": "Back to Blog",
     "copyright": "2025 <span class=\"easter-egg-trigger\" style=\"cursor: pointer;\">Seb</span> Hausmann. All rights reserved."
   },
   "common": {
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "toggleDarkMode": "Toggle dark mode"
   }
 } 
