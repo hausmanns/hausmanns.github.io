@@ -1,0 +1,29 @@
+{
+  "publications": [
+    {
+      "title": "VR for neuroscience research: virtual reality system for studying adaptive visuomotor behavior in mice",
+      "authors": [
+        "S Hausmann",
+        "M Mathis"
+      ],
+      "venue": "bioRxiv",
+      "year": "2024",
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?user=xBW0bCcAAAAJ"
+    },
+    {
+      "title": "Measuring and modeling the motor system with machine learning",
+      "authors": [
+        "M Mathis",
+        "S Hausmann",
+        "others"
+      ],
+      "venue": "Current Opinion in Neurobiology",
+      "year": "2021",
+      "citations": 45,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0959438821000519"
+    }
+  ],
+  "updated": "2025-06-20T12:23:14.983387",
+  "user_id": "xBW0bCcAAAAJ"
+}

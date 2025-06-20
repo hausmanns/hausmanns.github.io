@@ -66,6 +66,7 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
@@ -352,6 +353,25 @@
             </div>
         </section>
 
+        <!-- Publications Section -->
+        <section id="publications" class="section publications-section">
+            <div class="container">
+                <h2>Publications</h2>
+                <div class="publications-header">
+                    <p>Publications from <a href="https://scholar.google.com/citations?user=xBW0bCcAAAAJ&hl=en" target="_blank">Google Scholar</a> automatically updated.</p>
+                </div>
+                <div id="publications-loading" class="loading-indicator">
+                    <i class="fas fa-spinner fa-spin"></i> Loading publications...
+                </div>
+                <div id="publications-container" class="publications-grid" style="display: none;">
+                    <!-- Publications will be loaded here -->
+                </div>
+                <div id="publications-error" class="error-message" style="display: none;">
+                    <p>Unable to load publications. Please visit my <a href="https://scholar.google.com/citations?user=xBW0bCcAAAAJ&hl=en" target="_blank">Google Scholar profile</a> directly.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Blog Section -->
         <section id="blog" class="section blog-section">
             <div class="container">
@@ -458,6 +478,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/publications.js"></script>
     <script src="js/severance-game.js"></script>
     
     <!-- Additional script to ensure sections are visible -->
