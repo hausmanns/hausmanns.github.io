@@ -97,7 +97,7 @@
         },
         "fileHandling": {
           "title": "Cross-Platform File Handling",
-          "content": "File system access varies significantly between iOS and Android, requiring platform-specific implementations. On Android, the app requests the necessary permissions to access and save files, while on iOS, sharing and exporting documents is streamlined and user-friendly. Please note: the Android version of <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> is not yet available, but we are working on it. This ensures a smooth experience for all users, regardless of their device."
+          "content": "File system access varies significantly between iOS and Android, requiring platform-specific implementations. On Android, the app requests the necessary permissions to access and save files, while on iOS, sharing and exporting documents is streamlined and user-friendly. Please note: the Android version of WizPDF is not yet available, but we are working on it. This ensures a smooth experience for all users, regardless of their device."
         },
         "appStore": {
           "title": "App Store Approval Process",

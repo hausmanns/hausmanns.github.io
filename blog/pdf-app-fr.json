@@ -97,7 +97,7 @@
         },
         "fileHandling": {
           "title": "Gestion de fichiers multiplateforme",
-          "content": "L'accès au système de fichiers varie considérablement entre iOS et Android, nécessitant des implémentations spécifiques à la plateforme. Sur Android, l'application demande les permissions nécessaires pour accéder et sauvegarder des fichiers, tandis que sur iOS, le partage et l'exportation de documents sont rationalisés et conviviaux. Veuillez noter : la version Android de <a href=\"https://wizpdf.xyz\" target=\"_blank\" rel=\"noopener\">WizPDF</a> n'est pas encore disponible, mais nous y travaillons. Cela assure une expérience fluide pour tous les utilisateurs, quel que soit leur appareil."
+          "content": "L'accès au système de fichiers varie considérablement entre iOS et Android, nécessitant des implémentations spécifiques à la plateforme. Sur Android, l'application demande les permissions nécessaires pour accéder et sauvegarder des fichiers, tandis que sur iOS, le partage et l'exportation de documents sont rationalisés et conviviaux. Veuillez noter : la version Android de WizPDF n'est pas encore disponible, mais nous y travaillons. Cela assure une expérience fluide pour tous les utilisateurs, quel que soit leur appareil."
         },
         "appStore": {
           "title": "Processus d'approbation App Store",

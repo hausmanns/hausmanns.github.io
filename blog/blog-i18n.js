@@ -315,11 +315,62 @@ class BlogI18n {
             }
         }
         
+        // Update specific sections that might not be caught by the general logic
+        this.updateSpecificSections();
+        
         // Update conclusion paragraphs
         this.updateConclusionParagraphs();
         
         // Update future enhancements list
         this.updateFutureList();
+    }
+
+    updateSpecificSections() {
+        const sections = this.t('content.sections');
+        
+        // Find and update specific sections by looking for exact content matches
+        const allParagraphs = document.querySelectorAll('.blog-post-content p');
+        
+        allParagraphs.forEach(p => {
+            const text = p.textContent.toLowerCase();
+            
+            // Update Track Matching Accuracy paragraph
+            if (text.includes('biggest challenge was achieving') || text.includes('track matching') || 
+                text.includes('le plus grand défi était d\'atteindre') || text.includes('correspondance des pistes')) {
+                p.textContent = sections.challenges.matching.content;
+            }
+            
+            // Update Authentication Complexity paragraph
+            if (text.includes('working with multiple authentication') || text.includes('firebase and spotify oauth') ||
+                text.includes('travailler avec plusieurs systèmes') || text.includes('firebase et spotify oauth')) {
+                p.textContent = sections.lessons.auth.content;
+            }
+            
+            // Update Full-Stack Integration paragraph
+            if (text.includes('building isoundport deepened') || text.includes('frontend and backend systems') ||
+                text.includes('construire isoundport a approfondi') || text.includes('systèmes frontend et backend')) {
+                p.textContent = sections.lessons.fullstack.content;
+            }
+            
+            // Update API Rate Limiting paragraph
+            if (text.includes('spotify\'s api has strict rate limits') || text.includes('queuing system') ||
+                text.includes('l\'api de spotify a des limites') || text.includes('système de file d\'attente')) {
+                p.textContent = sections.challenges.rateLimit.content;
+            }
+        });
+        
+        // Find and update the matching algorithm ordered list
+        const allOrderedLists = document.querySelectorAll('.blog-post-content ol');
+        allOrderedLists.forEach(ol => {
+            const firstLi = ol.querySelector('li');
+            if (firstLi && (firstLi.textContent.toLowerCase().includes('exact match searches') ||
+                           firstLi.textContent.toLowerCase().includes('recherches de correspondance exacte'))) {
+                const lis = ol.querySelectorAll('li');
+                sections.challenges.matching.steps.forEach((step, index) => {
+                    if (lis[index]) lis[index].textContent = step;
+                });
+            }
+        });
     }
 
     updateConclusionParagraphs() {
