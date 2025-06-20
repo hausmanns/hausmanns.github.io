@@ -128,7 +128,7 @@
         "paragraphs": [
           "Building iSoundPort was not just about solving a personal problem—it became a journey of technical exploration and growth. The project integrated multiple modern web technologies into a cohesive system that provides real value to users.",
           "If you're interested in trying iSoundPort, visit <a href=\"https://isoundport.com\" target=\"_blank\">isoundport.com</a>. I welcome feedback and feature suggestions from fellow music enthusiasts and developers alike!",
-          "Please note that the app is currently only availble through the free tier of Spotify, as it first needs to be approved by Spotify."
+          "Please note that the app is currently only availble through a developer account, as it first needs to be approved by Spotify."
         ]
       }
     }
