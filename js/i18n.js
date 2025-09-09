@@ -91,7 +91,7 @@ class I18n {
 
     updateNavigation() {
         const navLinks = document.querySelectorAll('.nav-links a');
-        const navKeys = ['home', 'projects', 'blog', 'contact'];
+        const navKeys = ['home', 'projects', 'publications', 'blog', 'contact'];
         
         navLinks.forEach((link, index) => {
             if (index < navKeys.length) {

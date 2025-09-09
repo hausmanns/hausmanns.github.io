@@ -113,6 +113,13 @@
     "title": "Blog",
     "items": [
       {
+        "title": "Construire EasyApplAI : Révolutionner les candidatures aux emplois grâce à l'automatisation IA",
+        "date": "2025-08-15",
+        "description": "J'ai créé une plateforme de candidature qui transforme le processus ennuyeux de postuler pour des emplois. Conçu avec TypeScript et React, EasyApplAI exploite l'IA pour créer des CV et lettres de motivation adaptées aux ATS, suivi des candidatures avec un système basé sur l'historique et aide à préparer les entretiens — tout en maintenant vos données personnelles sécurisées par anonymisation.",
+        "readBlog": "Lire le Blog",
+        "visitWebsite": "Visiter le Site"
+      },
+      {
         "title": "Construire iSoundPort : Mon parcours pour créer un convertisseur de playlist musicale Full-Stack",
         "date": "2023-04-10",
         "description": "Comment j'ai construit une application web qui convertit de manière transparente les playlists iTunes vers Spotify en utilisant Flask, Firebase et l'API Spotify, avec une intégration Stripe pour les paiements.",

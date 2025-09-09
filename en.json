@@ -113,6 +113,13 @@
     "title": "Blog",
     "items": [
       {
+        "title": "Building EasyApplAI: Revolutionizing Job Applications with AI-Powered Automation",
+        "date": "2025-08-15",
+        "description": "I created a comprehensive job application platform that transforms the tedious process of applying for jobs. Built with TypeScript and React, EasyApplAI leverages AI to craft ATS-friendly resumes and cover letters, tracks applications with a history-based system, and helps you prep for interviews—all while keeping your personal data secure through anonymization.",
+        "readBlog": "Read Blog",
+        "visitWebsite": "Visit Website"
+      },
+      {
         "title": "Building iSoundPort: My Journey Creating a Full-Stack Music Playlist Converter",
         "date": "2023-04-10",
         "description": "How I built a web application that seamlessly converts iTunes playlists to Spotify using Flask, Firebase, and the Spotify API, with Stripe integration for payments.",
