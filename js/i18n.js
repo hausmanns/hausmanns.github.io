@@ -113,16 +113,20 @@ class I18n {
         if (bioText) {
             bioText.innerHTML = `
                 ${this.t('bio.welcome')}
-                <br><br>
-                ${this.t('bio.workInvolves')}
                 <br>
-                - ${this.t('bio.programming')}
                 <br>
-                - ${this.t('bio.neuroscience')}
+                <i class="fas fa-laptop-code"></i> ${this.t('bio.developmentFocus')}
                 <br>
-                - ${this.t('bio.vr')}
+                - <i class="fas fa-globe"></i> ${this.t('bio.webApps')}
                 <br>
-                - ${this.t('bio.dataAnalysis')}
+                - <i class="fas fa-mobile-alt"></i> ${this.t('bio.iosDev')}
+                <br>
+                - <i class="fas fa-robot"></i> ${this.t('bio.aiAutomation')}
+                <br>
+                - <i class="fas fa-sync-alt"></i> ${this.t('bio.endToEnd')}
+                <br>
+                <br>
+                <i class="fas fa-microscope"></i> ${this.t('bio.background')}
             `;
         }
 
@@ -156,7 +160,7 @@ class I18n {
     }
 
     updateSkillCategories() {
-        const categories = ['programming', 'dataScience', 'design'];
+        const categories = ['fullstack', 'aiAutomation', 'additional'];
         
         categories.forEach((category, index) => {
             const categoryElement = document.querySelectorAll('.skill-category')[index];
@@ -187,24 +191,27 @@ class I18n {
             'Python': 'fab fa-python',
             'C# / C++': 'fab fa-cuttlefish',
             'SQL': 'fas fa-database',
-            'Web Dev': 'fab fa-js',
-            'Dév Web': 'fab fa-js',
+            'Web Development': 'fab fa-js',
+            'Développement Web': 'fab fa-js',
+            'iOS Development': 'fab fa-apple',
+            'Développement iOS': 'fab fa-apple',
+            'Backend & Databases': 'fas fa-database',
+            'Backend & Bases de Données': 'fas fa-database',
+            'AI Integration': 'fas fa-robot',
+            'Intégration IA': 'fas fa-robot',
+            'Process Automation': 'fas fa-cogs',
+            'Automatisation de Processus': 'fas fa-cogs',
+            'Machine Learning': 'fas fa-brain',
+            'Apprentissage Automatique': 'fas fa-brain',
             'Data Analysis': 'fas fa-chart-line',
             'Analyse de Données': 'fas fa-chart-line',
-            'Lab Techniques': 'fas fa-microscope',
-            'Techniques de Laboratoire': 'fas fa-microscope',
-            'Optogenetics': 'fas fa-dna',
-            'Optogénétique': 'fas fa-dna',
-            'Behavioral Analysis': 'fas fa-project-diagram',
-            'Analyse Comportementale': 'fas fa-project-diagram',
             '3D & UI Design': 'fas fa-cube',
+            'Design 3D & UI': 'fas fa-cube',
             'Design 3D et UI': 'fas fa-cube',
             'VR Development': 'fas fa-vr-cardboard',
             'Développement VR': 'fas fa-vr-cardboard',
-            'Mentorship': 'fas fa-chalkboard-teacher',
-            'Mentorat': 'fas fa-chalkboard-teacher',
-            'Project Mgmt': 'fas fa-tasks',
-            'Gestion de Projets': 'fas fa-tasks'
+            'Neuroscience Research': 'fas fa-microscope',
+            'Recherche en Neurosciences': 'fas fa-microscope'
         };
         return iconMap[skillName] || 'fas fa-code';
     }

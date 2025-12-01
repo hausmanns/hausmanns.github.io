@@ -8,13 +8,14 @@
   },
   "bio": {
     "title": "Seb Hausmann, PhD",
-    "subtitle": "Data-driven Neuroscientist and Neuroengineer",
-    "welcome": "Welcome to my portfolio! I'm an Engineer from EPFL. Passionate about the brain, I am using advanced neuroengineering techniques. Currently, I just finished my PhD in Mackenzie Mathis' Laboratory of Adaptive Intelligence at EPFL, where I developed cutting-edge VR setups for mice and study the neural mechanisms underlying visuomotor adaptation.",
-    "workInvolves": "🔬 My work involves:",
-    "programming": "🧑‍💻 Programming: <B>Python</B>, C#, SQL, MATLAB, C++",
-    "neuroscience": "🧠 Neuroscience research: <B>Optogenetics</B>, neural circuits, behavioral analysis",
-    "vr": "🎮 Virtual Reality development for <B>biomedical</B> applications",
-    "dataAnalysis": "📊 Advanced <B>data analysis</B> and <B>machine learning</B>",
+    "subtitle": "Neuroengineer & Full-Stack Developer",
+    "welcome": "Welcome to my portfolio! I'm a full-stack developer and Engineer from EPFL with a PhD in neuroscience. My background spans experimental research with both <B>human subjects</B> and <B>mice</B>, where I developed VR systems for behavioral studies, worked with optogenetics and neural recordings, and analyzed large-scale datasets. Now I specialize in end-to-end application development for web and iOS platforms, building complete solutions from frontend interfaces to backend infrastructure, and integrating AI workflows and automation to create intelligent, efficient systems.",
+    "developmentFocus": "My development work focuses on:",
+    "webApps": "<B>Full-stack web applications</B>: TypeScript, React, Node.js, modern frameworks",
+    "iosDev": "<B>iOS mobile development</B>: React Native, Expo, Xcode",
+    "aiAutomation": "<B>AI integration & automation</B>: Implementing AI workflows, LLM integration, and process automation",
+    "endToEnd": "<B>End-to-end solutions</B>: From concept to deployment, including database design, API development, and cloud infrastructure",
+    "background": "This experimental neuroscience experience has fundamentally shaped how I approach software development. I bring a data-driven mindset, rigorous analytical thinking, and a deep understanding of complex system integration to every project, combining technical skills with scientific methodology.",
     "education": "Education",
     "educationItems": [
       "PhD in Neuroscience, Adaptive intelligence - EPFL, Switzerland (2025)",
@@ -30,31 +31,31 @@
     ],
     "technicalSkills": "Technical Skills",
     "skillCategories": {
-      "programming": {
-        "title": "Programming & Development",
+      "fullstack": {
+        "title": "Full-Stack Development",
         "skills": [
-          { "name": "Python", "details": "NumPy, Pandas, scikit-learn" },
-          { "name": "C# / C++", "details": "Unity, Arduino" },
-          { "name": "SQL", "details": "DataJoint" },
-          { "name": "Web Dev", "details": "JavaScript, React, HTML/CSS" }
+          { "name": "Web Development", "details": "TypeScript, React, Node.js, HTML/CSS" },
+          { "name": "iOS Development", "details": "React Native, Expo, Xcode" },
+          { "name": "Backend & Databases", "details": "SQL, NoSQL, REST APIs, DataJoint" },
+          { "name": "Python", "details": "Backend services, Data processing" }
         ]
       },
-      "dataScience": {
-        "title": "Data Science & Research",
+      "aiAutomation": {
+        "title": "AI Workflows & Automation",
         "skills": [
-          { "name": "Data Analysis", "details": "Statistical Analysis, ML, Passionate about emerging AI tools!" },
-          { "name": "Lab Techniques", "details": "Stereotaxic Surgeries, Microscopy (Confocal), Histology (IHC)" },
-          { "name": "Optogenetics", "details": "Crafting fibers, Neural Circuit Manipulation" },
-          { "name": "Behavioral Analysis", "details": "Pose Estimation (DeepLabCut)" }
+          { "name": "AI Integration", "details": "LLM APIs, AI-powered features, Workflow automation" },
+          { "name": "Process Automation", "details": "Automated pipelines, Data processing workflows" },
+          { "name": "Machine Learning", "details": "scikit-learn, Data analysis, Predictive models" },
+          { "name": "Data Analysis", "details": "NumPy, Pandas, Statistical analysis" }
         ]
       },
-      "design": {
-        "title": "Design & Leadership",
+      "additional": {
+        "title": "Additional Skills",
         "skills": [
+          { "name": "C# / C++", "details": "Unity, Arduino, Game development" },
           { "name": "3D & UI Design", "details": "Blender, Figma, Adobe" },
-          { "name": "VR Development", "details": "Unity3D, Behavioral VR" },
-          { "name": "Mentorship", "details": "Student Supervision" },
-          { "name": "Project Mgmt", "details": "Research Leadership" }
+          { "name": "VR Development", "details": "Unity3D, Biomedical VR applications" },
+          { "name": "Neuroscience Research", "details": "Optogenetics, Behavioral analysis, Lab techniques" }
         ]
       }
     }

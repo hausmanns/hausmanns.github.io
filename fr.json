@@ -8,13 +8,14 @@
   },
   "bio": {
     "title": "Seb Hausmann, PhD",
-    "subtitle": "Neuroscientifique et Neuroingénieur orienté données",
-    "welcome": "Bienvenue sur mon portfolio ! Je suis Ingénieur de l'EPFL. Passionné par le cerveau, j'utilise des techniques de neuroingénierie avancées. Actuellement, je viens de terminer mon doctorat dans le laboratoire d'Intelligence Adaptative de Mackenzie Mathis à l'EPFL, où j'ai développé des installations VR de pointe pour les souris et étudié les mécanismes neuronaux sous-jacents à l'adaptation visuomotrice.",
-    "workInvolves": "🔬 Mon travail implique :",
-    "programming": "🧑‍💻 Programmation : <B>Python</B>, C#, SQL, MATLAB, C++",
-    "neuroscience": "🧠 Recherche en neurosciences : <B>Optogénétique</B>, circuits neuronaux, analyse comportementale",
-    "vr": "🎮 Développement de Réalité Virtuelle pour des applications <B>biomédicales</B>",
-    "dataAnalysis": "📊 <B>Analyse de données</B> avancée et <B>apprentissage automatique</B>",
+    "subtitle": "Neuroingénieur & Développeur Full-Stack",
+    "welcome": "Bienvenue sur mon portfolio ! Je suis développeur full-stack et Ingénieur de l'EPFL avec un doctorat en neurosciences. Mon parcours couvre la recherche expérimentale avec des <B>sujets humains</B> et des <B>souris</B>, où j'ai développé des systèmes VR pour des études comportementales, travaillé avec l'optogénétique et les enregistrements neuronaux, et analysé de grands ensembles de données. Je me spécialise maintenant dans le développement d'applications de bout en bout pour les plateformes web et iOS, construisant des solutions complètes des interfaces frontend à l'infrastructure backend, et intégrant des flux de travail IA et l'automatisation pour créer des systèmes intelligents et efficaces.",
+    "developmentFocus": "Mon travail de développement se concentre sur :",
+    "webApps": "<B>Applications web full-stack</B> : TypeScript, React, Node.js, frameworks modernes",
+    "iosDev": "<B>Développement mobile iOS</B> : React Native, Expo, Xcode",
+    "aiAutomation": "<B>Intégration IA & automatisation</B> : Implémentation de flux de travail IA, intégration LLM, et automatisation de processus",
+    "endToEnd": "<B>Solutions de bout en bout</B> : Du concept au déploiement, incluant la conception de bases de données, le développement d'API, et l'infrastructure cloud",
+    "background": "Cette expérience en neurosciences expérimentales a fondamentalement façonné ma façon d'aborder le développement logiciel. J'apporte une approche axée sur les données, une pensée analytique rigoureuse, et une compréhension approfondie de l'intégration de systèmes complexes à chaque projet, combinant compétences techniques et méthodologie scientifique.",
     "education": "Formation",
     "educationItems": [
       "Doctorat en Neurosciences, Intelligence adaptative - EPFL, Suisse (2025)",
@@ -30,31 +31,31 @@
     ],
     "technicalSkills": "Compétences Techniques",
     "skillCategories": {
-      "programming": {
-        "title": "Programmation et Développement",
+      "fullstack": {
+        "title": "Développement Full-Stack",
         "skills": [
-          { "name": "Python", "details": "NumPy, Pandas, scikit-learn" },
-          { "name": "C# / C++", "details": "Unity, Arduino" },
-          { "name": "SQL", "details": "DataJoint" },
-          { "name": "Dév Web", "details": "JavaScript, React, HTML/CSS" }
+          { "name": "Développement Web", "details": "TypeScript, React, Node.js, HTML/CSS" },
+          { "name": "Développement iOS", "details": "React Native, Expo, Xcode" },
+          { "name": "Backend & Bases de Données", "details": "SQL, NoSQL, APIs REST, DataJoint" },
+          { "name": "Python", "details": "Services backend, Traitement de données" }
         ]
       },
-      "dataScience": {
-        "title": "Science des Données et Recherche",
+      "aiAutomation": {
+        "title": "Flux de Travail IA & Automatisation",
         "skills": [
-          { "name": "Analyse de Données", "details": "Analyse Statistique, ML, Passionné par les outils IA émergents !" },
-          { "name": "Techniques de Laboratoire", "details": "Chirurgies Stéréotaxiques, Microscopie (Confocale), Histologie (IHC)" },
-          { "name": "Optogénétique", "details": "Fabrication de fibres, Manipulation de Circuits Neuronaux" },
-          { "name": "Analyse Comportementale", "details": "Estimation de Posture (DeepLabCut)" }
+          { "name": "Intégration IA", "details": "APIs LLM, Fonctionnalités IA, Automatisation de flux de travail" },
+          { "name": "Automatisation de Processus", "details": "Pipelines automatisés, Flux de traitement de données" },
+          { "name": "Apprentissage Automatique", "details": "scikit-learn, Analyse de données, Modèles prédictifs" },
+          { "name": "Analyse de Données", "details": "NumPy, Pandas, Analyse statistique" }
         ]
       },
-      "design": {
-        "title": "Design et Leadership",
+      "additional": {
+        "title": "Compétences Supplémentaires",
         "skills": [
-          { "name": "Design 3D et UI", "details": "Blender, Figma, Adobe" },
-          { "name": "Développement VR", "details": "Unity3D, VR Comportementale" },
-          { "name": "Mentorat", "details": "Supervision d'Étudiants" },
-          { "name": "Gestion de Projets", "details": "Leadership de Recherche" }
+          { "name": "C# / C++", "details": "Unity, Arduino, Développement de jeux" },
+          { "name": "Design 3D & UI", "details": "Blender, Figma, Adobe" },
+          { "name": "Développement VR", "details": "Unity3D, Applications VR biomédicales" },
+          { "name": "Recherche en Neurosciences", "details": "Optogénétique, Analyse comportementale, Techniques de laboratoire" }
         ]
       }
     }
