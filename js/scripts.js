@@ -402,3 +402,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Make blog cards with "Visit Website" button clickable
+document.addEventListener('DOMContentLoaded', function() {
+    const blogCards = document.querySelectorAll('.blog-card');
+    
+    blogCards.forEach(card => {
+        // Check if this card has a "Visit Website" button
+        const visitWebsiteButton = card.querySelector('.visit-website');
+        
+        if (visitWebsiteButton) {
+            // Get the URL from the button
+            const websiteUrl = visitWebsiteButton.getAttribute('href');
+            
+            if (websiteUrl) {
+                // Add cursor pointer style
+                card.style.cursor = 'pointer';
+                
+                // Make the card clickable
+                card.addEventListener('click', function(e) {
+                    // Don't navigate if clicking on a link or button
+                    if (e.target.closest('a') || e.target.closest('button')) {
+                        return;
+                    }
+                    
+                    // Navigate to the website
+                    window.open(websiteUrl, '_blank');
+                });
+            }
+        }
+    });
+});

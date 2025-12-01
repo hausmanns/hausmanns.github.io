@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building PhotoPerfectAI: Revolutionizing Photo Editing with Natural Language AI | Seb Hausmann</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!--<script defer data-domain="hausmanns.github.io" src="https://plausible.laperrucherie.synology.me/js/script.js"></script>-->
+    <link rel="icon" type="image/png" href="../assets/logo/wolf.png">
+    <style>
+        /* Language Selector Styles */
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .language-selector button {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        
+        .language-selector button:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .language-selector button.active {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .language-selector {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+    <style>
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .blog-post-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .blog-post-header .title-container {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .app-preview {
+            flex: 0 0 200px;
+            margin-bottom: 1rem;
+        }
+        
+        .app-preview-image {
+            max-width: 100%;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+        
+        .blog-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .blog-image img {
+            max-width: 100%;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+            border: none;
+        }
+        
+        .blog-image figcaption {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .app-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .app-links img {
+            height: 50px;
+            transition: transform 0.2s;
+        }
+        
+        .app-links img:hover {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .blog-post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .blog-post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+            aspect-ratio: unset;
+            border: none;
+        }
+        
+        .blog-post-content .highlight {
+            background-color: var(--accent-color-light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content code {
+            font-family: monospace;
+            background-color: var(--background-secondary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-left: 0;
+            margin-right: 0;
+            font-style: italic;
+        }
+        
+        .blog-post-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .blog-post-footer .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .blog-post-footer .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background-color: var(--background-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card h4 i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home"></a></li>
+                <li><a href="../index.html#projects"></a></li>
+                <li><a href="../index.html#blog" class="active"></a></li>
+                <li><a href="../index.html#contact"></a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+                <li>
+                    <div class="language-selector">
+                        <button data-lang="en" onclick="window.blogI18n && window.blogI18n.changeLanguage('en')">EN</button>
+                        <button data-lang="fr" onclick="window.blogI18n && window.blogI18n.changeLanguage('fr')">FR</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section blog-post-section">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="title-container">
+                        <h1>Building <a href="https://photoperfectai.vercel.app/" target="_blank" rel="noopener">PhotoPerfectAI</a>: Revolutionizing Photo Editing with Natural Language AI</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar-alt"></i> December 1, 2025</span>
+                            <span>• <i class="fas fa-tag"></i> Mobile Development, iOS, AI, Photo Editing</span>
+                        </div>
+                    </div>
+                    <div class="app-preview">
+                        <img src="../assets/images/photoperfectai-icon.png" alt="PhotoPerfectAI App Preview" class="app-preview-image">
+                    </div>
+                </div>
+                
+                <div class="blog-post-content">
+                    <p>
+                        In an age where professional photo editing required complex software and technical expertise, I set out to create something simple and accessible: an app that lets you talk to your photos and watch them transform. <a href="https://photoperfectai.vercel.app/" target="_blank" rel="noopener">PhotoPerfectAI</a> harnesses the power of Google's Gemini API to make professional-grade photo editing accessible to everyone - no account required, no steep learning curve, just natural language commands that bring your vision to life.
+                    </p>
+                    
+                    <figure class="blog-image">
+                        <img src="../assets/images/photoperfectai-phone.png" alt="PhotoPerfectAI App Interface" />
+                        <figcaption>The main interface of <a href="https://photoperfectai.vercel.app/" target="_blank" rel="noopener">PhotoPerfectAI</a> showcasing the app's sleek design and intuitive user experience</figcaption>
+                    </figure>
+                    
+                    <h2>Why I Built This App</h2>
+                    <p>
+                        Traditional photo editing tools have always frustrated me. Whether it was adjusting lighting, removing unwanted objects, or creating professional portraits, the process was either too complex for casual users or required expensive subscriptions or complex software. I kept encountering the same pain points:
+                    </p>
+                    <ul>
+                        <li>Needing professional-quality edits without learning complex software</li>
+                        <li>Wanting to transform casual selfies into LinkedIn-worthy portraits</li>
+                        <li>Requiring quick object removal or background changes</li>
+                        <li>Desiring an intuitive, natural way to communicate editing intentions</li>
+                    </ul>
+                    <p>
+                        Most photo editing apps were either too limited, required expensive subscriptions, or buried powerful features under confusing interfaces. I wanted to create something that was both powerful and delightfully simple - where you could just describe what you want in plain language, and the AI would make it happen. That's how <a href="https://photoperfectai.vercel.app/" target="_blank" rel="noopener">PhotoPerfectAI</a> was born.
+                    </p>
+                    
+                    <h2>Core Features</h2>
+                    
+                    <div class="app-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0;">
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
+                            <h4><i class="fas fa-comments"></i> Talk to Your Photos</h4>
+                            <p>Simply describe what you want in natural language. Our AI understands commands like "make it sunset," "add a cat," or "change the background" and executes your vision instantly. No complex interfaces, no learning curve - just describe and transform.</p>
+                        </div>
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
+                            <h4><i class="fas fa-user-tie"></i> Professional Results</h4>
+                            <p>Transform a simple selfie into a LinkedIn-worthy professional photo. Perfect lighting, background, and attire adjustments - all powered by AI. Create stunning professional portraits from a single selfie with just a few taps.</p>
+                        </div>
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
+                            <h4><i class="fas fa-eraser"></i> Remove Unwanted Objects</h4>
+                            <p>Erase people, objects, or anything you don't want in your photos with a simple command. Whether it's a photobomber, an unsightly object, or unwanted background elements, PhotoPerfectAI removes them seamlessly.</p>
+                        </div>
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
+                            <h4><i class="fas fa-eye"></i> Open Eyes & Beautify</h4>
+                            <p>Fix closed eyes, remove blemishes, and enhance your natural beauty with AI-powered retouching. The app intelligently opens closed eyes in photos and provides professional-grade facial enhancement.</p>
+                        </div>
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
+                            <h4><i class="fas fa-palette"></i> Recolor Old Photos</h4>
+                            <p>Bring vintage black and white photos to life with stunning, realistic colorization. Transform historical family photos into vibrant, colorful memories with AI-powered color restoration.</p>
+                        </div>
+                        <div class="feature-card" style="max-width: 350px; min-width: 250px;">
+                            <h4><i class="fas fa-globe"></i> Multi-Language Support</h4>
+                            <p>Use PhotoPerfectAI in your preferred language. No account required, just start editing. The app supports multiple languages, making professional photo editing accessible to users worldwide.</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Technical Implementation</h2>
+                    
+                    <h3>Natural Language Processing for Photo Editing</h3>
+                    <p>
+                        The core innovation of PhotoPerfectAI lies in its natural language processing capabilities. Users can describe their editing intentions in plain English (or other supported languages), and the app's AI interprets these commands to perform complex photo manipulations. This required integrating advanced language models that understand context, intent, and visual editing terminology. The system processes commands like "make it sunset" by understanding both the semantic meaning and the visual transformation required.
+                    </p>
+                    
+                    <h3>Gemini API Integration</h3>
+                    <p>
+                        PhotoPerfectAI leverages Google's Gemini API to power its photo editing capabilities. The app provides a simple, intuitive interface that connects users to powerful AI image generation and manipulation features. By integrating Gemini's API, the app can handle complex photo editing tasks like background changes, object removal, and style transformations. The API handles the heavy lifting of AI processing, allowing the app to focus on delivering a clean, user-friendly experience.
+                    </p>
+                    
+                    <h3>Simple Interface for Complex Edits</h3>
+                    <p>
+                        PhotoPerfectAI provides a simple interface that connects users to Gemini's powerful image generation and manipulation capabilities. Whether it's changing backgrounds, adding objects, or transforming lighting conditions, the app leverages Gemini's API to handle these complex editing tasks. The API's advanced models ensure that edits look natural and professional, making sophisticated photo editing accessible through simple natural language commands.
+                    </p>
+                    
+                    <h3>Facial Retouching Features</h3>
+                    <p>
+                        The app's facial retouching capabilities leverage Gemini's API to handle tasks like opening closed eyes, removing blemishes, and enhancing portraits. Users can simply describe what they want - "open my eyes" or "remove blemishes" - and the API handles the complex image processing to deliver natural-looking results that maintain the original photo's style and appearance.
+                    </p>
+                    
+                    <h3>Simple One-Time Purchase Model</h3>
+                    <p>
+                        PhotoPerfectAI uses a straightforward one-time purchase model. When you buy the app, you own it forever with full access to all features. No subscriptions, no in-app purchases, no accounts required. This simple approach means you pay once and can use the app as much as you want, whenever you want, without any ongoing costs or limitations.
+                    </p>
+                    
+                    <h2>UI/UX Design</h2>
+                    
+                    <h3>Intuitive Interface Design</h3>
+                    <p>
+                        The app's interface was designed with simplicity and clarity in mind. The main screen features a clean, modern design that guides users through the editing process without overwhelming them with options. The natural language input is prominently displayed, making it clear that users can simply describe what they want. Visual feedback during processing keeps users informed, while the results are displayed in a way that makes it easy to compare before and after versions.
+                    </p>
+                    
+                    <h3>Seamless User Experience</h3>
+                    <p>
+                        Every interaction in PhotoPerfectAI is designed to feel natural and responsive. From selecting photos to entering editing commands, the workflow is streamlined to minimize friction. The app provides helpful suggestions and examples to guide users who might be unsure how to phrase their editing requests. This attention to user experience makes professional photo editing accessible to users of all technical skill levels.
+                    </p>
+                    
+                    <h2>Challenges and Solutions</h2>
+                    
+                    <h3>API Integration and User Experience</h3>
+                    <p>
+                        Integrating Gemini's API while maintaining a smooth user experience presented several challenges. The app needed to handle API calls efficiently and provide clear feedback during processing:
+                    </p>
+                    <ul>
+                        <li>Implemented efficient API request handling and error management</li>
+                        <li>Added clear loading states and progress indicators during processing</li>
+                        <li>Optimized image upload and download processes for faster response times</li>
+                        <li>Designed intuitive error messages and retry mechanisms for failed requests</li>
+                    </ul>
+                    
+                    <h3>Maintaining Photo Realism</h3>
+                    <p>
+                        One of the biggest challenges was ensuring that AI-generated edits looked natural and realistic. Over-processed or artificial-looking results would undermine user trust. This required careful model selection, extensive testing, and fine-tuning to ensure that edits enhance photos rather than making them look obviously manipulated. The app uses advanced techniques to preserve photo authenticity while applying requested transformations.
+                    </p>
+                    
+                    <h3>App Store Approval and AI Guidelines</h3>
+                    <p>
+                        Navigating App Store approval for an AI-powered app required careful attention to Apple's guidelines regarding AI features, user privacy, and content generation. The app needed to clearly disclose its AI capabilities, ensure user data privacy, and comply with content policies. Additionally, the app's ranking as #2 in Productivity on the App Store demonstrates its success in meeting both user needs and platform requirements.
+                    </p>
+                    
+                    <h2>Conclusion</h2>
+                    <p>
+                        Building <a href="https://photoperfectai.vercel.app/" target="_blank" rel="noopener">PhotoPerfectAI</a> has been an incredible journey into the intersection of artificial intelligence and user experience design. The app represents a simple approach to photo editing - one where natural language replaces complex interfaces, and AI makes professional-quality editing accessible to everyone.
+                    </p>
+                    <p>
+                        The success of PhotoPerfectAI, including its #2 ranking in Productivity on the App Store, validates the approach of combining powerful AI technology with intuitive design. By leveraging Gemini's API through a simple interface, the app makes professional-quality photo editing accessible to everyone. The natural language interface removes barriers that have traditionally prevented casual users from achieving professional-quality photo edits.
+                    </p>
+                    <p>
+                        I hope this behind-the-scenes look at PhotoPerfectAI's development provides insight for other developers exploring AI-powered applications. If you're interested in trying PhotoPerfectAI yourself, it's available now on the App Store for iOS 15.0 or later. Simply download, start talking to your photos, and watch them transform.
+                    </p>
+
+                    <div class="app-links">
+                        <a href="https://apps.apple.com/us/app/photoperfectai-edit-photos/id6754280667" class="app-store-link">
+                            <img src="../assets/images/appstore.svg" alt="Download on the App Store" />
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-post-footer">
+                    <a href="../index.html#blog" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>2025 <span class="easter-egg-trigger" style="cursor: pointer;">Seb</span> Hausmann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="blog-i18n.js"></script>
+    <script>initBlogI18n('photoperfectai');</script>
+    <script src="../js/scripts.js"></script>
+</body>
+</html>
+

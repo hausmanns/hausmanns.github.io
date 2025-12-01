@@ -114,6 +114,13 @@
     "title": "Blog",
     "items": [
       {
+        "title": "Construire PhotoPerfectAI : Révolutionner l'édition photo avec l'IA en langage naturel",
+        "date": "2025-12-01",
+        "description": "Une application qui vous permet simplement de parler à vos photos et de les voir se transformer. PhotoPerfectAI exploite l'IA de pointe pour rendre l'édition photo de qualité professionnelle accessible à tous—aucun compte requis, juste des commandes en langage naturel qui donnent vie à votre vision.",
+        "readBlog": "Lire le Blog",
+        "visitWebsite": "Visiter le Site"
+      },
+      {
         "title": "Construire EasyApplAI : Révolutionner les candidatures aux emplois grâce à l'automatisation IA",
         "date": "2025-08-15",
         "description": "J'ai créé une plateforme de candidature qui transforme le processus ennuyeux de postuler pour des emplois. Conçu avec TypeScript et React, EasyApplAI exploite l'IA pour créer des CV et lettres de motivation adaptées aux ATS, suivi des candidatures avec un système basé sur l'historique et aide à préparer les entretiens — tout en maintenant vos données personnelles sécurisées par anonymisation.",
