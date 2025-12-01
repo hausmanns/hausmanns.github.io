@@ -14,7 +14,7 @@
     "date": "1er décembre 2025"
   },
   "content": {
-    "intro": "À une époque où l'édition photo professionnelle nécessitait des logiciels complexes et une expertise technique, j'ai entrepris de créer quelque chose de simple et accessible : une application qui vous permet de parler à vos photos et de les voir se transformer. <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> exploite la puissance de l'API Gemini de Google pour rendre l'édition photo de qualité professionnelle accessible à tous - aucun compte requis, aucune courbe d'apprentissage abrupte, juste des commandes en langage naturel qui donnent vie à votre vision.",
+    "intro": "À une époque où l'édition photo professionnelle nécessitait des logiciels complexes et une expertise technique, j'ai entrepris de créer quelque chose de simple et accessible : une application qui vous permet de parler à vos photos et de les voir se transformer. <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> exploite la puissance de l'API Gemini de Google pour rendre l'édition photo de qualité professionnelle accessible à tous. Aucun compte requis, aucune courbe d'apprentissage abrupte, juste des commandes en langage naturel qui donnent vie à votre vision.",
     "figcaption1": "L'interface principale de <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> présentant le design élégant de l'application et l'expérience utilisateur intuitive",
     "altText": {
       "appPreview": "Aperçu de l'application PhotoPerfectAI",
@@ -30,17 +30,17 @@
           "Nécessiter une suppression rapide d'objets ou des changements de fond",
           "Désirer un moyen intuitif et naturel de communiquer ses intentions d'édition"
         ],
-        "conclusion": "La plupart des applications d'édition photo étaient soit trop limitées, nécessitaient des abonnements coûteux, ou enfouissaient des fonctionnalités puissantes sous des interfaces confuses. Je voulais créer quelque chose qui soit à la fois puissant et délicieusement simple - où vous pouvez simplement décrire ce que vous voulez en langage clair, et l'IA le réaliserait. C'est ainsi que <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> est né."
+        "conclusion": "La plupart des applications d'édition photo étaient soit trop limitées, nécessitaient des abonnements coûteux, ou enfouissaient des fonctionnalités puissantes sous des interfaces confuses. Je voulais créer quelque chose qui soit à la fois puissant et délicieusement simple, où vous pouvez simplement décrire ce que vous voulez en langage clair, et l'IA le réaliserait. C'est ainsi que <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> est né."
       },
       "features": {
         "title": "Fonctionnalités principales",
         "talkToPhotos": {
           "title": "Parlez à vos photos",
-          "content": "Décrivez simplement ce que vous voulez en langage naturel. Notre IA comprend des commandes comme \"faites un coucher de soleil,\" \"ajoutez un chat,\" ou \"changez le fond\" et exécute votre vision instantanément. Pas d'interfaces complexes, pas de courbe d'apprentissage - juste décrire et transformer."
+          "content": "Décrivez simplement ce que vous voulez en langage naturel. Notre IA comprend des commandes comme \"faites un coucher de soleil,\" \"ajoutez un chat,\" ou \"changez le fond\" et exécute votre vision instantanément. Pas d'interfaces complexes, pas de courbe d'apprentissage, juste décrire et transformer."
         },
         "professional": {
           "title": "Résultats professionnels",
-          "content": "Transformez un simple selfie en photo professionnelle digne de LinkedIn. Éclairage parfait, fond et ajustements vestimentaires - tout alimenté par l'IA. Créez de superbes portraits professionnels à partir d'un seul selfie en quelques tapotements."
+          "content": "Transformez un simple selfie en photo professionnelle digne de LinkedIn. Éclairage parfait, fond et ajustements vestimentaires, tout alimenté par l'IA. Créez de superbes portraits professionnels à partir d'un seul selfie en quelques tapotements."
         },
         "removeObjects": {
           "title": "Supprimer les objets indésirables",
@@ -75,7 +75,7 @@
         },
         "facial": {
           "title": "Fonctionnalités de retouche faciale",
-          "content": "Les capacités de retouche faciale de l'application exploitent l'API Gemini pour gérer des tâches comme ouvrir les yeux fermés, supprimer les imperfections et améliorer les portraits. Les utilisateurs peuvent simplement décrire ce qu'ils veulent - \"ouvrez mes yeux\" ou \"supprimez les imperfections\" - et l'API gère le traitement d'image complexe pour fournir des résultats naturels qui maintiennent le style et l'apparence de la photo originale."
+          "content": "Les capacités de retouche faciale de l'application exploitent l'API Gemini pour gérer des tâches comme ouvrir les yeux fermés, supprimer les imperfections et améliorer les portraits. Les utilisateurs peuvent simplement décrire ce qu'ils veulent, \"ouvrez mes yeux\" ou \"supprimez les imperfections\", et l'API gère le traitement d'image complexe pour fournir des résultats naturels qui maintiennent le style et l'apparence de la photo originale."
         },
         "monetization": {
           "title": "Modèle d'achat unique simple",
@@ -117,7 +117,7 @@
       "conclusion": {
         "title": "Conclusion",
         "paragraphs": [
-          "Construire <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> a été un incroyable voyage à l'intersection de l'intelligence artificielle et de la conception d'expérience utilisateur. L'application représente une approche simple de l'édition photo - un où le langage naturel remplace les interfaces complexes, et l'IA rend l'édition de qualité professionnelle accessible à tous.",
+          "Construire <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> a été un incroyable voyage à l'intersection de l'intelligence artificielle et de la conception d'expérience utilisateur. L'application représente une approche simple de l'édition photo, un où le langage naturel remplace les interfaces complexes, et l'IA rend l'édition de qualité professionnelle accessible à tous.",
           "Le succès de PhotoPerfectAI, y compris son classement #2 en Productivité sur l'App Store, valide l'approche de combiner une technologie IA puissante avec un design intuitif. En exploitant l'API Gemini à travers une interface simple, l'application rend l'édition photo de qualité professionnelle accessible à tous. L'interface en langage naturel supprime les barrières qui ont traditionnellement empêché les utilisateurs occasionnels d'atteindre des éditions photo de qualité professionnelle.",
           "J'espère que ce regard dans les coulisses du développement de PhotoPerfectAI fournit des insights pour d'autres développeurs explorant des applications alimentées par l'IA. Si vous êtes intéressé par essayer PhotoPerfectAI vous-même, c'est disponible maintenant sur l'App Store pour iOS 15.0 ou ultérieur. Téléchargez simplement, commencez à parler à vos photos et regardez-les se transformer."
         ]

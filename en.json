@@ -114,16 +114,16 @@
     "title": "Blog",
     "items": [
       {
-        "title": "Building PhotoPerfectAI: Revolutionizing Photo Editing with Natural Language AI",
+        "title": "Building PhotoPerfectAI: Streamlining Photo Editing with Natural Language AI",
         "date": "2025-12-01",
-        "description": "An app that lets you simply talk to your photos and watch them transform. PhotoPerfectAI harnesses cutting-edge AI to make professional-grade photo editing accessible to everyone—no account required, just natural language commands that bring your vision to life.",
+        "description": "An app that lets you simply talk to your photos and watch them transform. PhotoPerfectAI harnesses cutting-edge AI to make professional-grade photo editing accessible to everyone. No account required, just natural language commands that bring your vision to life.",
         "readBlog": "Read Blog",
         "visitWebsite": "Visit Website"
       },
       {
-        "title": "Building EasyApplAI: Revolutionizing Job Applications with AI-Powered Automation",
+        "title": "Building EasyApplAI: Improving Job Applications with AI-Powered Automation",
         "date": "2025-08-15",
-        "description": "I created a comprehensive job application platform that transforms the tedious process of applying for jobs. Built with TypeScript and React, EasyApplAI leverages AI to craft ATS-friendly resumes and cover letters, tracks applications with a history-based system, and helps you prep for interviews—all while keeping your personal data secure through anonymization.",
+        "description": "I created a comprehensive job application platform that transforms the tedious process of applying for jobs. Built with TypeScript and React, EasyApplAI leverages AI to craft ATS-friendly resumes and cover letters, tracks applications with a history-based system, and helps you prep for interviews, all while keeping your personal data secure through anonymization.",
         "readBlog": "Read Blog",
         "visitWebsite": "Visit Website"
       },
@@ -137,7 +137,7 @@
       {
         "title": "Developing WizPDF: My First Mobile App for iOS and Android",
         "date": "2025-04-15",
-        "description": "The process of creating my first mobile application — a comprehensive PDF management tool for merging, modifying, and summarizing PDFs on both iOS and Android platforms.",
+        "description": "The process of creating my first mobile application, a comprehensive PDF management tool for merging, modifying, and summarizing PDFs on both iOS and Android platforms.",
         "readBlog": "Read Blog",
         "visitWebsite": "Visit Website"
       },

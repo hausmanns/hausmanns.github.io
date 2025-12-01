@@ -14,7 +14,7 @@
     "date": "December 1, 2025"
   },
   "content": {
-    "intro": "In an age where professional photo editing required complex software and technical expertise, I set out to create something simple and accessible: an app that lets you talk to your photos and watch them transform. <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> harnesses the power of Google's Gemini API to make professional-grade photo editing accessible to everyone - no account required, no steep learning curve, just natural language commands that bring your vision to life.",
+    "intro": "In an age where professional photo editing required complex software and technical expertise, I set out to create something simple and accessible: an app that lets you talk to your photos and watch them transform. <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> harnesses the power of Google's Gemini API to make professional-grade photo editing accessible to everyone. No account required, no steep learning curve, just natural language commands that bring your vision to life.",
     "figcaption1": "The main interface of <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> showcasing the app's sleek design and intuitive user experience",
     "altText": {
       "appPreview": "PhotoPerfectAI App Preview",
@@ -30,17 +30,17 @@
           "Requiring quick object removal or background changes",
           "Desiring an intuitive, natural way to communicate editing intentions"
         ],
-        "conclusion": "Most photo editing apps were either too limited, required expensive subscriptions, or buried powerful features under confusing interfaces. I wanted to create something that was both powerful and delightfully simple - where you could just describe what you want in plain language, and the AI would make it happen. That's how <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> was born."
+        "conclusion": "Most photo editing apps were either too limited, required expensive subscriptions, or buried powerful features under confusing interfaces. I wanted to create something that was both powerful and delightfully simple, where you could just describe what you want in plain language, and the AI would make it happen. That's how <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> was born."
       },
       "features": {
         "title": "Core Features",
         "talkToPhotos": {
           "title": "Talk to Your Photos",
-          "content": "Simply describe what you want in natural language. Our AI understands commands like \"make it sunset,\" \"add a cat,\" or \"change the background\" and executes your vision instantly. No complex interfaces, no learning curve - just describe and transform."
+          "content": "Simply describe what you want in natural language. Our AI understands commands like \"make it sunset,\" \"add a cat,\" or \"change the background\" and executes your vision instantly. No complex interfaces, no learning curve, just describe and transform."
         },
         "professional": {
           "title": "Professional Results",
-          "content": "Transform a simple selfie into a LinkedIn-worthy professional photo. Perfect lighting, background, and attire adjustments - all powered by AI. Create stunning professional portraits from a single selfie with just a few taps."
+          "content": "Transform a simple selfie into a LinkedIn-worthy professional photo. Perfect lighting, background, and attire adjustments, all powered by AI. Create stunning professional portraits from a single selfie with just a few taps."
         },
         "removeObjects": {
           "title": "Remove Unwanted Objects",
@@ -75,7 +75,7 @@
         },
         "facial": {
           "title": "Facial Retouching Features",
-          "content": "The app's facial retouching capabilities leverage Gemini's API to handle tasks like opening closed eyes, removing blemishes, and enhancing portraits. Users can simply describe what they want - \"open my eyes\" or \"remove blemishes\" - and the API handles the complex image processing to deliver natural-looking results that maintain the original photo's style and appearance."
+          "content": "The app's facial retouching capabilities leverage Gemini's API to handle tasks like opening closed eyes, removing blemishes, and enhancing portraits. Users can simply describe what they want, \"open my eyes\" or \"remove blemishes\", and the API handles the complex image processing to deliver natural-looking results that maintain the original photo's style and appearance."
         },
         "monetization": {
           "title": "Simple One-Time Purchase Model",
@@ -117,7 +117,7 @@
       "conclusion": {
         "title": "Conclusion",
         "paragraphs": [
-          "Building <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> has been an incredible journey into the intersection of artificial intelligence and user experience design. The app represents a simple approach to photo editing - one where natural language replaces complex interfaces, and AI makes professional-quality editing accessible to everyone.",
+          "Building <a href=\"https://photoperfectai.vercel.app/\" target=\"_blank\" rel=\"noopener\">PhotoPerfectAI</a> has been an incredible journey into the intersection of artificial intelligence and user experience design. The app represents a simple approach to photo editing, one where natural language replaces complex interfaces, and AI makes professional-quality editing accessible to everyone.",
           "The success of PhotoPerfectAI, including its #2 ranking in Productivity on the App Store, validates the approach of combining powerful AI technology with intuitive design. By leveraging Gemini's API through a simple interface, the app makes professional-quality photo editing accessible to everyone. The natural language interface removes barriers that have traditionally prevented casual users from achieving professional-quality photo edits.",
           "I hope this behind-the-scenes look at PhotoPerfectAI's development provides insight for other developers exploring AI-powered applications. If you're interested in trying PhotoPerfectAI yourself, it's available now on the App Store for iOS 15.0 or later. Simply download, start talking to your photos, and watch them transform."
         ]
