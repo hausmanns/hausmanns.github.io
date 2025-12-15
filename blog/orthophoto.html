@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building OrthoPhoto: Clinical Photography Without Subscriptions | Seb Hausmann</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!--<script defer data-domain="hausmanns.github.io" src="https://plausible.laperrucherie.synology.me/js/script.js"></script>-->
+    <link rel="icon" type="image/png" href="../assets/logo/wolf.png">
+    <style>
+        /* Language Selector Styles */
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .language-selector button {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .language-selector button:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .language-selector button.active {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-selector {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+    <style>
+        .blog-post-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-post-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .blog-post-header .title-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .app-preview {
+            flex: 0 0 180px;
+            margin-bottom: 1rem;
+        }
+
+        .app-preview-image {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .app-preview-image:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-image {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .blog-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .blog-image img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Image grid for screenshots */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .image-grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-grid-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-grid-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .image-grid-item figcaption {
+            padding: 1rem;
+            background: var(--background-secondary);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .blog-image figcaption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .app-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .app-links a {
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .app-links img {
+            height: 55px;
+            transition: transform 0.2s;
+        }
+
+        .app-links img:hover {
+            transform: scale(1.08);
+        }
+
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-post-meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-post-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-post-content h2 {
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .blog-post-content h3 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .blog-post-content ul,
+        .blog-post-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .blog-post-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .blog-post-content .highlight {
+            background-color: var(--accent-color-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .blog-post-content code {
+            font-family: 'Courier New', monospace;
+            background-color: var(--background-secondary);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .blog-post-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .blog-post-footer .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: transform 0.2s;
+        }
+
+        .blog-post-footer .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .blog-post-footer .back-link i {
+            margin-right: 0.6rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .feature-card {
+            background-color: var(--background-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-card h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+        }
+
+        .feature-card h4 i {
+            margin-right: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Lightbox Styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lightbox-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            cursor: default;
+        }
+
+        .lightbox-content img {
+            display: block;
+            max-width: 100%;
+            max-height: calc(100vh - 40px);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            transform: none;
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -35px;
+            right: -10px;
+            font-size: 2.5rem;
+            color: #fff;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .blog-post-header h1 {
+                font-size: 2rem;
+            }
+
+            .blog-post-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .blog-post-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo easter-egg-trigger" style="cursor: pointer;">SH.</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home"></a></li>
+                <li><a href="../index.html#projects"></a></li>
+                <li><a href="../index.html#blog" class="active"></a></li>
+                <li><a href="../index.html#contact"></a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+                <li>
+                    <div class="language-selector">
+                        <button data-lang="en"
+                            onclick="window.blogI18n && window.blogI18n.changeLanguage('en')">EN</button>
+                        <button data-lang="fr"
+                            onclick="window.blogI18n && window.blogI18n.changeLanguage('fr')">FR</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section blog-post-section">
+            <div class="blog-post-container">
+                <div class="blog-post-header">
+                    <div class="title-container">
+                        <h1 data-i18n="title">Building OrthoPhoto: Clinical Photography Without Subscriptions</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar-alt"></i> <span data-i18n="date">December 15,
+                                    2025</span></span>
+                            <span>• <i class="fas fa-tag"></i> <span data-i18n="tags">Mobile Development, iOS, React
+                                    Native, Clinical Photography</span></span>
+                        </div>
+                    </div>
+                    <div class="app-preview">
+                        <img src="../assets/images/OrthoPhotoicon.png" alt="OrthoPhoto App Icon"
+                            class="app-preview-image lightbox-trigger">
+                    </div>
+                </div>
+
+                <div class="blog-post-content">
+                    <p data-i18n="intro">
+                        When a dentist friend approached me with a simple request—"I need an app to take standardized
+                        clinical photos without monthly fees"—I knew this was a perfect opportunity to build something
+                        practical and useful. OrthoPhoto was born from a real need: dental professionals wanted a
+                        streamlined way to capture, organize, and export clinical documentation without the burden of
+                        subscriptions, accounts, or complicated workflows.
+                    </p>
+
+                    <h2 data-i18n="problem-title">The Problem</h2>
+                    <p data-i18n="problem-desc">
+                        Clinical photography in dentistry requires consistency and precision. Dentists need to capture
+                        specific angles—intra-oral shots, facial views, and arch photos—for every patient. The existing
+                        solutions were either too expensive with recurring subscription fees, overly complex for staff
+                        to use, or required tedious manual organization and editing afterward. My friend wanted
+                        something simple: hand the phone to any team member, follow the guided prompts, and get a
+                        professional composite document ready to share with specialists or add to patient records.
+                    </p>
+
+                    <h2 data-i18n="solution-title">The Solution</h2>
+                    <p data-i18n="solution-desc">
+                        OrthoPhoto is an iOS app built with React Native and Expo SDK 54 that transforms an iPhone into
+                        a professional clinical photography tool. The app guides users through a standardized capture
+                        sequence, automatically arranges photos into a clinical composite grid, and exports everything
+                        as PDF, JPEG, or individual images—all processed locally on the device with no account required.
+                    </p>
+
+                    <div class="image-grid">
+                        <figure class="image-grid-item">
+                            <img src="../assets/images/OrthoPhoto1.png" alt="OrthoPhoto Home Screen"
+                                class="lightbox-trigger">
+                            <figcaption data-i18n="screenshot1-caption">Home screen with language selection and quick
+                                start</figcaption>
+                        </figure>
+                        <figure class="image-grid-item">
+                            <img src="../assets/images/OrthoPhoto2.png" alt="OrthoPhoto Capture Flow"
+                                class="lightbox-trigger">
+                            <figcaption data-i18n="screenshot2-caption">Guided capture flow with template overlays
+                            </figcaption>
+                        </figure>
+                        <figure class="image-grid-item">
+                            <img src="../assets/images/OrthoPhoto3.png" alt="OrthoPhoto Review Screen"
+                                class="lightbox-trigger">
+                            <figcaption data-i18n="screenshot3-caption">Review and export screen with patient
+                                information</figcaption>
+                        </figure>
+                        <figure class="image-grid-item">
+                            <img src="../assets/images/OrthoPhoto4.png" alt="OrthoPhoto Export Options"
+                                class="lightbox-trigger">
+                            <figcaption data-i18n="screenshot4-caption">Flexible export options: PDF, JPEG, or
+                                individual photos</figcaption>
+                        </figure>
+                    </div>
+
+                    <h2 data-i18n="features-title">Core Features</h2>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4><i class="fas fa-camera"></i> <span data-i18n="feature1-title">Guided Capture
+                                    Flow</span></h4>
+                            <p data-i18n="feature1-desc">Step-by-step prompts for all required clinical shots: arches,
+                                intra-oral angles, and facial views. Template overlays help ensure consistent framing
+                                every time.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4><i class="fas fa-crop-alt"></i> <span data-i18n="feature2-title">Smart Cropping</span>
+                            </h4>
+                            <p data-i18n="feature2-desc">Custom cropper with pinch-to-zoom, pan, rotation slider, and
+                                adjustable handles. Powered by expo-image-manipulator for precise edits.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4><i class="fas fa-user-md"></i> <span data-i18n="feature3-title">Patient
+                                    Management</span></h4>
+                            <p data-i18n="feature3-desc">Simple patient info entry: name and date of birth. The app
+                                automatically calculates age for accurate documentation.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4><i class="fas fa-file-export"></i> <span data-i18n="feature4-title">Flexible
+                                    Export</span></h4>
+                            <p data-i18n="feature4-desc">Export as PDF with precise cm-based layout, composite JPEG via
+                                react-native-view-shot, or save individual photos to gallery.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4><i class="fas fa-globe"></i> <span data-i18n="feature5-title">Multi-Language
+                                    Support</span></h4>
+                            <p data-i18n="feature5-desc">Full localization in English, French, German, and Italian.
+                                Language preference persists across sessions via AsyncStorage.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4><i class="fas fa-shield-alt"></i> <span data-i18n="feature6-title">Privacy First</span>
+                            </h4>
+                            <p data-i18n="feature6-desc">All processing happens locally on your device. No accounts, no
+                                cloud storage, no data leaves your phone without your permission.</p>
+                        </div>
+                    </div>
+
+                    <h2 data-i18n="tech-title">Technical Implementation</h2>
+
+                    <h3 data-i18n="tech-stack-title">Technology Stack</h3>
+                    <p data-i18n="tech-stack-desc">
+                        OrthoPhoto is built with React Native 0.81.5, React 19.1.0, and Expo SDK ~54. This stack
+                        provides native performance while allowing rapid development and easy updates. Key libraries
+                        include:
+                    </p>
+                    <ul>
+                        <li data-i18n="tech-item1"><strong>expo-camera</strong>: High-quality photo capture with
+                            auto-resize</li>
+                        <li data-i18n="tech-item2"><strong>expo-image-manipulator</strong>: Precise cropping and
+                            rotation</li>
+                        <li data-i18n="tech-item3"><strong>react-native-view-shot</strong>: Composite image generation
+                        </li>
+                        <li data-i18n="tech-item4"><strong>expo-file-system</strong>: PDF generation with cm-based
+                            precision</li>
+                        <li data-i18n="tech-item5"><strong>AsyncStorage</strong>: Persistent language preferences</li>
+                    </ul>
+
+                    <h3 data-i18n="capture-flow-title">Capture Flow Design</h3>
+                    <p data-i18n="capture-flow-desc">
+                        The capture flow is a guided sequence that ensures no required shot is missed. Users see
+                        template overlays for each angle, making it easy to frame photos consistently. The app uses
+                        gating logic to ensure a photo exists before advancing, and offers retake/crop options at every
+                        step. When returning from the review screen, the app switches to single-capture mode for
+                        replacing specific slots.
+                    </p>
+
+                    <h3 data-i18n="export-title">Export System</h3>
+                    <p data-i18n="export-desc">
+                        The export system is designed for professional use. PDFs use precise cm-based placement with a
+                        header containing patient metadata (name, DOB, age, and date). The layout mirrors the review
+                        screen: dental photos in a left grid, facial photos in a right grid. JPEG exports use
+                        react-native-view-shot to capture the entire layout as a single image, while individual photo
+                        exports save each image to the device gallery.
+                    </p>
+
+                    <h3 data-i18n="i18n-title">Internationalization</h3>
+                    <p data-i18n="i18n-desc">
+                        Full localization was a priority from day one. The app supports English, French, German, and
+                        Italian across all UI labels, capture prompts, export dialogs, and units. The system bootstraps
+                        from the device locale with a fallback to English, and user preferences are stored in
+                        AsyncStorage for persistence. The home screen features an animated logo and a language switcher
+                        with flag emojis (🇺🇸/🇫🇷/🇩🇪/🇮🇹).
+                    </p>
+
+                    <h2 data-i18n="challenges-title">Challenges and Solutions</h2>
+
+                    <h3 data-i18n="challenge1-title">PDF Generation on iOS</h3>
+                    <p data-i18n="challenge1-desc">
+                        Generating PDFs with precise layout control on iOS required careful work with expo-file-system.
+                        I implemented a cm-based coordinate system to ensure professional-quality output that matches
+                        printed standards. The challenge was converting between screen coordinates and PDF points while
+                        maintaining image quality and aspect ratios.
+                    </p>
+
+                    <h3 data-i18n="challenge2-title">Image Cropping UX</h3>
+                    <p data-i18n="challenge2-desc">
+                        Creating an intuitive cropping interface was crucial. I built a custom modal cropper with
+                        pinch/zoom/pan gestures, a rotation slider, and adjustable crop handles. The challenge was
+                        making it feel natural while providing precise control—especially important for clinical photos
+                        where framing matters.
+                    </p>
+
+                    <h3 data-i18n="challenge3-title">Capture Flow State Management</h3>
+                    <p data-i18n="challenge3-desc">
+                        Managing the capture flow state—knowing which photos exist, handling retakes, and switching
+                        between sequential capture and single-shot replacement—required careful state management. I
+                        implemented gating logic to prevent advancing without a photo, and mode switching to handle
+                        different navigation patterns.
+                    </p>
+
+                    <h2 data-i18n="lessons-title">Lessons Learned</h2>
+
+                    <h3 data-i18n="lesson1-title">User-Centered Design</h3>
+                    <p data-i18n="lesson1-desc">
+                        Building for a specific user (a dentist) with clear requirements taught me the value of focused
+                        design. Instead of adding features "just in case," I concentrated on making the core workflow as
+                        smooth as possible. The result is an app that does one thing extremely well.
+                    </p>
+
+                    <h3 data-i18n="lesson2-title">Local-First Architecture</h3>
+                    <p data-i18n="lesson2-desc">
+                        Processing everything locally eliminated privacy concerns, reduced complexity, and removed
+                        dependencies on backend infrastructure. This architectural choice made the app faster, more
+                        reliable, and easier to maintain—while also being a key selling point for privacy-conscious
+                        medical professionals.
+                    </p>
+
+                    <h3 data-i18n="lesson3-title">Expo's Power for Rapid Development</h3>
+                    <p data-i18n="lesson3-desc">
+                        Expo SDK proved invaluable for rapid iteration. Features like expo-camera,
+                        expo-image-manipulator, and expo-file-system provided robust, well-tested solutions that would
+                        have taken weeks to implement from scratch. The managed workflow allowed me to focus on the user
+                        experience rather than low-level native code.
+                    </p>
+
+                    <h2 data-i18n="conclusion-title">Conclusion</h2>
+                    <p data-i18n="conclusion-p1">
+                        Building OrthoPhoto was a rewarding experience in solving a real-world problem with modern
+                        mobile technology. The app demonstrates that you don't need complex backend infrastructure or
+                        subscription models to deliver professional-grade tools. Sometimes the best solution is the
+                        simplest one: a focused app that does exactly what users need, with no extra friction.
+                    </p>
+                    <p data-i18n="conclusion-p2">
+                        The project reinforced my belief in user-centered design, local-first architecture, and the
+                        power of modern cross-platform frameworks like React Native and Expo. If you're a dental
+                        professional looking for a straightforward clinical photography solution, or a developer
+                        interested in building practical mobile apps, I hope OrthoPhoto serves as a useful example.
+                    </p>
+                    <p data-i18n="conclusion-p3">
+                        OrthoPhoto is currently available for iOS. Visit the website to learn more and download the app
+                        from the App Store.
+                    </p>
+
+                    <div class="app-links">
+                        <a href="https://apps.apple.com/app/orthophoto" target="_blank" rel="noopener">
+                            <img src="../assets/images/appstore.svg" alt="Download on the App Store" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="blog-post-footer">
+                    <a href="../index.html#blog" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        <span data-i18n="back-link">Back to Blog</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>2025 <span class="easter-egg-trigger" style="cursor: pointer;">Seb</span> Hausmann. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox-overlay">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="" alt="Enlarged view" id="lightbox-image">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="blog-i18n.js"></script>
+    <script>initBlogI18n('orthophoto');</script>
+    <script src="../js/scripts.js"></script>
+
+    <!-- Lightbox Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightboxOverlay = document.getElementById('lightbox-overlay');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const imageTriggers = document.querySelectorAll('.lightbox-trigger');
+
+            if (!lightboxOverlay || !lightboxImage || !lightboxClose) {
+                console.error('Lightbox elements not found!');
+                return;
+            }
+
+            imageTriggers.forEach(img => {
+                img.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'IMG') {
+                        lightboxImage.src = img.src;
+                        lightboxOverlay.classList.add('visible');
+                    }
+                });
+            });
+
+            const closeLightbox = () => {
+                lightboxOverlay.classList.remove('visible');
+                setTimeout(() => {
+                    lightboxImage.src = '';
+                }, 300);
+            };
+
+            lightboxOverlay.addEventListener('click', (e) => {
+                if (e.target === lightboxOverlay) {
+                    closeLightbox();
+                }
+            });
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightboxOverlay.classList.contains('visible')) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

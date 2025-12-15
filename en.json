@@ -114,6 +114,13 @@
     "title": "Blog",
     "items": [
       {
+        "title": "Building OrthoPhoto: Clinical Photography Without Subscriptions",
+        "date": "2025-12-15",
+        "description": "A dentist-focused iOS app for guided clinical photos and instant exports—no accounts, no subscriptions, just fast capture and PDF/JPEG output with on-device privacy.",
+        "readBlog": "Read Blog",
+        "visitWebsite": "Visit Website"
+      },
+      {
         "title": "Building PhotoPerfectAI: Streamlining Photo Editing with Natural Language AI",
         "date": "2025-12-01",
         "description": "An app that lets you simply talk to your photos and watch them transform. PhotoPerfectAI harnesses cutting-edge AI to make professional-grade photo editing accessible to everyone. No account required, just natural language commands that bring your vision to life.",

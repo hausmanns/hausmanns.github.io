@@ -12,10 +12,10 @@ class BlogI18n {
                 fetch(`./${this.blogName}-en.json`),
                 fetch(`./${this.blogName}-fr.json`)
             ]);
-            
+
             this.translations.en = await enResponse.json();
             this.translations.fr = await frResponse.json();
-            
+
             // Apply translations after loading
             this.applyTranslations();
             this.updateLanguageSelector();
@@ -35,7 +35,7 @@ class BlogI18n {
     t(key) {
         const keys = key.split('.');
         let value = this.translations[this.currentLanguage];
-        
+
         for (const k of keys) {
             if (value && typeof value === 'object') {
                 value = value[k];
@@ -43,23 +43,23 @@ class BlogI18n {
                 return key;
             }
         }
-        
+
         return value || key;
     }
 
     applyTranslations() {
         // Update document title and meta
         document.title = this.t('meta.title');
-        
+
         // Update navigation
         this.updateNavigation();
-        
+
         // Update header
         this.updateHeader();
-        
+
         // Update all content
         this.updateContent();
-        
+
         // Update footer
         this.updateFooter();
     }
@@ -67,13 +67,13 @@ class BlogI18n {
     updateNavigation() {
         const navLinks = document.querySelectorAll('.nav-links a');
         const navKeys = ['home', 'projects', 'blog', 'contact'];
-        
+
         navLinks.forEach((link, index) => {
             if (index < navKeys.length) {
                 link.textContent = this.t(`nav.${navKeys[index]}`);
             }
         });
-        
+
         // Update theme toggle aria-label
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
@@ -85,14 +85,14 @@ class BlogI18n {
         // Update main title
         const title = document.querySelector('.blog-post-header h1');
         if (title) title.innerHTML = this.t('header.title');
-        
+
         // Update date
         const date = document.querySelector('.blog-post-meta span:first-child');
         if (date) {
             const icon = date.querySelector('i');
             date.innerHTML = `${icon.outerHTML} ${this.t('header.date')}`;
         }
-        
+
         // Update tags
         const tags = document.querySelector('.blog-post-meta span:last-child');
         if (tags) {
@@ -106,21 +106,23 @@ class BlogI18n {
             this.updateISoundPortContent();
         } else if (this.blogName === 'pdf-app') {
             this.updatePDFAppContent();
+        } else if (this.blogName === 'orthophoto') {
+            this.updateOrthoPhotoContent();
         }
-        
-        // Update alt attributes for both blog types
+
+        // Update alt attributes for all blog types
         this.updateAltAttributes();
     }
 
     updateAltAttributes() {
         const altTexts = this.t('content.altText');
         if (!altTexts) return;
-        
+
         // Update images based on their current alt text or class
         const images = document.querySelectorAll('img[alt]');
         images.forEach(img => {
             const currentAlt = img.alt.toLowerCase();
-            
+
             if (this.blogName === 'isoundport') {
                 if (currentAlt.includes('isoundport app preview') || currentAlt.includes('aperçu')) {
                     img.alt = altTexts.appPreview;
@@ -153,12 +155,12 @@ class BlogI18n {
         // Update intro paragraph
         const firstP = document.querySelector('.blog-post-content p:first-child');
         if (firstP) firstP.innerHTML = this.t('content.intro');
-        
+
         // Update figcaptions
         const figcaptions = document.querySelectorAll('figcaption');
         if (figcaptions[0]) figcaptions[0].textContent = this.t('content.figcaption1');
         if (figcaptions[1]) figcaptions[1].textContent = this.t('content.figcaption2');
-        
+
         // Update all h2 and h3 elements with content
         this.updateSectionHeaders();
         this.updateSectionContent();
@@ -166,7 +168,7 @@ class BlogI18n {
 
     updateSectionHeaders() {
         const sections = this.t('content.sections');
-        
+
         // Get all h2 elements and update them
         const h2Elements = document.querySelectorAll('.blog-post-content h2');
         h2Elements.forEach(h2 => {
@@ -218,21 +220,21 @@ class BlogI18n {
 
     updateSectionContent() {
         const sections = this.t('content.sections');
-        
+
         // Update paragraphs based on their position relative to headers
         const content = document.querySelector('.blog-post-content');
         const allElements = content.children;
-        
+
         for (let i = 0; i < allElements.length; i++) {
             const element = allElements[i];
-            
+
             if (element.tagName === 'H2') {
                 const text = element.textContent.toLowerCase();
-                
+
                 // Update the paragraph after this h2
                 if (i + 1 < allElements.length && allElements[i + 1].tagName === 'P') {
                     const nextP = allElements[i + 1];
-                    
+
                     if (text.includes('problem') || text.includes('problème')) {
                         nextP.textContent = sections.problem.content;
                     } else if (text.includes('technical') || text.includes('architecture')) {
@@ -243,11 +245,11 @@ class BlogI18n {
                 }
             } else if (element.tagName === 'H3') {
                 const text = element.textContent.toLowerCase();
-                
+
                 // Update content after h3 elements
                 if (i + 1 < allElements.length && allElements[i + 1].tagName === 'P') {
                     const nextP = allElements[i + 1];
-                    
+
                     if (text.includes('flask')) {
                         nextP.textContent = sections.architecture.flask.content;
                     } else if (text.includes('firebase') && text.includes('auth')) {
@@ -272,12 +274,12 @@ class BlogI18n {
                         nextP.textContent = sections.lessons.deployment.content;
                     }
                 }
-                
+
                 // Update lists after h3 elements
                 if (i + 2 < allElements.length && allElements[i + 2].tagName === 'UL') {
                     const nextUl = allElements[i + 2];
                     const lis = nextUl.querySelectorAll('li');
-                    
+
                     if (text.includes('firebase') && text.includes('auth')) {
                         sections.architecture.firebase.features.forEach((feature, index) => {
                             if (lis[index]) lis[index].textContent = feature;
@@ -300,12 +302,12 @@ class BlogI18n {
                         });
                     }
                 }
-                
+
                 // Update ordered lists (for challenges section)
                 if (i + 2 < allElements.length && allElements[i + 2].tagName === 'OL') {
                     const nextOl = allElements[i + 2];
                     const lis = nextOl.querySelectorAll('li');
-                    
+
                     if (text.includes('matching')) {
                         sections.challenges.matching.steps.forEach((step, index) => {
                             if (lis[index]) lis[index].textContent = step;
@@ -314,57 +316,57 @@ class BlogI18n {
                 }
             }
         }
-        
+
         // Update specific sections that might not be caught by the general logic
         this.updateSpecificSections();
-        
+
         // Update conclusion paragraphs
         this.updateConclusionParagraphs();
-        
+
         // Update future enhancements list
         this.updateFutureList();
     }
 
     updateSpecificSections() {
         const sections = this.t('content.sections');
-        
+
         // Find and update specific sections by looking for exact content matches
         const allParagraphs = document.querySelectorAll('.blog-post-content p');
-        
+
         allParagraphs.forEach(p => {
             const text = p.textContent.toLowerCase();
-            
+
             // Update Track Matching Accuracy paragraph
-            if (text.includes('biggest challenge was achieving') || text.includes('track matching') || 
+            if (text.includes('biggest challenge was achieving') || text.includes('track matching') ||
                 text.includes('le plus grand défi était d\'atteindre') || text.includes('correspondance des pistes')) {
                 p.textContent = sections.challenges.matching.content;
             }
-            
+
             // Update Authentication Complexity paragraph
             if (text.includes('working with multiple authentication') || text.includes('firebase and spotify oauth') ||
                 text.includes('travailler avec plusieurs systèmes') || text.includes('firebase et spotify oauth')) {
                 p.textContent = sections.lessons.auth.content;
             }
-            
+
             // Update Full-Stack Integration paragraph
             if (text.includes('building isoundport deepened') || text.includes('frontend and backend systems') ||
                 text.includes('construire isoundport a approfondi') || text.includes('systèmes frontend et backend')) {
                 p.textContent = sections.lessons.fullstack.content;
             }
-            
+
             // Update API Rate Limiting paragraph
             if (text.includes('spotify\'s api has strict rate limits') || text.includes('queuing system') ||
                 text.includes('l\'api de spotify a des limites') || text.includes('système de file d\'attente')) {
                 p.textContent = sections.challenges.rateLimit.content;
             }
         });
-        
+
         // Find and update the matching algorithm ordered list
         const allOrderedLists = document.querySelectorAll('.blog-post-content ol');
         allOrderedLists.forEach(ol => {
             const firstLi = ol.querySelector('li');
             if (firstLi && (firstLi.textContent.toLowerCase().includes('exact match searches') ||
-                           firstLi.textContent.toLowerCase().includes('recherches de correspondance exacte'))) {
+                firstLi.textContent.toLowerCase().includes('recherches de correspondance exacte'))) {
                 const lis = ol.querySelectorAll('li');
                 sections.challenges.matching.steps.forEach((step, index) => {
                     if (lis[index]) lis[index].textContent = step;
@@ -375,14 +377,14 @@ class BlogI18n {
 
     updateConclusionParagraphs() {
         const sections = this.t('content.sections');
-        const conclusionH2 = Array.from(document.querySelectorAll('h2')).find(h2 => 
+        const conclusionH2 = Array.from(document.querySelectorAll('h2')).find(h2 =>
             h2.textContent.toLowerCase().includes('conclusion')
         );
-        
+
         if (conclusionH2) {
             let current = conclusionH2.nextElementSibling;
             let paragraphIndex = 0;
-            
+
             while (current && current.tagName !== 'H2' && paragraphIndex < sections.conclusion.paragraphs.length) {
                 if (current.tagName === 'P') {
                     current.innerHTML = sections.conclusion.paragraphs[paragraphIndex];
@@ -395,14 +397,14 @@ class BlogI18n {
 
     updateFutureList() {
         const sections = this.t('content.sections');
-        const futureH2 = Array.from(document.querySelectorAll('h2')).find(h2 => 
-            h2.textContent.toLowerCase().includes('future') || 
+        const futureH2 = Array.from(document.querySelectorAll('h2')).find(h2 =>
+            h2.textContent.toLowerCase().includes('future') ||
             h2.textContent.toLowerCase().includes('amélioration')
         );
-        
+
         if (futureH2) {
             let current = futureH2.nextElementSibling;
-            
+
             while (current && current.tagName !== 'H2') {
                 if (current.tagName === 'UL') {
                     const lis = current.querySelectorAll('li');
@@ -420,22 +422,22 @@ class BlogI18n {
         // Update intro paragraph
         const firstP = document.querySelector('.blog-post-content p:first-child');
         if (firstP) firstP.innerHTML = this.t('content.intro');
-        
+
         // Update figcaptions
         const figcaptions = document.querySelectorAll('figcaption');
         if (figcaptions[0]) figcaptions[0].innerHTML = this.t('content.figcaption1');
-        
+
         // Update all h2 and h3 elements with content
         this.updatePDFSectionHeaders();
         this.updatePDFSectionContent();
-        
+
         // Update app links
         this.updateAppLinks();
     }
 
     updatePDFSectionHeaders() {
         const sections = this.t('content.sections');
-        
+
         // Get all h2 elements and update them
         const h2Elements = document.querySelectorAll('.blog-post-content h2');
         h2Elements.forEach(h2 => {
@@ -496,32 +498,32 @@ class BlogI18n {
 
     updatePDFSectionContent() {
         const sections = this.t('content.sections');
-        
+
         // Update paragraphs based on their position relative to headers
         const content = document.querySelector('.blog-post-content');
         const allElements = content.children;
-        
+
         for (let i = 0; i < allElements.length; i++) {
             const element = allElements[i];
-            
+
             if (element.tagName === 'H2') {
                 const text = element.textContent.toLowerCase();
-                
+
                 // Update the paragraph after this h2
                 if (i + 1 < allElements.length && allElements[i + 1].tagName === 'P') {
                     const nextP = allElements[i + 1];
-                    
+
                     if (text.includes('why') || text.includes('pourquoi')) {
                         nextP.textContent = sections.why.intro;
                     }
                 }
             } else if (element.tagName === 'H3') {
                 const text = element.textContent.toLowerCase();
-                
+
                 // Update content after h3 elements
                 if (i + 1 < allElements.length && allElements[i + 1].tagName === 'P') {
                     const nextP = allElements[i + 1];
-                    
+
                     if (text.includes('react native')) {
                         nextP.textContent = sections.technical.reactNative.content;
                     } else if (text.includes('pdf processing') || text.includes('moteur')) {
@@ -542,12 +544,12 @@ class BlogI18n {
                         nextP.textContent = sections.challenges.appStore.content;
                     }
                 }
-                
+
                 // Update lists after h3 elements
                 if (i + 2 < allElements.length && allElements[i + 2].tagName === 'UL') {
                     const nextUl = allElements[i + 2];
                     const lis = nextUl.querySelectorAll('li');
-                    
+
                     if (text.includes('performance') || text.includes('optimisation')) {
                         sections.challenges.performance.points.forEach((point, index) => {
                             if (lis[index]) lis[index].textContent = point;
@@ -556,7 +558,7 @@ class BlogI18n {
                 }
             }
         }
-        
+
         // Update specific sections
         this.updatePDFWhySection();
         this.updatePDFFeatureCards();
@@ -565,16 +567,16 @@ class BlogI18n {
 
     updatePDFWhySection() {
         const sections = this.t('content.sections');
-        
+
         // Find the "Why We Built This App" section
-        const whyH2 = Array.from(document.querySelectorAll('h2')).find(h2 => 
-            h2.textContent.toLowerCase().includes('why') || 
+        const whyH2 = Array.from(document.querySelectorAll('h2')).find(h2 =>
+            h2.textContent.toLowerCase().includes('why') ||
             h2.textContent.toLowerCase().includes('pourquoi')
         );
-        
+
         if (whyH2) {
             let current = whyH2.nextElementSibling;
-            
+
             while (current && current.tagName !== 'H2') {
                 if (current.tagName === 'UL') {
                     // Update the pain points list
@@ -593,14 +595,14 @@ class BlogI18n {
 
     updatePDFFeatureCards() {
         const sections = this.t('content.sections');
-        
+
         // Update feature card content
         const featureCards = document.querySelectorAll('.feature-card');
         featureCards.forEach(card => {
             const h4 = card.querySelector('h4');
             const p = card.querySelector('p');
             const figcaption = card.querySelector('figcaption');
-            
+
             if (h4) {
                 const text = h4.textContent.toLowerCase();
                 if (text.includes('merging') || text.includes('fusion')) {
@@ -619,14 +621,14 @@ class BlogI18n {
 
     updatePDFConclusionParagraphs() {
         const sections = this.t('content.sections');
-        const conclusionH2 = Array.from(document.querySelectorAll('h2')).find(h2 => 
+        const conclusionH2 = Array.from(document.querySelectorAll('h2')).find(h2 =>
             h2.textContent.toLowerCase().includes('conclusion')
         );
-        
+
         if (conclusionH2) {
             let current = conclusionH2.nextElementSibling;
             let paragraphIndex = 0;
-            
+
             while (current && current.tagName !== 'H2' && paragraphIndex < sections.conclusion.paragraphs.length) {
                 if (current.tagName === 'P') {
                     current.innerHTML = sections.conclusion.paragraphs[paragraphIndex];
@@ -639,18 +641,36 @@ class BlogI18n {
 
     updateAppLinks() {
         const appLinks = this.t('content.appLinks');
-        
+
         // Update app store link alt text
         const appStoreImg = document.querySelector('.app-store-link img');
         if (appStoreImg) {
             appStoreImg.alt = appLinks.appStore;
         }
-        
+
         // Update "Android version coming soon" text
         const playStoreSpan = document.querySelector('.play-store-link span');
         if (playStoreSpan) {
             playStoreSpan.textContent = appLinks.androidComingSoon;
         }
+    }
+
+    updateOrthoPhotoContent() {
+        // Update all elements with data-i18n attributes
+        const elementsWithI18n = document.querySelectorAll('[data-i18n]');
+        elementsWithI18n.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = this.t(key);
+
+            if (translation && translation !== key) {
+                // For elements that might contain HTML (like links)
+                if (element.tagName === 'P' || element.tagName === 'LI') {
+                    element.innerHTML = translation;
+                } else {
+                    element.textContent = translation;
+                }
+            }
+        });
     }
 
     updateFooter() {
@@ -659,10 +679,10 @@ class BlogI18n {
             const icon = backLink.querySelector('i');
             backLink.innerHTML = `${icon.outerHTML} ${this.t('footer.backLink')}`;
         }
-        
+
         const footer = document.querySelector('.footer p');
         if (footer) footer.innerHTML = this.t('footer.copyright');
-        
+
         // Update back to top button
         const backToTop = document.getElementById('back-to-top');
         if (backToTop) {

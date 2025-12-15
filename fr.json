@@ -114,6 +114,13 @@
     "title": "Blog",
     "items": [
       {
+        "title": "Construire OrthoPhoto : Photographie clinique sans abonnement",
+        "date": "2025-12-15",
+        "description": "Une application iOS pour dentistes qui guide la prise de vues cliniques et exporte instantanément—pas de comptes, pas d'abonnement, juste des captures rapides et des exports PDF/JPEG avec confidentialité sur l'appareil.",
+        "readBlog": "Lire le Blog",
+        "visitWebsite": "Visiter le Site"
+      },
+      {
         "title": "Construire PhotoPerfectAI : Rationaliser l'édition photo avec l'IA en langage naturel",
         "date": "2025-12-01",
         "description": "Une application qui vous permet simplement de parler à vos photos et de les voir se transformer. PhotoPerfectAI exploite l'IA de pointe pour rendre l'édition photo de qualité professionnelle accessible à tous. Aucun compte requis, juste des commandes en langage naturel qui donnent vie à votre vision.",
